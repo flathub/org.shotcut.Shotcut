@@ -354,7 +354,10 @@
                 "install -Dm644 ../icons/shotcut-logo-64.png /app/share/icons/hicolor/64x64/apps/org.shotcut.Shotcut.png",
                 "install -Dm644 ../shotcut.appdata.xml /app/share/appdata/org.shotcut.Shotcut.appdata.xml",
                 "mkdir -p /app/share/applications",
-                "install -Dm644 ../org.shotcut.Shotcut.desktop /app/share/applications/org.shotcut.Shotcut.desktop"
+                "install -Dm644 ../org.shotcut.Shotcut.desktop /app/share/applications/org.shotcut.Shotcut.desktop",
+                "mkdir -p /app/share/shotcut/translations",
+                "lrelease ../src/src.pro",
+                "install -Dm644 ../translations/*.qm /app/share/shotcut/translations"
             ],
             "sources": [
                 {
