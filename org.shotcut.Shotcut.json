@@ -12,7 +12,8 @@
         "--share=network",
         "--filesystem=host",
         "--socket=pulseaudio",
-        "--env=FREI0R_PATH=/app/lib/frei0r-1"
+        "--env=FREI0R_PATH=/app/lib/frei0r-1",
+        "--env=LADSPA_PATH=/app/lib/ladspa"
     ],
     "cleanup": [
         "/include",
@@ -283,38 +284,7 @@
             "config-opts": [
                 "--enable-gpl",
                 "--enable-gpl3",
-                "--enable-avformat",
-                "--enable-core",
-                "--enable-feeds",
-                "--enable-frei0r",
-                "--enable-kdenlive",
-                "--enable-lumas",
-                "--enable-motion_est",
-                "--enable-normalize",
-                "--enable-oldfilm",
-                "--enable-opengl",
-                "--enable-plus",
-                "--enable-plusgpl",
-                "--enable-qt",
-                "--enable-resample",
-                "--enable-rtaudio",
-                "--enable-sdl",
-                "--enable-sox",
-                "--enable-vid.stab",
-                "--enable-videostab",
-                "--enable-vmfx",
-                "--enable-xml",
-                "--disable-gtk2",
-                "--disable-opencv",
-                "--disable-decklink",
-                "--disable-dv",
-                "--disable-jackrack",
-                "--disable-kino",
-                "--disable-linsys",
-                "--disable-ndi",
-                "--disable-swfdec",
-                "--disable-vorbis",
-                "--disable-xine"
+                "--disable-gtk2"
             ],
             "sources": [
                 {
@@ -350,10 +320,8 @@
                 }
             },
             "post-install": [
-                "mkdir -p /app/share/icons/hicolor/64x64/apps",
                 "install -Dm644 ../icons/shotcut-logo-64.png /app/share/icons/hicolor/64x64/apps/org.shotcut.Shotcut.png",
                 "install -Dm644 ../shotcut.appdata.xml /app/share/appdata/org.shotcut.Shotcut.appdata.xml",
-                "mkdir -p /app/share/applications",
                 "install -Dm644 ../org.shotcut.Shotcut.desktop /app/share/applications/org.shotcut.Shotcut.desktop",
                 "mkdir -p /app/share/shotcut/translations",
                 "lrelease ../src/src.pro",
