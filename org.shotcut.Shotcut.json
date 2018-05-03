@@ -208,7 +208,7 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://sourceforge.net/projects/sox/files/sox/14.4.2/sox-14.4.2.tar.bz2",
+                    "url": "http://http.debian.net/debian/pool/main/s/sox/sox_14.4.2.orig.tar.bz2",
                     "sha256": "81a6956d4330e75b5827316e44ae381e6f1e8928003c6aa45896da9041ea149c"
                 }
             ]
@@ -275,9 +275,9 @@
             ],
             "sources": [
                 {
-                    "type": "archive",
-                    "url": "https://github.com/mltframework/mlt/releases/download/v6.6.0/mlt-6.6.0.tar.gz",
-                    "sha256": "28cbc5974f72ef228d624a58809c7c8055372f5f62f5882dc055099d444b2cdd"
+                    "type": "git",
+                    "url": "https://github.com/mltframework/mlt.git",
+                    "commit": "446b6fa72d57f037afee8102c299367d05c83e4c"
                 }
             ]
         },
@@ -317,13 +317,13 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/mltframework/shotcut/archive/v18.03.06.tar.gz",
-                    "sha256": "a26ecce33eb3132b32e2e9bb2b75a2ce81b87054f2a004be9f53d7b52cf46c8a"
+                    "url": "https://github.com/mltframework/shotcut/archive/v18.05.tar.gz",
+                    "sha256": "c7bb701b9c035b4244eb12872a2f66ac0fbdbebedd5c47b13f00ecc8af6b57b6"
                 },
                 {
                     "type": "shell",
                     "commands": [
-                        "sed -i '49i <releases><release date=\"2018-03-06\" version=\"18.03.06\"/></releases>' shotcut.appdata.xml",
+                        "sed -i '49i <releases><release date=\"2018-05-03\" version=\"18.05\"/></releases>' shotcut.appdata.xml",
                         "sed -i 's/shotcut.desktop/org.shotcut.Shotcut.desktop/' shotcut.appdata.xml",
                         "sed -i 's/qmelt/melt/g' src/jobs/meltjob.cpp"
                     ]
