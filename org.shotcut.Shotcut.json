@@ -159,7 +159,7 @@
         },
         {
             "name": "movit",
-            "buildsystem":"simple",
+            "buildsystem": "simple",
             "build-commands": [
                 "./autogen.sh --prefix=/app",
                 "make -j `nproc` libmovit.la",
