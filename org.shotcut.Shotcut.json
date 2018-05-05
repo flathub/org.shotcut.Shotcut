@@ -306,28 +306,26 @@
                     "QMAKEPATH": "/app/lib"
                 }
             },
+            "config-opts": [
+                "SHOTCUT_VERSION=18.05.03"
+            ],
             "post-install": [
+                "ln -sf /app/bin/melt /app/bin/qmelt",
                 "install -Dm644 ../icons/shotcut-logo-64.png /app/share/icons/hicolor/64x64/apps/org.shotcut.Shotcut.png",
-                "install -Dm644 ../shotcut.appdata.xml /app/share/appdata/org.shotcut.Shotcut.appdata.xml",
                 "install -Dm644 ../snap/gui/shotcut.desktop /app/share/applications/org.shotcut.Shotcut.desktop",
                 "desktop-file-edit --set-key=Icon --set-value='org.shotcut.Shotcut' /app/share/applications/org.shotcut.Shotcut.desktop",
                 "mkdir -p /app/share/shotcut/translations",
                 "lrelease ../src/src.pro",
-                "install -Dm644 ../translations/*.qm /app/share/shotcut/translations"
+                "install -Dm644 ../translations/*.qm /app/share/shotcut/translations",
+                "install -Dm644 ../shotcut.appdata.xml /app/share/appdata/org.shotcut.Shotcut.appdata.xml",
+                "sed -i 's|<id>shotcut.desktop</id>|<id>org.shotcut.Shotcut.desktop</id>|' /app/share/appdata/org.shotcut.Shotcut.appdata.xml",
+                "sed -i '49i <releases><release date=\"2018-05-03\" version=\"18.05.03\"/></releases>' /app/share/appdata/org.shotcut.Shotcut.appdata.xml"
             ],
             "sources": [
                 {
                     "type": "archive",
                     "url": "https://github.com/mltframework/shotcut/archive/v18.05.tar.gz",
                     "sha256": "c7bb701b9c035b4244eb12872a2f66ac0fbdbebedd5c47b13f00ecc8af6b57b6"
-                },
-                {
-                    "type": "shell",
-                    "commands": [
-                        "sed -i '49i <releases><release date=\"2018-05-03\" version=\"18.05\"/></releases>' shotcut.appdata.xml",
-                        "sed -i 's/shotcut.desktop/org.shotcut.Shotcut.desktop/' shotcut.appdata.xml",
-                        "sed -i 's/qmelt/melt/g' src/jobs/meltjob.cpp"
-                    ]
                 }
             ]
         }
