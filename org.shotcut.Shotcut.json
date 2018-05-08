@@ -285,7 +285,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/mltframework/mlt.git",
-                    "commit": "446b6fa72d57f037afee8102c299367d05c83e4c"
+                    "commit": "5afa66bd2495529204a088589a3b9eeeff4a3686"
                 }
             ]
         },
@@ -315,7 +315,7 @@
                 }
             },
             "config-opts": [
-                "SHOTCUT_VERSION=18.05.03"
+                "SHOTCUT_VERSION=18.05.08"
             ],
             "post-install": [
                 "ln -sf /app/bin/melt /app/bin/qmelt",
@@ -332,8 +332,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/mltframework/shotcut/archive/v18.05.tar.gz",
-                    "sha256": "c7bb701b9c035b4244eb12872a2f66ac0fbdbebedd5c47b13f00ecc8af6b57b6"
+                    "url": "https://github.com/mltframework/shotcut/archive/v18.05.08.tar.gz",
+                    "sha256": "a78ba95bc6fbb7de82ba2ac0ea65beb9a0b6e5bbcb48b5026f26399c6033272f"
                 }
             ]
         }
