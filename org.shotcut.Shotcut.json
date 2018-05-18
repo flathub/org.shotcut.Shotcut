@@ -28,6 +28,7 @@
             "buildsystem": "cmake-ninja",
             "builddir": true,
             "config-opts": [
+                "-DCMAKE_BUILD_TYPE=Release",
                 "-DCMAKE_INSTALL_LIBDIR=lib",
                 "-DPORT=Qt",
                 "-DENABLE_API_TESTS=OFF",
@@ -89,6 +90,9 @@
                 "--enable-libxml2",
                 "--enable-libx264"
             ],
+            "post-install": [
+                "chrpath -d /app/bin/ffmpeg /app/bin/ffplay /app/bin/ffprobe"
+            ],
             "cleanup": [
                 "/share/ffmpeg/examples"
             ],
@@ -105,16 +109,14 @@
             "buildsystem": "simple",
             "build-commands": [
                 "./waf configure --prefix=/app --htmldir=/app/share/doc/jack/ --freebob=no --classic",
-                "./waf build -j `nproc`",
+                "./waf build -j $FLATPAK_BUILDER_N_JOBS",
                 "./waf install"
             ],
             "cleanup": [
                 "/bin",
-                "/include",
                 "/share",
                 "/lib/jack",
-                "/lib/libjackserver.so*",
-                "/lib/pkgconfig"
+                "/lib/libjackserver.so*"
             ],
             "sources": [
                 {
@@ -147,11 +149,11 @@
             "buildsystem": "simple",
             "build-commands": [
                 "./configure --prefix=/app --disable-doc --with-pic --enable-threads --enable-type-prefix",
-                "make -j `nproc`",
+                "make -j $FLATPAK_BUILDER_N_JOBS",
                 "make install",
                 "make clean",
                 "./configure --prefix=/app --disable-doc --with-pic --enable-threads --enable-type-prefix --enable-float",
-                "make -j `nproc`",
+                "make -j $FLATPAK_BUILDER_N_JOBS",
                 "make install"
             ],
             "sources": [
@@ -170,7 +172,7 @@
             "buildsystem": "simple",
             "build-commands": [
                 "./autogen.sh --prefix=/app",
-                "make -j `nproc` libmovit.la",
+                "make -j $FLATPAK_BUILDER_N_JOBS libmovit.la",
                 "make install"
             ],
             "sources": [
@@ -193,7 +195,7 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "http://www.mega-nerd.com/SRC/libsamplerate-0.1.9.tar.gz",
+                    "url": "http://http.debian.net/debian/pool/main/libs/libsamplerate/libsamplerate_0.1.9.orig.tar.gz",
                     "sha256": "0a7eb168e2f21353fb6d84da152e4512126f7dc48ccb0be80578c565413444c1"
                 },
                 {
@@ -224,6 +226,7 @@
         {
             "name": "vidstab",
             "buildsystem": "cmake-ninja",
+            "builddir": true,
             "config-opts": [
                 "-DCMAKE_BUILD_TYPE=Release"
             ],
@@ -238,6 +241,7 @@
         {
             "name": "frei0r-plugins",
             "buildsystem": "cmake-ninja",
+            "builddir": true,
             "config-opts": [
                 "-DCMAKE_BUILD_TYPE=Release"
             ],
@@ -292,6 +296,7 @@
         {
             "name": "webfx",
             "buildsystem": "qmake",
+            "builddir": true,
             "build-options": {
                 "env": {
                     "QMAKEPATH": "/app/lib"
