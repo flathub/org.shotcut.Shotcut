@@ -1,6 +1,8 @@
 {
     "app-id": "org.shotcut.Shotcut",
     "branch": "stable",
+    "base": "io.qt.qtwebkit.BaseApp",
+    "base-version": "stable",
     "runtime": "org.kde.Platform",
     "runtime-version": "5.9",
     "sdk": "org.kde.Sdk",
@@ -20,44 +22,10 @@
         "/lib/cmake",
         "/lib/pkgconfig",
         "/share/man",
+        "*.a",
         "*.la"
     ],
     "modules": [
-        {
-            "name": "qtwebkit",
-            "buildsystem": "cmake-ninja",
-            "builddir": true,
-            "config-opts": [
-                "-DCMAKE_BUILD_TYPE=Release",
-                "-DCMAKE_INSTALL_LIBDIR=lib",
-                "-DPORT=Qt",
-                "-DENABLE_API_TESTS=OFF",
-                "-DENABLE_INSPECTOR_UI=OFF",
-                "-DENABLE_LEGACY_WEB_AUDIO=OFF",
-                "-DENABLE_MEDIA_SOURCE=OFF",
-                "-DENABLE_NETSCAPE_PLUGIN_API=OFF",
-                "-DENABLE_PRINT_SUPPORT=OFF",
-                "-DENABLE_SAMPLING_PROFILER=OFF",
-                "-DENABLE_SPELLCHECK=OFF",
-                "-DENABLE_VIDEO=OFF",
-                "-DENABLE_WEBKIT2=OFF",
-                "-DENABLE_WEB_AUDIO=OFF",
-                "-DUSE_GSTREAMER=OFF"
-            ],
-            "post-install": [
-                "mv /app/mkspecs /app/lib"
-            ],
-            "cleanup": [
-                "/lib/mkspecs"
-            ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://github.com/annulen/webkit/releases/download/qtwebkit-5.212.0-alpha2/qtwebkit-5.212.0-alpha2.tar.xz",
-                    "sha256": "f8f901de567e11fc5659402b6b827eac75505ff9c5072d8e919aa306003f8f8a"
-                }
-            ]
-        },
         {
             "name": "x264",
             "config-opts": [
@@ -105,28 +73,6 @@
             ]
         },
         {
-            "name": "jack2",
-            "buildsystem": "simple",
-            "build-commands": [
-                "./waf configure --prefix=/app --htmldir=/app/share/doc/jack/ --freebob=no --classic",
-                "./waf build -j $FLATPAK_BUILDER_N_JOBS",
-                "./waf install"
-            ],
-            "cleanup": [
-                "/bin",
-                "/share",
-                "/lib/jack",
-                "/lib/libjackserver.so*"
-            ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://github.com/jackaudio/jack2/releases/download/v1.9.12/jack2-1.9.12.tar.gz",
-                    "sha256": "deefe2f936dc32f59ad3cef7e37276c2035ef8a024ca92118f35c9a292272e33"
-                }
-            ]
-        },
-        {
             "name": "eigen",
             "buildsystem": "cmake-ninja",
             "builddir": true,
@@ -156,24 +102,21 @@
                 "make -j $FLATPAK_BUILDER_N_JOBS",
                 "make install"
             ],
+            "cleanup": [
+                "*"
+            ],
             "sources": [
                 {
                     "type": "archive",
                     "url": "http://www.fftw.org/fftw-3.3.7.tar.gz",
                     "sha256": "3b609b7feba5230e8f6dd8d245ddbefac324c5a6ae4186947670d9ac2cd25573"
                 }
-            ],
-            "cleanup": [
-                "*"
             ]
         },
         {
             "name": "movit",
-            "buildsystem": "simple",
-            "build-commands": [
-                "./autogen.sh --prefix=/app",
-                "make -j $FLATPAK_BUILDER_N_JOBS libmovit.la",
-                "make install"
+            "make-args": [
+                "libmovit.la"
             ],
             "sources": [
                 {
@@ -275,6 +218,28 @@
                     "type": "archive",
                     "url": "https://www.ladspa.org/download/ladspa_sdk_1.13.tgz",
                     "sha256": "b5ed3f4f253a0f6c1b7a1f4b8cf62376ca9f51d999650dd822650c43852d306b"
+                }
+            ]
+        },
+        {
+            "name": "jack2",
+            "buildsystem": "simple",
+            "build-commands": [
+                "./waf configure --prefix=/app --htmldir=/app/share/doc/jack/ --freebob=no --classic",
+                "./waf build -j $FLATPAK_BUILDER_N_JOBS",
+                "./waf install"
+            ],
+            "cleanup": [
+                "/bin",
+                "/share",
+                "/lib/jack",
+                "/lib/libjackserver.so*"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/jackaudio/jack2/releases/download/v1.9.12/jack2-1.9.12.tar.gz",
+                    "sha256": "deefe2f936dc32f59ad3cef7e37276c2035ef8a024ca92118f35c9a292272e33"
                 }
             ]
         },
