@@ -192,7 +192,7 @@ modules:
         url: https://github.com/mltframework/webvfx.git
         commit: e918ce4667e623c3d60735cb898223e730c6d7af
   
-  - name: shotcut
+  - name: shotcut # trigger rebuild
     buildsystem: qmake
     builddir: true
     build-options:
