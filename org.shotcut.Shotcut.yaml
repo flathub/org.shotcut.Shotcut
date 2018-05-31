@@ -192,7 +192,7 @@ modules:
         url: https://github.com/mltframework/webvfx.git
         commit: e918ce4667e623c3d60735cb898223e730c6d7af
   
-  - name: shotcut # trigger rebuild
+  - name: shotcut
     buildsystem: qmake
     builddir: true
     build-options:
@@ -201,6 +201,7 @@ modules:
     config-opts:
       - SHOTCUT_VERSION=18.05.08
     post-install:
+      - rm -rf /app/{include,lib/cmake,lib/mkspecs,lib/pkgconfig} # io.qt.qtwebkit.BaseApp
       - ln -sf /app/bin/melt /app/bin/qmelt
       - install -Dm644 ../icons/shotcut-logo-64.png /app/share/icons/hicolor/64x64/apps/org.shotcut.Shotcut.png
       - install -Dm644 ../snap/gui/shotcut.desktop /app/share/applications/org.shotcut.Shotcut.desktop
