@@ -37,7 +37,6 @@ modules:
       - --enable-gpl
       - --disable-static
       - --enable-shared
-      - --disable-ffserver
       - --disable-doc
       - --disable-alsa
       - --enable-libfontconfig
@@ -49,13 +48,13 @@ modules:
       - --enable-libxml2
       - --enable-libx264
     post-install:
-      - chrpath -d /app/bin/ffmpeg /app/bin/ffplay /app/bin/ffprobe
+      - chrpath -d /app/bin/ff{mpeg,play,probe}
     cleanup:
       - /share/ffmpeg/examples
     sources:
       - type: archive
-        url: https://ffmpeg.org/releases/ffmpeg-3.4.2.tar.xz
-        sha256: 2b92e9578ef8b3e49eeab229e69305f5f4cbc1fdaa22e927fc7fca18acccd740
+        url: https://ffmpeg.org/releases/ffmpeg-4.0.tar.xz
+        sha256: ed945daf40b124e77a685893cc025d086f638bc703183460aff49508edb3a43f
   
   - name: eigen
     buildsystem: cmake-ninja
@@ -179,7 +178,7 @@ modules:
     sources:
     - type: git
       url: https://github.com/mltframework/mlt.git
-      commit: 5afa66bd2495529204a088589a3b9eeeff4a3686
+      commit: ee1b9cbdd311a24dc724215f15dc0116725dee00
   
   - name: webfx
     buildsystem: qmake
@@ -199,20 +198,14 @@ modules:
       env:
         QMAKEPATH: /app/lib
     config-opts:
-      - SHOTCUT_VERSION=18.05.08
+      - SHOTCUT_VERSION=18.06.01
     post-install:
       - rm -rf /app/{include,lib/cmake,lib/mkspecs,lib/pkgconfig} # io.qt.qtwebkit.BaseApp
       - ln -sf /app/bin/melt /app/bin/qmelt
-      - install -Dm644 ../icons/shotcut-logo-64.png /app/share/icons/hicolor/64x64/apps/org.shotcut.Shotcut.png
-      - install -Dm644 ../snap/gui/shotcut.desktop /app/share/applications/org.shotcut.Shotcut.desktop
-      - desktop-file-edit --set-key=Icon --set-value='org.shotcut.Shotcut' /app/share/applications/org.shotcut.Shotcut.desktop
-      - mkdir -p /app/share/shotcut/translations
-      - lrelease ../src/src.pro
-      - install -Dm644 ../translations/*.qm /app/share/shotcut/translations
-      - install -Dm644 ../shotcut.appdata.xml /app/share/appdata/org.shotcut.Shotcut.appdata.xml
-      - sed -i 's|<id>shotcut.desktop</id>|<id>org.shotcut.Shotcut.desktop</id>|' /app/share/appdata/org.shotcut.Shotcut.appdata.xml
-      - sed -i '49i <releases><release date=\"2018-05-08\" version=\"18.05.08\"/></releases>' /app/share/appdata/org.shotcut.Shotcut.appdata.xml
+      - sed -i '49i <releases><release  version=\"18.06.01\" date=\"2018-06-01\"/></releases>' /app/share/metainfo/org.shotcut.Shotcut.appdata.xml
     sources:
       - type: archive
-        url: https://github.com/mltframework/shotcut/archive/v18.05.08.tar.gz
-        sha256: a78ba95bc6fbb7de82ba2ac0ea65beb9a0b6e5bbcb48b5026f26399c6033272f
+        url: https://github.com/mltframework/shotcut/archive/v18.06.tar.gz
+        sha256: f5872bc53765845f7d45e5b370811e93b2058ee5dc569f6b3d97a546fdd22004
+      - type: patch
+        path: shotcut-AvformatProducerWidget.patch

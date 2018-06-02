@@ -1,0 +1,175 @@
+From a135d38d53cb30809f90ea0b247441b6b6395c65 Mon Sep 17 00:00:00 2001
+From: Dan Dennedy <dan@dennedy.org>
+Date: Sat, 2 Jun 2018 00:45:48 -0700
+Subject: [PATCH] Revert "Fix AvformatProducerWidget inaccurate with timeline
+ clips."
+
+This reverts commit 92dadc5f89619b071b0e4f054896f47b9d6bc05f.
+---
+ src/widgets/avformatproducerwidget.cpp | 50 +++++++++-----------------
+ src/widgets/avformatproducerwidget.h   |  7 ++--
+ 2 files changed, 18 insertions(+), 39 deletions(-)
+
+diff --git a/src/widgets/avformatproducerwidget.cpp b/src/widgets/avformatproducerwidget.cpp
+index b16a7de4..5a7e9bd0 100644
+--- a/src/widgets/avformatproducerwidget.cpp
++++ b/src/widgets/avformatproducerwidget.cpp
+@@ -1,5 +1,5 @@
+ /*
+- * Copyright (c) 2012-2018 Meltytech, LLC
++ * Copyright (c) 2012-2017 Meltytech, LLC
+  * Author: Dan Dennedy <dan@dennedy.org>
+  *
+  * This program is free software: you can redistribute it and/or modify
+@@ -60,26 +60,6 @@ double GetSpeedFromProducer( Mlt::Producer* producer )
+     return speed;
+ }
+ 
+-class DecodeTask : public QRunnable
+-{
+-public:
+-    DecodeTask(AvformatProducerWidget* widget)
+-        : QRunnable()
+-        , m_widget(widget)
+-    {}
+-    void run()
+-    {
+-        QScopedPointer<Mlt::Frame> frame(m_widget->producer()->get_frame());
+-        mlt_image_format format = mlt_image_none;
+-        int w = MLT.profile().width();
+-        int h = MLT.profile().height();
+-        frame->get_image(format, w, h);
+-        QMetaObject::invokeMethod(m_widget, "onFrameDecoded", Qt::QueuedConnection);
+-    }
+-private:
+-    AvformatProducerWidget* m_widget;
+-};
+-
+ AvformatProducerWidget::AvformatProducerWidget(QWidget *parent)
+     : QWidget(parent)
+     , ui(new Ui::AvformatProducerWidget)
+@@ -88,7 +68,7 @@ AvformatProducerWidget::AvformatProducerWidget(QWidget *parent)
+ {
+     ui->setupUi(this);
+     Util::setColorsToHighlight(ui->filenameLabel);
+-    connect(this, SIGNAL(producerChanged(Mlt::Producer*)), SLOT(onProducerChanged()));
++    connect(MLT.videoWidget(), SIGNAL(frameDisplayed(const SharedFrame&)), this, SLOT(onFrameDisplayed(const SharedFrame&)));
+ }
+ 
+ AvformatProducerWidget::~AvformatProducerWidget()
+@@ -116,12 +96,6 @@ Mlt::Producer* AvformatProducerWidget::newProducer(Mlt::Profile& profile)
+     return p;
+ }
+ 
+-void AvformatProducerWidget::setProducer(Mlt::Producer* p)
+-{
+-    AbstractProducerWidget::setProducer(p);
+-    emit producerChanged(p);
+-}
+-
+ void AvformatProducerWidget::keyPressEvent(QKeyEvent* event)
+ {
+     if (ui->speedSpinBox->hasFocus() &&
+@@ -132,11 +106,6 @@ void AvformatProducerWidget::keyPressEvent(QKeyEvent* event)
+     }
+ }
+ 
+-void AvformatProducerWidget::onProducerChanged()
+-{
+-    QThreadPool::globalInstance()->start(new DecodeTask(this));
+-}
+-
+ void AvformatProducerWidget::reopen(Mlt::Producer* p)
+ {
+     int length = ui->durationSpinBox->value();
+@@ -175,6 +144,7 @@ void AvformatProducerWidget::reopen(Mlt::Producer* p)
+         return;
+     }
+     MLT.stop();
++    connect(MLT.videoWidget(), SIGNAL(frameDisplayed(const SharedFrame&)), this, SLOT(onFrameDisplayed(const SharedFrame&)));
+     emit producerReopened();
+     emit producerChanged(p);
+     MLT.seek(position);
+@@ -201,8 +171,12 @@ void AvformatProducerWidget::recreateProducer()
+     }
+ }
+ 
+-void AvformatProducerWidget::onFrameDecoded()
++void AvformatProducerWidget::onFrameDisplayed(const SharedFrame&)
+ {
++    // This forces avformat-novalidate or unloaded avformat to load and get
++    // media information.
++    delete m_producer->get_frame();
++
+     int tabIndex = ui->tabWidget->currentIndex();
+     ui->tabWidget->setTabEnabled(0, false);
+     ui->tabWidget->setTabEnabled(1, false);
+@@ -337,6 +311,11 @@ void AvformatProducerWidget::onFrameDecoded()
+     if (width || height)
+         ui->videoTableWidget->setItem(1, 1, new QTableWidgetItem(QString("%1x%2").arg(width).arg(height)));
+ 
++    // We can stop listening to this signal if this is audio-only or if we have
++    // received the video resolution.
++    if (videoIndex == 1 || width || height)
++        disconnect(MLT.videoWidget(), SIGNAL(frameDisplayed(const SharedFrame&)), this, 0);
++
+     double sar = m_producer->get_double("meta.media.sample_aspect_num");
+     if (m_producer->get_double("meta.media.sample_aspect_den") > 0)
+         sar /= m_producer->get_double("meta.media.sample_aspect_den");
+@@ -477,6 +456,7 @@ void AvformatProducerWidget::on_scanComboBox_activated(int index)
+             // by setting them NULL.
+             m_producer->set("force_progressive", QString::number(index).toLatin1().constData());
+         emit producerChanged(producer());
++        connect(MLT.videoWidget(), SIGNAL(frameDisplayed(const SharedFrame&)), this, SLOT(onFrameDisplayed(const SharedFrame&)));
+     }
+ }
+ 
+@@ -487,6 +467,7 @@ void AvformatProducerWidget::on_fieldOrderComboBox_activated(int index)
+         if (m_producer->get("force_tff") || tff != index)
+             m_producer->set("force_tff", QString::number(index).toLatin1().constData());
+         emit producerChanged(producer());
++        connect(MLT.videoWidget(), SIGNAL(frameDisplayed(const SharedFrame&)), this, SLOT(onFrameDisplayed(const SharedFrame&)));
+     }
+ }
+ 
+@@ -504,6 +485,7 @@ void AvformatProducerWidget::on_aspectNumSpinBox_valueChanged(int)
+             m_producer->set(kAspectRatioDenominator, ui->aspectDenSpinBox->text().toLatin1().constData());
+         }
+         emit producerChanged(producer());
++        connect(MLT.videoWidget(), SIGNAL(frameDisplayed(const SharedFrame&)), this, SLOT(onFrameDisplayed(const SharedFrame&)));
+     }
+ }
+ 
+diff --git a/src/widgets/avformatproducerwidget.h b/src/widgets/avformatproducerwidget.h
+index 33161d52..76dd4f12 100644
+--- a/src/widgets/avformatproducerwidget.h
++++ b/src/widgets/avformatproducerwidget.h
+@@ -1,5 +1,5 @@
+ /*
+- * Copyright (c) 2012-2018 Meltytech, LLC
++ * Copyright (c) 2012-2017 Meltytech, LLC
+  * Author: Dan Dennedy <dan@dennedy.org>
+  *
+  * This program is free software: you can redistribute it and/or modify
+@@ -38,7 +38,6 @@ public:
+ 
+     // AbstractProducerWidget overrides
+     Mlt::Producer* newProducer(Mlt::Profile&);
+-    void setProducer(Mlt::Producer*);
+ 
+ signals:
+     void producerChanged(Mlt::Producer*);
+@@ -48,9 +47,7 @@ protected:
+     void keyPressEvent(QKeyEvent *event);
+ 
+ private slots:
+-    void onProducerChanged();
+-
+-    void onFrameDecoded();
++    void onFrameDisplayed(const SharedFrame&);
+ 
+     void on_resetButton_clicked();
+ 
+-- 
+2.17.0
+
