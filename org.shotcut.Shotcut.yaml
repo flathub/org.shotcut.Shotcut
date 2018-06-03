@@ -198,14 +198,12 @@ modules:
       env:
         QMAKEPATH: /app/lib
     config-opts:
-      - SHOTCUT_VERSION=18.06.01
+      - SHOTCUT_VERSION=18.06.02
     post-install:
       - rm -rf /app/{include,lib/cmake,lib/mkspecs,lib/pkgconfig} # io.qt.qtwebkit.BaseApp
       - ln -sf /app/bin/melt /app/bin/qmelt
-      - sed -i '49i <releases><release  version=\"18.06.01\" date=\"2018-06-01\"/></releases>' /app/share/metainfo/org.shotcut.Shotcut.appdata.xml
+      - sed -i '49i <releases><release  version=\"18.06.02\" date=\"2018-06-02\"/></releases>' /app/share/metainfo/org.shotcut.Shotcut.appdata.xml
     sources:
       - type: archive
-        url: https://github.com/mltframework/shotcut/archive/v18.06.tar.gz
-        sha256: f5872bc53765845f7d45e5b370811e93b2058ee5dc569f6b3d97a546fdd22004
-      - type: patch
-        path: shotcut-AvformatProducerWidget.patch
+        url: https://github.com/mltframework/shotcut/archive/v18.06.02.tar.gz
+        sha256: 263843f305cbaf228dd097748951c1b041d50aca4c66ca9a92107d634e7f202d
