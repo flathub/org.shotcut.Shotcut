@@ -175,21 +175,19 @@ modules:
       - --enable-gpl
       - --enable-gpl3
       - --disable-gtk2
-    sources:
-    - type: git
-      url: https://github.com/mltframework/mlt.git
-      commit: ee1b9cbdd311a24dc724215f15dc0116725dee00
-  
-  - name: webfx
-    buildsystem: qmake
-    builddir: true
-    build-options:
-      env:
-        QMAKEPATH: /app/lib
+    post-install:
+      - cd webfx-src &&
+        export QMAKEPATH=/app/lib &&
+        qmake -r PREFIX=/app MLT_SOURCE=/run/build/mlt &&
+        make -j $FLATPAK_BUILDER_N_JOBS install
     sources:
       - type: git
+        dest: webfx-src
         url: https://github.com/mltframework/webvfx.git
         commit: e918ce4667e623c3d60735cb898223e730c6d7af
+      - type: git
+        url: https://github.com/mltframework/mlt.git
+        commit: ee1b9cbdd311a24dc724215f15dc0116725dee00
   
   - name: shotcut
     buildsystem: qmake
@@ -201,7 +199,6 @@ modules:
       - SHOTCUT_VERSION=18.06.02
     post-install:
       - rm -rf /app/{include,lib/cmake,lib/mkspecs,lib/pkgconfig} # io.qt.qtwebkit.BaseApp
-      - ln -sf /app/bin/melt /app/bin/qmelt
       - sed -i '49i <releases><release  version=\"18.06.02\" date=\"2018-06-02\"/></releases>' /app/share/metainfo/org.shotcut.Shotcut.appdata.xml
     sources:
       - type: archive
