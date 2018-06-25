@@ -23,39 +23,6 @@ cleanup:
   - '*.a'
   - '*.la'
 modules:
-  - name: x264
-    config-opts:
-      - --disable-cli
-      - --enable-shared
-    sources:
-      - type: archive
-        url: https://download.videolan.org/x264/snapshots/x264-snapshot-20171223-2245-stable.tar.bz2
-        sha256: ee4ba2c3d1caf786ad66d3fa86bdc368a8f827318788a62a9c8444b2c35816bf
-  
-  - name: ffmpeg
-    config-opts:
-      - --enable-gpl
-      - --disable-static
-      - --enable-shared
-      - --disable-doc
-      - --disable-alsa
-      - --enable-libfontconfig
-      - --enable-libfreetype
-      - --enable-libopus
-      - --enable-libpulse
-      - --enable-librsvg
-      - --enable-libvpx
-      - --enable-libxml2
-      - --enable-libx264
-    post-install:
-      - chrpath -d /app/bin/ff{mpeg,play,probe}
-    cleanup:
-      - /share/ffmpeg/examples
-    sources:
-      - type: archive
-        url: https://ffmpeg.org/releases/ffmpeg-4.0.tar.xz
-        sha256: ed945daf40b124e77a685893cc025d086f638bc703183460aff49508edb3a43f
-  
   - name: eigen
     buildsystem: cmake-ninja
     builddir: true
@@ -169,7 +136,40 @@ modules:
       - type: archive
         url: https://github.com/jackaudio/jack2/releases/download/v1.9.12/jack2-1.9.12.tar.gz
         sha256: deefe2f936dc32f59ad3cef7e37276c2035ef8a024ca92118f35c9a292272e33
-  
+
+  - name: x264
+    config-opts:
+      - --disable-cli
+      - --enable-shared
+    sources:
+      - type: archive
+        url: https://download.videolan.org/x264/snapshots/x264-snapshot-20171223-2245-stable.tar.bz2
+        sha256: ee4ba2c3d1caf786ad66d3fa86bdc368a8f827318788a62a9c8444b2c35816bf
+
+  - name: ffmpeg
+    config-opts:
+      - --enable-gpl
+      - --disable-static
+      - --enable-shared
+      - --disable-doc
+      - --disable-alsa
+      - --enable-libfontconfig
+      - --enable-libfreetype
+      - --enable-libopus
+      - --enable-libpulse
+      - --enable-librsvg
+      - --enable-libvpx
+      - --enable-libxml2
+      - --enable-libx264
+    post-install:
+      - chrpath -d /app/bin/ff{mpeg,play,probe}
+    cleanup:
+      - /share/ffmpeg/examples
+    sources:
+      - type: archive
+        url: https://ffmpeg.org/releases/ffmpeg-4.0.1.tar.xz
+        sha256: 605f5c01c60db35d3b617a79cabb2c7032412be243554602eeed1b628125c0ee
+
   - name: mlt
     config-opts:
       - --enable-gpl
@@ -188,7 +188,7 @@ modules:
       - type: git
         url: https://github.com/mltframework/mlt.git
         commit: ee1b9cbdd311a24dc724215f15dc0116725dee00
-  
+
   - name: shotcut
     buildsystem: qmake
     builddir: true
