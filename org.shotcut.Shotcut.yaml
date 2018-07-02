@@ -176,18 +176,18 @@ modules:
       - --enable-gpl3
       - --disable-gtk2
     post-install:
-      - cd webfx-src &&
+      - cd webvfx-src &&
         export QMAKEPATH=/app/lib &&
         qmake -r PREFIX=/app MLT_SOURCE=/run/build/mlt &&
         make -j $FLATPAK_BUILDER_N_JOBS install
     sources:
       - type: git
-        dest: webfx-src
+        dest: webvfx-src
         url: https://github.com/mltframework/webvfx.git
         commit: e918ce4667e623c3d60735cb898223e730c6d7af
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: ee1b9cbdd311a24dc724215f15dc0116725dee00
+        commit: 41710728faa7ea8be6483dd97afdf2ce6ff38e76
 
   - name: shotcut
     buildsystem: qmake
@@ -196,11 +196,12 @@ modules:
       env:
         QMAKEPATH: /app/lib
     config-opts:
-      - SHOTCUT_VERSION=18.06.02
+      - SHOTCUT_VERSION=18.07.02
     post-install:
       - rm -rf /app/{include,lib/cmake,lib/mkspecs,lib/pkgconfig} # io.qt.qtwebkit.BaseApp
-      - sed -i '49i <releases><release  version=\"18.06.02\" date=\"2018-06-02\"/></releases>' /app/share/metainfo/org.shotcut.Shotcut.appdata.xml
+      - sed -i '49i <releases><release version=\"18.07.02\" date=\"2018-07-02\"/></releases>'
+        /app/share/metainfo/org.shotcut.Shotcut.appdata.xml
     sources:
       - type: archive
-        url: https://github.com/mltframework/shotcut/archive/v18.06.02.tar.gz
-        sha256: 263843f305cbaf228dd097748951c1b041d50aca4c66ca9a92107d634e7f202d
+        url: https://github.com/mltframework/shotcut/archive/v18.07.tar.gz
+        sha256: ea3655b8498008e030a5230dbd89e8677d4e49fe1ecd1c7af8733db4a0b7509f
