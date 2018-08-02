@@ -167,8 +167,8 @@ modules:
       - /share/ffmpeg/examples
     sources:
       - type: archive
-        url: https://ffmpeg.org/releases/ffmpeg-4.0.1.tar.xz
-        sha256: 605f5c01c60db35d3b617a79cabb2c7032412be243554602eeed1b628125c0ee
+        url: https://ffmpeg.org/releases/ffmpeg-4.0.2.tar.xz
+        sha256: a95c0cc9eb990e94031d2183f2e6e444cc61c99f6f182d1575c433d62afb2f97
 
   - name: mlt
     config-opts:
@@ -187,7 +187,7 @@ modules:
         commit: e918ce4667e623c3d60735cb898223e730c6d7af
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: 41710728faa7ea8be6483dd97afdf2ce6ff38e76
+        commit: ae7dc425e69406053aa62ed13561ff0d5b2b887c
 
   - name: shotcut
     buildsystem: qmake
@@ -196,12 +196,12 @@ modules:
       env:
         QMAKEPATH: /app/lib
     config-opts:
-      - SHOTCUT_VERSION=18.07.02
+      - SHOTCUT_VERSION=18.08.01
     post-install:
       - rm -rf /app/{include,lib/cmake,lib/mkspecs,lib/pkgconfig} # io.qt.qtwebkit.BaseApp
-      - sed -i '49i <releases><release version=\"18.07.02\" date=\"2018-07-02\"/></releases>'
+      - sed -i '49i <releases><release version=\"18.08.01\" date=\"2018-08-01\"/></releases>'
         /app/share/metainfo/org.shotcut.Shotcut.appdata.xml
     sources:
       - type: archive
-        url: https://github.com/mltframework/shotcut/archive/v18.07.tar.gz
-        sha256: ea3655b8498008e030a5230dbd89e8677d4e49fe1ecd1c7af8733db4a0b7509f
+        url: https://github.com/mltframework/shotcut/archive/v18.08.tar.gz
+        sha256: 90fab88694698a9cd25fb3f2316447dc353fb74392331251d18b3cbefb010514
