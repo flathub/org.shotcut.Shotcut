@@ -3,7 +3,7 @@ branch: stable
 base: io.qt.qtwebkit.BaseApp
 base-version: stable
 runtime: org.kde.Platform
-runtime-version: 5.9
+runtime-version: '5.9'
 sdk: org.kde.Sdk
 command: shotcut
 finish-args:
@@ -32,8 +32,8 @@ modules:
       - /share
     sources:
       - type: archive
-        url: https://bitbucket.org/eigen/eigen/get/3.3.4.tar.bz2
-        sha256: dd254beb0bafc695d0f62ae1a222ff85b52dbaa3a16f76e781dce22d0d20a4a6
+        url: https://bitbucket.org/eigen/eigen/get/3.3.5.tar.bz2
+        sha256: 7352bff3ea299e4c7d7fbe31c504f8eb9149d7e685dec5a12fbaa26379f603e2
   
   - name: fftw
     buildsystem: simple
@@ -49,8 +49,8 @@ modules:
       - '*'
     sources:
       - type: archive
-        url: http://www.fftw.org/fftw-3.3.7.tar.gz
-        sha256: 3b609b7feba5230e8f6dd8d245ddbefac324c5a6ae4186947670d9ac2cd25573
+        url: http://www.fftw.org/fftw-3.3.8.tar.gz
+        sha256: 6113262f6e92c5bd474f2875fa1b01054c4ad5040f6b0da7c03c98821d9ae303
   
   - name: movit
     make-args:
@@ -68,8 +68,10 @@ modules:
       - /share/doc
     sources:
       - type: archive
-        url: http://http.debian.net/debian/pool/main/libs/libsamplerate/libsamplerate_0.1.9.orig.tar.gz
+        url: http://www.mega-nerd.com/SRC/libsamplerate-0.1.9.tar.gz
         sha256: 0a7eb168e2f21353fb6d84da152e4512126f7dc48ccb0be80578c565413444c1
+        mirror-urls:
+          - http://http.debian.net/debian/pool/main/libs/libsamplerate/libsamplerate_0.1.9.orig.tar.gz
       - type: script
         dest-filename: autogen.sh
         commands:
@@ -82,9 +84,11 @@ modules:
       - /bin
     sources:
       - type: archive
-        url: http://http.debian.net/debian/pool/main/s/sox/sox_14.4.2.orig.tar.bz2
+        url: https://sourceforge.net/projects/sox/files/sox/14.4.2/sox-14.4.2.tar.bz2
         sha256: 81a6956d4330e75b5827316e44ae381e6f1e8928003c6aa45896da9041ea149c
-  
+        mirror-urls:
+          - http://http.debian.net/debian/pool/main/s/sox/sox_14.4.2.orig.tar.bz2
+
   - name: vidstab
     buildsystem: cmake-ninja
     builddir: true
@@ -137,7 +141,7 @@ modules:
         url: https://github.com/jackaudio/jack2/releases/download/v1.9.12/jack2-1.9.12.tar.gz
         sha256: deefe2f936dc32f59ad3cef7e37276c2035ef8a024ca92118f35c9a292272e33
 
-  - name: x264
+  - name: libx264
     config-opts:
       - --disable-cli
       - --enable-shared
@@ -176,9 +180,9 @@ modules:
       - --enable-gpl3
       - --disable-gtk2
     post-install:
-      - cd webvfx-src &&
+      - cd webvfx-src && mkdir _build && cd _build &&
         export QMAKEPATH=/app/lib &&
-        qmake -r PREFIX=/app MLT_SOURCE=/run/build/mlt &&
+        qmake -r PREFIX=/app MLT_SOURCE=${FLATPAK_BUILDER_BUILDDIR} .. &&
         make -j $FLATPAK_BUILDER_N_JOBS install
     sources:
       - type: git
@@ -187,7 +191,7 @@ modules:
         commit: e918ce4667e623c3d60735cb898223e730c6d7af
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: ae7dc425e69406053aa62ed13561ff0d5b2b887c
+        commit: f39609dfb03121ac62e5d5e84a7b02151e2406b9
 
   - name: shotcut
     buildsystem: qmake
@@ -196,12 +200,12 @@ modules:
       env:
         QMAKEPATH: /app/lib
     config-opts:
-      - SHOTCUT_VERSION=18.08.01
+      - SHOTCUT_VERSION=18.08.11
     post-install:
       - rm -rf /app/{include,lib/cmake,lib/mkspecs,lib/pkgconfig} # io.qt.qtwebkit.BaseApp
-      - sed -i '49i <releases><release version=\"18.08.01\" date=\"2018-08-01\"/></releases>'
+      - sed -i '49i <releases><release version=\"18.08.11\" date=\"2018-08-11\"/></releases>'
         /app/share/metainfo/org.shotcut.Shotcut.appdata.xml
     sources:
       - type: archive
-        url: https://github.com/mltframework/shotcut/archive/v18.08.tar.gz
-        sha256: 90fab88694698a9cd25fb3f2316447dc353fb74392331251d18b3cbefb010514
+        url: https://github.com/mltframework/shotcut/archive/v18.08.11.tar.gz
+        sha256: 272ce00267c76916695acb8bd8bdd5136bfd4fc9bfa34c5b43c5d9199e2ec873
