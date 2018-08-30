@@ -1,9 +1,9 @@
 app-id: org.shotcut.Shotcut
 branch: stable
 base: io.qt.qtwebkit.BaseApp
-base-version: '5.9'
+base-version: '5.11'
 runtime: org.kde.Platform
-runtime-version: '5.9'
+runtime-version: '5.11'
 sdk: org.kde.Sdk
 command: shotcut
 finish-args:
@@ -27,10 +27,8 @@ modules:
   - name: eigen
     buildsystem: cmake-ninja
     builddir: true
-    config-opts:
-      - -DCMAKE_BUILD_TYPE=Release
     cleanup:
-      - /share
+      - '*'
     sources:
       - type: archive
         url: https://bitbucket.org/eigen/eigen/get/3.3.5.tar.bz2
