@@ -190,7 +190,7 @@ modules:
         commit: e918ce4667e623c3d60735cb898223e730c6d7af
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: f39609dfb03121ac62e5d5e84a7b02151e2406b9
+        commit: 7a09644e0560d4e5032421b7edbdb3dfef708f01
 
   - name: shotcut
     buildsystem: qmake
@@ -199,12 +199,12 @@ modules:
       env:
         QMAKEPATH: /app/lib
     config-opts:
-      - SHOTCUT_VERSION=18.08.14
+      - SHOTCUT_VERSION=18.09.13
     post-install:
       - rm -rf /app/{include,lib/cmake,lib/mkspecs,lib/pkgconfig} # io.qt.qtwebkit.BaseApp
-      - sed -i '49i <releases><release version=\"18.08.14\" date=\"2018-08-14\"/></releases>'
+      - sed -i '49i <releases><release version=\"18.09.13\" date=\"2018-09-13\"/></releases>'
         /app/share/metainfo/org.shotcut.Shotcut.appdata.xml
     sources:
       - type: archive
-        url: https://github.com/mltframework/shotcut/archive/v18.08.14.tar.gz
-        sha256: 1e7b63d7472518a5c131a802b3141555249d3ccbc7c9ace919b25d5c5265f365
+        url: https://github.com/mltframework/shotcut/archive/v18.09.13.tar.gz
+        sha256: d8277d47a7baa51e0ad99facd75f40e1fb170fd2c3a92f61b5179f62cf1fcf95
