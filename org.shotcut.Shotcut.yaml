@@ -190,7 +190,7 @@ modules:
         commit: e918ce4667e623c3d60735cb898223e730c6d7af
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: 7a09644e0560d4e5032421b7edbdb3dfef708f01
+        commit: 45364a44885a9edb9295f3ec3b5aed8b2d5541fc
 
   - name: shotcut
     buildsystem: qmake
