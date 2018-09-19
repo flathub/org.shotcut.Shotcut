@@ -199,12 +199,12 @@ modules:
       env:
         QMAKEPATH: /app/lib
     config-opts:
-      - SHOTCUT_VERSION=18.09.15
+      - SHOTCUT_VERSION=18.09.16
     post-install:
       - rm -rf /app/{include,lib/cmake,lib/mkspecs,lib/pkgconfig} # io.qt.qtwebkit.BaseApp
-      - sed -i '49i <releases><release version=\"18.09.15\" date=\"2018-09-15\"/></releases>'
+      - sed -i '49i <releases><release version=\"18.09.16\" date=\"2018-09-16\"/></releases>'
         /app/share/metainfo/org.shotcut.Shotcut.appdata.xml
     sources:
       - type: archive
-        url: https://github.com/mltframework/shotcut/archive/v18.09.15.tar.gz
-        sha256: 6d197e29f24c6a6bb30f7c614f3c24215a532dd2d6ade63a0ec60d3bf9300602
+        url: https://github.com/mltframework/shotcut/archive/v18.09.16.tar.gz
+        sha256: 699e155c9b174999742ddff004c54acbc165d7943f48774dfee9893299634277
