@@ -141,6 +141,9 @@ modules:
         sha256: deefe2f936dc32f59ad3cef7e37276c2035ef8a024ca92118f35c9a292272e33
 
   - name: nv-codec-headers
+    only-arches:
+      - x86_64
+      - i386
     no-autogen: true
     make-install-args:
       - PREFIX=/app
@@ -175,7 +178,6 @@ modules:
       - --enable-libvpx
       - --enable-libxml2
       - --enable-libx264
-      - --enable-nvenc
     post-install:
       - chrpath -d /app/bin/ff{mpeg,play,probe}
     cleanup:
