@@ -140,6 +140,17 @@ modules:
         url: https://github.com/jackaudio/jack2/releases/download/v1.9.12/jack2-1.9.12.tar.gz
         sha256: deefe2f936dc32f59ad3cef7e37276c2035ef8a024ca92118f35c9a292272e33
 
+  - name: nv-codec-headers
+    no-autogen: true
+    make-install-args:
+      - PREFIX=/app
+    cleanup:
+      - '*'
+    sources:
+      - type: git
+        url: https://git.videolan.org/git/ffmpeg/nv-codec-headers.git
+        commit: e6f3a414a599529ce5da0863f3e060c19c8a19ce
+
   - name: libx264
     config-opts:
       - --disable-cli
@@ -164,6 +175,7 @@ modules:
       - --enable-libvpx
       - --enable-libxml2
       - --enable-libx264
+      - --enable-nvenc
     post-install:
       - chrpath -d /app/bin/ff{mpeg,play,probe}
     cleanup:
