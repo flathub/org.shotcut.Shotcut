@@ -143,7 +143,7 @@ modules:
   - name: nv-codec-headers
     only-arches:
       - x86_64
-      - i386
+      - 'i386'
     no-autogen: true
     make-install-args:
       - PREFIX=/app
@@ -213,12 +213,12 @@ modules:
       env:
         QMAKEPATH: /app/lib
     config-opts:
-      - SHOTCUT_VERSION=18.09.16
+      - SHOTCUT_VERSION=18.10.08
     post-install:
       - rm -rf /app/{include,lib/cmake,lib/mkspecs,lib/pkgconfig} # io.qt.qtwebkit.BaseApp
-      - sed -i '49i <releases><release version=\"18.09.16\" date=\"2018-09-16\"/></releases>'
+      - sed -i '3i <releases><release version=\"18.10.08\" date=\"2018-10-08\"/></releases>'
         /app/share/metainfo/org.shotcut.Shotcut.appdata.xml
     sources:
       - type: archive
-        url: https://github.com/mltframework/shotcut/archive/v18.09.16.tar.gz
-        sha256: 699e155c9b174999742ddff004c54acbc165d7943f48774dfee9893299634277
+        url: https://github.com/mltframework/shotcut/archive/v18.10.08.tar.gz
+        sha256: 0883cbab0d5ae239a40720961cea66e5fe2a181e33b46b7ed1654229c30f8166
