@@ -23,6 +23,8 @@ cleanup:
   - /share/man
   - '*.a'
   - '*.la'
+cleanup-commands: # https://github.com/flatpak/flatpak/issues/1082
+  - rm -rf /app/{include,lib/{cmake,mkspecs,pkgconfig}}
 modules:
   - name: eigen
     buildsystem: cmake-ninja
@@ -117,7 +119,7 @@ modules:
       - /bin
     sources:
       - type: archive
-        url: https://sourceforge.net/projects/sox/files/sox/14.4.2/sox-14.4.2.tar.bz2
+        url: https://downloads.sourceforge.net/project/sox/sox/14.4.2/sox-14.4.2.tar.bz2
         sha256: 81a6956d4330e75b5827316e44ae381e6f1e8928003c6aa45896da9041ea149c
         mirror-urls:
           - http://http.debian.net/debian/pool/main/s/sox/sox_14.4.2.orig.tar.bz2
@@ -246,8 +248,8 @@ modules:
       - /share/ffmpeg/examples
     sources:
       - type: archive
-        url: https://ffmpeg.org/releases/ffmpeg-4.0.2.tar.xz
-        sha256: a95c0cc9eb990e94031d2183f2e6e444cc61c99f6f182d1575c433d62afb2f97
+        url: https://ffmpeg.org/releases/ffmpeg-4.0.3.tar.xz
+        sha256: 253c37e3f1d3626a2566e496554de9a4c29050753660835909a466d66b12e2ed
 
   - name: mlt
     config-opts:
@@ -266,7 +268,7 @@ modules:
         commit: e918ce4667e623c3d60735cb898223e730c6d7af
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: 4d086b86100d5a8c67ac272f41ced0394f282164
+        commit: 7dd25b4a6098b6413c5ee1adbde550c9ee951053
 
   - name: shotcut
     buildsystem: qmake
@@ -275,12 +277,11 @@ modules:
       env:
         QMAKEPATH: /app/lib
     config-opts:
-      - SHOTCUT_VERSION=18.10.08
+      - SHOTCUT_VERSION=18.11.13
     post-install:
-      - rm -rf /app/{include,lib/cmake,lib/mkspecs,lib/pkgconfig} # io.qt.qtwebkit.BaseApp
-      - sed -i '3i <releases><release version=\"18.10.08\" date=\"2018-10-08\"/></releases>'
+      - sed -i '3i <releases><release version=\"18.11.13\" date=\"2018-11-13\"/></releases>'
         /app/share/metainfo/org.shotcut.Shotcut.appdata.xml
     sources:
       - type: archive
-        url: https://github.com/mltframework/shotcut/archive/v18.10.08.tar.gz
-        sha256: 0883cbab0d5ae239a40720961cea66e5fe2a181e33b46b7ed1654229c30f8166
+        url: https://github.com/mltframework/shotcut/archive/v18.11.13.tar.gz
+        sha256: cb519b5bdaa9706be73bd87b963c7e4f3ff8eba096bf4cb09a0d550b6241d744
