@@ -257,7 +257,7 @@ modules:
         commit: e918ce4667e623c3d60735cb898223e730c6d7af
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: 7b468649623654a15532cbcb1d026140f3f62890
+        commit: fafaa42e72cee6efb093d959829c756d52e067db
 
   - name: shotcut
     buildsystem: qmake
@@ -266,11 +266,11 @@ modules:
       env:
         QMAKEPATH: /app/lib
     config-opts:
-      - SHOTCUT_VERSION=18.11.18
+      - SHOTCUT_VERSION=18.12.23
     post-install:
-      - sed -i '3i <releases><release version=\"18.11.18\" date=\"2018-11-18\"/></releases>'
+      - sed -i '3i <releases><release version=\"18.12.23\" date=\"2018-12-23\"/></releases>'
         /app/share/metainfo/org.shotcut.Shotcut.appdata.xml
     sources:
       - type: archive
-        url: https://github.com/mltframework/shotcut/archive/v18.11.18.tar.gz
-        sha256: d28c7aa114ac2e9c5678826884d01f9ce7546e87546fe40bf8dfa974f1c3cf1c
+        url: https://github.com/mltframework/shotcut/archive/v18.12.23.tar.gz
+        sha256: e89747fb4e115ed7b2435e8a6f5dd1ce7d50d276944e199298e0ed21d75b7a87
