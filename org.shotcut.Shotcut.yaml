@@ -26,6 +26,7 @@ cleanup:
 cleanup-commands: # https://github.com/flatpak/flatpak/issues/1082
   - rm -rf /app/{include,lib/{cmake,mkspecs,pkgconfig}}
 modules:
+
   - name: eigen
     buildsystem: cmake-ninja
     builddir: true
@@ -100,6 +101,7 @@ modules:
     config-opts:
       - --disable-static
     cleanup:
+      - /bin
       - /share/doc
     sources:
       - type: archive
@@ -155,6 +157,8 @@ modules:
     subdir: src
     build-commands:
       - make INSTALL_PLUGINS_DIR=/app/lib/ladspa/ INSTALL_INCLUDE_DIR=/app/include/ INSTALL_BINARY_DIR=/app/bin/ install
+    cleanup:
+      - /bin
     sources:
       - type: archive
         url: https://www.ladspa.org/download/ladspa_sdk_1.13.tgz
@@ -245,19 +249,24 @@ modules:
       - --enable-gpl
       - --enable-gpl3
       - --disable-gtk2
-    post-install:
-      - cd webvfx-src && mkdir _build && cd _build &&
-        export QMAKEPATH=/app/lib &&
-        qmake -r PREFIX=/app MLT_SOURCE=${FLATPAK_BUILDER_BUILDDIR} .. &&
-        make -j $FLATPAK_BUILDER_N_JOBS install
     sources:
-      - type: git
-        dest: webvfx-src
-        url: https://github.com/mltframework/webvfx.git
-        commit: e918ce4667e623c3d60735cb898223e730c6d7af
       - type: git
         url: https://github.com/mltframework/mlt.git
         commit: fafaa42e72cee6efb093d959829c756d52e067db
+
+  - name: webvfx
+    buildsystem: qmake
+    builddir: true
+    build-options:
+      env:
+        QMAKEPATH: /app/lib
+    cleanup:
+      - /bin/webvfx*
+    sources:
+      - type: git
+        url: https://github.com/mltframework/webvfx.git
+        commit: 5ef18121b8765ecbc6a90094b1d51059fc7e7f66
+        tag: '1.0.0'
 
   - name: shotcut
     buildsystem: qmake
