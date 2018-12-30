@@ -191,15 +191,16 @@ modules:
     sources:
       - type: git
         url: https://git.videolan.org/git/ffmpeg/nv-codec-headers.git
-        commit: e6f3a414a599529ce5da0863f3e060c19c8a19ce
+        commit: cb6eaa41ab40637c5b2912027e35e05a4ba32a69
+        tag: n8.2.15.6
 
   - name: nasm # TODO: remove with 5.12 runtime
     cleanup:
       - '*'
     sources:
       - type: archive
-        url: https://www.nasm.us/pub/nasm/releasebuilds/2.13.03/nasm-2.13.03.tar.xz
-        sha256: 812ecfb0dcbc5bd409aaa8f61c7de94c5b8752a7b00c632883d15b2ed6452573
+        url: https://www.nasm.us/pub/nasm/releasebuilds/2.14.02/nasm-2.14.02.tar.xz
+        sha256: e24ade3e928f7253aa8c14aa44726d1edf3f98643f87c9d72ec1df44b26be8f5
 
   - name: 'x264'
     config-opts:
