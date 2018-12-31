@@ -269,10 +269,10 @@ modules:
     cleanup:
       - /bin/webvfx*
     sources:
-      - type: git
-        url: https://github.com/mltframework/webvfx.git
-        commit: 5ef18121b8765ecbc6a90094b1d51059fc7e7f66
-        tag: '1.0.0'
+      - type: archive
+        dest-filename: webvfx.tar.xz
+        url: https://github.com/mltframework/webvfx/releases/download/1.0.0/webvfx-1.0.0.txz
+        sha256: edd972992b5b558a313d89a6c4650058b5e4701a3e1c5100a74caef376ef9f9d
 
   - name: shotcut
     buildsystem: qmake
