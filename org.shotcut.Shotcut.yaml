@@ -245,8 +245,8 @@ modules:
       - /share/ffmpeg/examples
     sources:
       - type: archive
-        url: https://ffmpeg.org/releases/ffmpeg-4.0.3.tar.xz
-        sha256: 253c37e3f1d3626a2566e496554de9a4c29050753660835909a466d66b12e2ed
+        url: https://ffmpeg.org/releases/ffmpeg-4.1.tar.xz
+        sha256: a38ec4d026efb58506a99ad5cd23d5a9793b4bf415f2c4c2e9c1bb444acd1994
 
   - name: mlt
     config-opts:
@@ -256,7 +256,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: fafaa42e72cee6efb093d959829c756d52e067db
+        commit: bd75c148322f3a1616554ae3cf64ee79337ed7cb
 
   - name: webvfx
     buildsystem: qmake
@@ -284,11 +284,11 @@ modules:
     config-opts:
       - CONFIG+=release
       - CONFIG+=force_debug_info
-      - SHOTCUT_VERSION=18.12.23
+      - SHOTCUT_VERSION=19.01.24
     post-install:
-      - sed -i '3i <releases><release version=\"18.12.23\" date=\"2018-12-23\"/></releases>'
+      - sed -i '3i <releases><release version=\"19.01.24\" date=\"2019-01-24\"/></releases>'
         /app/share/metainfo/org.shotcut.Shotcut.appdata.xml
     sources:
       - type: archive
-        url: https://github.com/mltframework/shotcut/archive/v18.12.23.tar.gz
-        sha256: e89747fb4e115ed7b2435e8a6f5dd1ce7d50d276944e199298e0ed21d75b7a87
+        url: https://github.com/mltframework/shotcut/archive/v19.01.24.tar.gz
+        sha256: b0330b987a74b44100f85bb640b8216961ecfde6dc8499dfb0d46e50e2b6d404
