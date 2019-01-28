@@ -256,7 +256,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: bd75c148322f3a1616554ae3cf64ee79337ed7cb
+        commit: eaf73b149347f2229eea44a038edea3170e03d39
 
   - name: webvfx
     buildsystem: qmake
@@ -284,11 +284,11 @@ modules:
     config-opts:
       - CONFIG+=release
       - CONFIG+=force_debug_info
-      - SHOTCUT_VERSION=19.01.24
+      - SHOTCUT_VERSION=19.01.27
     post-install:
-      - sed -i '3i <releases><release version=\"19.01.24\" date=\"2019-01-24\"/></releases>'
+      - sed -i '3i <releases><release version=\"19.01.27\" date=\"2019-01-27\"/></releases>'
         /app/share/metainfo/org.shotcut.Shotcut.appdata.xml
     sources:
       - type: archive
-        url: https://github.com/mltframework/shotcut/archive/v19.01.24.tar.gz
-        sha256: b0330b987a74b44100f85bb640b8216961ecfde6dc8499dfb0d46e50e2b6d404
+        url: https://github.com/mltframework/shotcut/archive/v19.01.27.tar.gz
+        sha256: 4e621615b272044ce3decaa4bb5ef7ebb9cef3932161422fedc9a77b474de240
