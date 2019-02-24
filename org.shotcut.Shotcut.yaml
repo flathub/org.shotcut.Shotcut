@@ -1,9 +1,9 @@
 app-id: org.shotcut.Shotcut
 branch: stable
 base: io.qt.qtwebkit.BaseApp
-base-version: '5.11'
+base-version: '5.12'
 runtime: org.kde.Platform
-runtime-version: '5.11'
+runtime-version: '5.12'
 sdk: org.kde.Sdk
 command: shotcut
 finish-args:
@@ -38,31 +38,6 @@ modules:
         url: https://bitbucket.org/eigen/eigen/get/3.3.5.tar.bz2
         sha256: 7352bff3ea299e4c7d7fbe31c504f8eb9149d7e685dec5a12fbaa26379f603e2
   
-  - name: fftw
-    config-opts:
-      - --disable-doc
-      - --enable-shared
-      - --disable-static
-      - --enable-threads
-    build-options:
-      arch:
-        i386:
-          config-opts:
-            - --enable-avx
-            - --enable-openmp
-            - --enable-sse2
-        x86_64:
-          config-opts:
-            - --enable-avx
-            - --enable-openmp
-            - --enable-sse2
-    cleanup:
-      - /bin
-    sources:
-      - type: archive
-        url: http://www.fftw.org/fftw-3.3.8.tar.gz
-        sha256: 6113262f6e92c5bd474f2875fa1b01054c4ad5040f6b0da7c03c98821d9ae303
-
   - name: fftw-float
     config-opts:
       - --disable-doc
@@ -96,25 +71,7 @@ modules:
       - type: git
         url: https://github.com/ddennedy/movit.git
         commit: 3e8b4ebb796bcbe7e9727a2d7f2d0ba8f0170dfa
-  
-  - name: libsamplerate
-    rm-configure: true
-    config-opts:
-      - --disable-static
-    cleanup:
-      - /bin
-      - /share/doc
-    sources:
-      - type: archive
-        url: http://www.mega-nerd.com/SRC/libsamplerate-0.1.9.tar.gz
-        sha256: 0a7eb168e2f21353fb6d84da152e4512126f7dc48ccb0be80578c565413444c1
-        mirror-urls:
-          - http://http.debian.net/debian/pool/main/libs/libsamplerate/libsamplerate_0.1.9.orig.tar.gz
-      - type: script
-        dest-filename: autogen.sh
-        commands:
-          - autoreconf -vfi
-  
+
   - name: sox
     config-opts:
       - --disable-static
@@ -148,6 +105,9 @@ modules:
         sha256: e0c24630961195d9bd65aa8d43732469e8248e8918faa942cfb881769d11515e
   
   - name: swh-plugins
+    build-options:
+      cflags: -fPIC
+      ldflags: -fpic
     sources:
       - type: archive
         url: https://github.com/swh/ladspa/archive/v0.4.17.tar.gz
@@ -164,8 +124,8 @@ modules:
       - /bin
     sources:
       - type: archive
-        url: https://www.ladspa.org/download/ladspa_sdk_1.13.tgz
-        sha256: b5ed3f4f253a0f6c1b7a1f4b8cf62376ca9f51d999650dd822650c43852d306b
+        url: https://www.ladspa.org/download/ladspa_sdk_1.15.tgz
+        sha256: 4229959b09d20c88c8c86f4aa76427843011705df22d9c28b38359fd1829fded
     
   - name: jack2
     buildsystem: simple
@@ -195,14 +155,6 @@ modules:
         commit: cb6eaa41ab40637c5b2912027e35e05a4ba32a69
         tag: n8.2.15.6
 
-  - name: nasm # TODO: remove with 5.12 runtime
-    cleanup:
-      - '*'
-    sources:
-      - type: archive
-        url: https://www.nasm.us/pub/nasm/releasebuilds/2.14.02/nasm-2.14.02.tar.xz
-        sha256: e24ade3e928f7253aa8c14aa44726d1edf3f98643f87c9d72ec1df44b26be8f5
-
   - name: 'x264'
     config-opts:
       - --disable-cli
@@ -222,11 +174,12 @@ modules:
       - /bin
     sources:
       - type: archive
-        url: https://bitbucket.org/multicoreware/x265/downloads/x265_2.9.tar.gz
-        sha256: ebae687c84a39f54b995417c52a2fdde65a4e2e7ebac5730d251471304b91024
+        url: https://bitbucket.org/multicoreware/x265/downloads/x265_3.0.tar.gz
+        sha256: c5b9fc260cabbc4a81561a448f4ce9cad7218272b4011feabc3a6b751b2f0662
 
   - name: ffmpeg
     config-opts:
+      - --enable-rpath
       - --enable-gpl
       - --disable-static
       - --enable-shared
@@ -245,8 +198,8 @@ modules:
       - /share/ffmpeg/examples
     sources:
       - type: archive
-        url: https://ffmpeg.org/releases/ffmpeg-4.1.tar.xz
-        sha256: a38ec4d026efb58506a99ad5cd23d5a9793b4bf415f2c4c2e9c1bb444acd1994
+        url: https://www.ffmpeg.org/releases/ffmpeg-4.1.1.tar.xz
+        sha256: 373749824dfd334d84e55dff406729edfd1606575ee44dd485d97d45ea4d2d86
 
   - name: mlt
     config-opts:
@@ -274,6 +227,9 @@ modules:
         dest-filename: webvfx.tar.xz
         url: https://github.com/mltframework/webvfx/releases/download/1.0.0/webvfx-1.0.0.txz
         sha256: edd972992b5b558a313d89a6c4650058b5e4701a3e1c5100a74caef376ef9f9d
+      - type: shell
+        commands:
+          - sed -i 's|QtWebKit/QWebView|QWebView|' tools/browser/browser.ui
 
   - name: shotcut
     buildsystem: qmake
@@ -292,3 +248,6 @@ modules:
       - type: archive
         url: https://github.com/mltframework/shotcut/archive/v19.01.27.tar.gz
         sha256: 4e621615b272044ce3decaa4bb5ef7ebb9cef3932161422fedc9a77b474de240
+      - type: shell
+        commands:
+          - sed -i 's|QtWebKitWidgets/QWebView|QWebView|' src/htmleditor/htmleditor.ui
