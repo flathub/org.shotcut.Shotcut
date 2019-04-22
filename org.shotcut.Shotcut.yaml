@@ -209,7 +209,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: 7038daa7586422402b98c2c92cef8c6f18a0b6ae
+        commit: 31fc7deda4ff989d0deabd64618a942d834c5c6f
 
   - name: webvfx
     buildsystem: qmake
