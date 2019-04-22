@@ -1,5 +1,6 @@
 app-id: org.shotcut.Shotcut
-branch: stable
+default-branch: beta
+desktop-file-name-suffix: ' (Beta)'
 base: io.qt.qtwebkit.BaseApp
 base-version: '5.12'
 runtime: org.kde.Platform
