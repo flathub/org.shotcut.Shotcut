@@ -210,7 +210,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: 31fc7deda4ff989d0deabd64618a942d834c5c6f
+        commit: f0628d1fe7f61a267f1adad8824b9a2083e3376a
 
   - name: webvfx
     buildsystem: qmake
@@ -241,9 +241,9 @@ modules:
     config-opts:
       - CONFIG+=release
       - CONFIG+=force_debug_info
-      - SHOTCUT_VERSION=19.04.21
+      - SHOTCUT_VERSION=19.06.04
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
-        commit: 56ddf2b80164d3457e6d51ddc4745895ab857dc0
-        tag: v19.04.21
+        commit: 83b39247cbe9e3abde0c2b39abd04961564a6f4a
+        tag: v19.06.04
