@@ -247,3 +247,6 @@ modules:
         url: https://github.com/mltframework/shotcut.git
         commit: 83b39247cbe9e3abde0c2b39abd04961564a6f4a
         tag: v19.06.04
+      - type: shell
+        commands:
+          - sed -i 's|GPLv3|GPL-3.0-only|' packaging/linux/org.shotcut.Shotcut.appdata.xml.in
