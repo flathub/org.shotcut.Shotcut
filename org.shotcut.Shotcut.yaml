@@ -210,7 +210,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: f0628d1fe7f61a267f1adad8824b9a2083e3376a
+        commit: 1acc252ca0abc1434fcf038da6136948dc9dfac6
 
   - name: webvfx
     buildsystem: qmake
@@ -224,13 +224,10 @@ modules:
     cleanup:
       - /bin/webvfx*
     sources:
-      - type: archive
-        dest-filename: webvfx.tar.xz
-        url: https://github.com/mltframework/webvfx/releases/download/1.0.0/webvfx-1.0.0.txz
-        sha256: edd972992b5b558a313d89a6c4650058b5e4701a3e1c5100a74caef376ef9f9d
-      - type: shell
-        commands:
-          - sed -i 's|QtWebKit/QWebView|QWebView|' tools/browser/browser.ui
+      - type: git
+        url: https://github.com/mltframework/webvfx.git
+        commit: bda4ace4bbd4aa6b17421ba7989f8e991f0ef7b8
+        tag: 1.1.0
 
   - name: shotcut
     buildsystem: qmake
@@ -241,12 +238,9 @@ modules:
     config-opts:
       - CONFIG+=release
       - CONFIG+=force_debug_info
-      - SHOTCUT_VERSION=19.06.04
+      - SHOTCUT_VERSION=19.07.07
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
-        commit: 83b39247cbe9e3abde0c2b39abd04961564a6f4a
-        tag: v19.06.04
-      - type: shell
-        commands:
-          - sed -i 's|GPLv3|GPL-3.0-only|' packaging/linux/org.shotcut.Shotcut.appdata.xml.in
+        commit: 95b041cf1cdefb4e1312b2b991d1b1a2d67f57f6
+        tag: v19.07.07
