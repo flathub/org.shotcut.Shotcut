@@ -1,5 +1,5 @@
 app-id: org.shotcut.Shotcut
-branch: stable
+default-branch: stable
 base: io.qt.qtwebkit.BaseApp
 base-version: '5.12'
 runtime: org.kde.Platform
@@ -198,8 +198,8 @@ modules:
       - /share/ffmpeg/examples
     sources:
       - type: archive
-        url: https://www.ffmpeg.org/releases/ffmpeg-4.1.3.tar.xz
-        sha256: 0c3020452880581a8face91595b239198078645e7d7184273b8bcc7758beb63d
+        url: https://www.ffmpeg.org/releases/ffmpeg-4.1.4.tar.xz
+        sha256: f1f049a82fcfbf156564e73a3935d7e750891fab2abf302e735104fd4050a7e1
 
   - name: mlt
     config-opts:
@@ -209,7 +209,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: 082f2584fb420b3ef2b87faa417cd16645d98362
+        commit: e7db400561287fe7a759a1f901f3190af83eb881
 
   - name: webvfx
     buildsystem: qmake
@@ -226,7 +226,7 @@ modules:
       - type: git
         url: https://github.com/mltframework/webvfx.git
         commit: bda4ace4bbd4aa6b17421ba7989f8e991f0ef7b8
-        tag: 1.1.0
+        tag: '1.1.0'
 
   - name: shotcut
     buildsystem: qmake
@@ -237,9 +237,9 @@ modules:
     config-opts:
       - CONFIG+=release
       - CONFIG+=force_debug_info
-      - SHOTCUT_VERSION=19.06.15
+      - SHOTCUT_VERSION=19.07.15
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
-        commit: 7cf84a41290635dbf6ccec308a697966fa134307
-        tag: v19.06.15
+        commit: 59b3aa589959e259e3b7f49e312f18b32addf0e9
+        tag: v19.07.15
