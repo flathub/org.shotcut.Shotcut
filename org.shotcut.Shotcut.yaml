@@ -199,8 +199,8 @@ modules:
       - /share/ffmpeg/examples
     sources:
       - type: archive
-        url: https://www.ffmpeg.org/releases/ffmpeg-4.1.3.tar.xz
-        sha256: 0c3020452880581a8face91595b239198078645e7d7184273b8bcc7758beb63d
+        url: https://www.ffmpeg.org/releases/ffmpeg-4.1.4.tar.xz
+        sha256: f1f049a82fcfbf156564e73a3935d7e750891fab2abf302e735104fd4050a7e1
 
   - name: mlt
     config-opts:
@@ -210,7 +210,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: 1acc252ca0abc1434fcf038da6136948dc9dfac6
+        commit: 3a2edfa1013d9b8e993fa371afa263d268ff8f7b
 
   - name: webvfx
     buildsystem: qmake
@@ -227,7 +227,7 @@ modules:
       - type: git
         url: https://github.com/mltframework/webvfx.git
         commit: bda4ace4bbd4aa6b17421ba7989f8e991f0ef7b8
-        tag: 1.1.0
+        tag: '1.1.0'
 
   - name: shotcut
     buildsystem: qmake
@@ -238,9 +238,9 @@ modules:
     config-opts:
       - CONFIG+=release
       - CONFIG+=force_debug_info
-      - SHOTCUT_VERSION=19.07.07
+      - SHOTCUT_VERSION=19.08.05
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
-        commit: 95b041cf1cdefb4e1312b2b991d1b1a2d67f57f6
-        tag: v19.07.07
+        commit: ff6643c3aa1f14abf88f0ff758d2ab22306f71c5
+        tag: v19.08.05
