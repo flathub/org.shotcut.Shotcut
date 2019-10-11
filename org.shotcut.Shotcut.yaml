@@ -175,8 +175,8 @@ modules:
       - /bin
     sources:
       - type: archive
-        url: https://bitbucket.org/multicoreware/x265/downloads/x265_3.0.tar.gz
-        sha256: c5b9fc260cabbc4a81561a448f4ce9cad7218272b4011feabc3a6b751b2f0662
+        url: https://bitbucket.org/multicoreware/x265/downloads/x265_3.1.2.tar.gz
+        sha256: 6f785f1c9a42e00a56402da88463bb861c49d9af108be53eb3ef10295f2a59aa
 
   - name: ffmpeg
     config-opts:
@@ -199,8 +199,8 @@ modules:
       - /share/ffmpeg/examples
     sources:
       - type: archive
-        url: https://www.ffmpeg.org/releases/ffmpeg-4.1.4.tar.xz
-        sha256: f1f049a82fcfbf156564e73a3935d7e750891fab2abf302e735104fd4050a7e1
+        url: https://www.ffmpeg.org/releases/ffmpeg-4.2.1.tar.xz
+        sha256: cec7c87e9b60d174509e263ac4011b522385fd0775292e1670ecc1180c9bb6d4
 
   - name: mlt
     config-opts:
@@ -210,7 +210,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: 3a2edfa1013d9b8e993fa371afa263d268ff8f7b
+        commit: f1c00e735ecc1a2690a362372bd5aa1afd3a39bb
 
   - name: webvfx
     buildsystem: qmake
@@ -238,9 +238,9 @@ modules:
     config-opts:
       - CONFIG+=release
       - CONFIG+=force_debug_info
-      - SHOTCUT_VERSION=19.08.05
+      - SHOTCUT_VERSION=19.10.10
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
-        commit: ff6643c3aa1f14abf88f0ff758d2ab22306f71c5
-        tag: v19.08.05
+        commit: 1b45404eb89bd32253767f2f8301426679f7947d
+        tag: v19.10.10
