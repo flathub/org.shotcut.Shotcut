@@ -143,18 +143,6 @@ modules:
         url: https://github.com/jackaudio/jack2/releases/download/v1.9.12/jack2-1.9.12.tar.gz
         sha256: deefe2f936dc32f59ad3cef7e37276c2035ef8a024ca92118f35c9a292272e33
 
-  - name: nv-codec-headers
-    no-autogen: true
-    make-install-args:
-      - PREFIX=/app
-    cleanup:
-      - '*'
-    sources:
-      - type: git
-        url: https://git.videolan.org/git/ffmpeg/nv-codec-headers.git
-        commit: cb6eaa41ab40637c5b2912027e35e05a4ba32a69
-        tag: n8.2.15.6
-
   - name: 'x264'
     config-opts:
       - --disable-cli
@@ -176,6 +164,18 @@ modules:
       - type: archive
         url: https://bitbucket.org/multicoreware/x265/downloads/x265_3.1.2.tar.gz
         sha256: 6f785f1c9a42e00a56402da88463bb861c49d9af108be53eb3ef10295f2a59aa
+
+  - name: nv-codec-headers
+    no-autogen: true
+    make-install-args:
+      - PREFIX=/app
+    cleanup:
+      - '*'
+    sources:
+      - type: git
+        url: https://git.videolan.org/git/ffmpeg/nv-codec-headers.git
+        commit: 9fdaf11b8f79d4e41cde9af89656238f25fec6fd
+        tag: n9.0.18.2
 
   - name: ffmpeg
     config-opts:
