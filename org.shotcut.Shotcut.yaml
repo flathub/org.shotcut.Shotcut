@@ -1,9 +1,9 @@
 app-id: org.shotcut.Shotcut
 default-branch: stable
 base: io.qt.qtwebkit.BaseApp
-base-version: '5.12'
+base-version: '5.13'
 runtime: org.kde.Platform
-runtime-version: '5.12'
+runtime-version: '5.13'
 sdk: org.kde.Sdk
 command: shotcut
 finish-args:
@@ -130,7 +130,7 @@ modules:
   - name: jack2
     buildsystem: simple
     build-commands:
-      - ./waf configure --prefix=/app --htmldir=/app/share/doc/jack/ --freebob=no --classic
+      - ./waf configure --prefix=/app --htmldir=/app/share/doc/jack/ --classic
       - ./waf build -j $FLATPAK_BUILDER_N_JOBS
       - ./waf install
     cleanup:
@@ -139,9 +139,9 @@ modules:
       - /lib/jack
       - /lib/libjackserver.so*
     sources:
-      - type: archive
-        url: https://github.com/jackaudio/jack2/releases/download/v1.9.12/jack2-1.9.12.tar.gz
-        sha256: deefe2f936dc32f59ad3cef7e37276c2035ef8a024ca92118f35c9a292272e33
+      - type: git
+        url: https://github.com/jackaudio/jack2.git
+        commit: 9b1c4e2cf29d793290bb95d87c7b962c3d336d7d # python3 fix
 
   - name: 'x264'
     config-opts:
