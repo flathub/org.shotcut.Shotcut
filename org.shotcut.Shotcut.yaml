@@ -36,8 +36,8 @@ modules:
       - '*'
     sources:
       - type: archive
-        url: https://bitbucket.org/eigen/eigen/get/3.3.7.tar.bz2
-        sha256: 9f13cf90dedbe3e52a19f43000d71fdf72e986beb9a5436dddcd61ff9d77a3ce
+        url: https://gitlab.com/libeigen/eigen/-/archive/3.3.7/eigen-3.3.7.tar.bz2
+        sha256: 685adf14bd8e9c015b78097c1dc22f2f01343756f196acdc76a678e1ae352e11
   
   - name: fftw-float
     config-opts:
@@ -210,7 +210,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: 10f323bd20eabcaeeeceacd67620798435ada6ec
+        commit: 19c008098660626d08048942f958edf190b26f86
 
   - name: webvfx
     buildsystem: qmake
@@ -226,8 +226,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/mltframework/webvfx.git
-        commit: bda4ace4bbd4aa6b17421ba7989f8e991f0ef7b8
-        tag: '1.1.0'
+        commit: c331b0f20147fd977f0f82e1c344c238a6ccb823
+        tag: '1.2.0'
 
   - name: shotcut
     buildsystem: qmake
@@ -238,9 +238,9 @@ modules:
     config-opts:
       - CONFIG+=release
       - CONFIG+=force_debug_info
-      - SHOTCUT_VERSION=19.12.31
+      - SHOTCUT_VERSION=20.02.17
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
-        commit: 3d30cb60eb4341560be413c0a84d242003489ef6
-        tag: v19.12.31
+        commit: 3a0d300a9bb329dbdd49d6874383c863b15eb49c
+        tag: v20.02.17
