@@ -15,6 +15,7 @@ finish-args:
   - --share=network
   - --filesystem=host
   - --socket=pulseaudio
+  - --device=shm # JACK
   - --env=FREI0R_PATH=/app/lib/frei0r-1
   - --env=LADSPA_PATH=/app/lib/ladspa
 cleanup:
