@@ -1,9 +1,9 @@
 app-id: org.shotcut.Shotcut
 default-branch: stable
 base: io.qt.qtwebkit.BaseApp
-base-version: '5.13'
+base-version: '5.14'
 runtime: org.kde.Platform
-runtime-version: '5.13'
+runtime-version: '5.14'
 sdk: org.kde.Sdk
 command: shotcut
 finish-args:
@@ -163,8 +163,8 @@ modules:
       - /bin
     sources:
       - type: archive
-        url: https://bitbucket.org/multicoreware/x265/downloads/x265_3.2.1.tar.gz
-        sha256: fb9badcf92364fd3567f8b5aa0e5e952aeea7a39a2b864387cec31e3b58cbbcc
+        url: https://bitbucket.org/multicoreware/x265/downloads/x265_3.3.tar.gz
+        sha256: f26e148ed1f4dfb33fd1eb3ff5e60e08078d1b2017e88bcbb045b3fb58300b9c
 
   - name: nv-codec-headers
     no-autogen: true
@@ -175,8 +175,8 @@ modules:
     sources:
       - type: git
         url: https://git.videolan.org/git/ffmpeg/nv-codec-headers.git
-        commit: 9fdaf11b8f79d4e41cde9af89656238f25fec6fd
-        tag: n9.0.18.2
+        commit: 4a0bbfd58724d6d19851cd8a6f7a9098dde9ab77
+        tag: n9.1.23.1
 
   - name: ffmpeg
     config-opts:
@@ -210,7 +210,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: 19c008098660626d08048942f958edf190b26f86
+        commit: 48c3eb46b3bced0cded4dc60f315faac5be8c6ff
 
   - name: webvfx
     buildsystem: qmake
