@@ -159,8 +159,7 @@ modules:
     subdir: source
     config-opts:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
-    cleanup:
-      - /bin
+      - -DENABLE_CLI=OFF
     sources:
       - type: archive
         url: https://bitbucket.org/multicoreware/x265/downloads/x265_3.3.tar.gz
@@ -195,6 +194,8 @@ modules:
       - --enable-libxml2
       - --enable-libx264
       - --enable-libx265
+      - --enable-nvenc
+      - --enable-vaapi
     cleanup:
       - /share/ffmpeg/examples
     sources:
@@ -210,7 +211,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: 48c3eb46b3bced0cded4dc60f315faac5be8c6ff
+        commit: f4329c7e8f4704d3f8e8f2a96bd774e6d966194b
 
   - name: webvfx
     buildsystem: qmake
@@ -238,9 +239,14 @@ modules:
     config-opts:
       - CONFIG+=release
       - CONFIG+=force_debug_info
-      - SHOTCUT_VERSION=20.02.17
+      - SHOTCUT_VERSION=20.04.12
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
-        commit: 3a0d300a9bb329dbdd49d6874383c863b15eb49c
-        tag: v20.02.17
+        commit: 8f16ee6d6f6c14ff7b7e42da22164c49996916f5
+        tag: v20.04.12
+      - type: file
+        path: shotcut_128.png
+      - type: shell
+        commands:
+          - install -Dm644 shotcut_128.png /app/share/icons/hicolor/128x128/apps/org.shotcut.Shotcut.png
