@@ -245,3 +245,8 @@ modules:
         url: https://github.com/mltframework/shotcut.git
         commit: 8f16ee6d6f6c14ff7b7e42da22164c49996916f5
         tag: v20.04.12
+      - type: file
+        path: shotcut_128.png
+      - type: shell
+        commands:
+          - install -Dm644 shotcut_128.png /app/share/icons/hicolor/128x128/apps/org.shotcut.Shotcut.png
