@@ -10,7 +10,7 @@ finish-args:
   - --require-version=0.11.4 # fixes file saving
   - --share=ipc
   - --socket=x11
-  - --socket=wayland
+  - --nosocket=wayland
   - --device=all
   - --share=network
   - --filesystem=host
