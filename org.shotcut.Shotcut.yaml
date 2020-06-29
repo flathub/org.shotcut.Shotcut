@@ -168,8 +168,8 @@ modules:
       - -DENABLE_CLI=OFF
     sources:
       - type: archive
-        url: https://bitbucket.org/multicoreware/x265/downloads/x265_3.3.tar.gz
-        sha256: f26e148ed1f4dfb33fd1eb3ff5e60e08078d1b2017e88bcbb045b3fb58300b9c
+        url: https://bitbucket.org/multicoreware/x265/downloads/x265_3.4.tar.gz
+        sha256: c2047f23a6b729e5c70280d23223cb61b57bfe4ad4e8f1471eeee2a61d148672
 
   - name: nv-codec-headers
     no-autogen: true
@@ -206,18 +206,17 @@ modules:
       - /share/ffmpeg/examples
     sources:
       - type: archive
-        url: https://www.ffmpeg.org/releases/ffmpeg-4.2.2.tar.xz
-        sha256: cb754255ab0ee2ea5f66f8850e1bd6ad5cac1cd855d0a2f4990fb8c668b0d29c
+        url: https://www.ffmpeg.org/releases/ffmpeg-4.2.3.tar.xz
+        sha256: 9df6c90aed1337634c1fb026fb01c154c29c82a64ea71291ff2da9aacb9aad31
 
   - name: mlt
     config-opts:
       - --enable-gpl
       - --enable-gpl3
-      - --disable-gtk2
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: f4329c7e8f4704d3f8e8f2a96bd774e6d966194b
+        commit: f38d63a46c39d57aafb81b18711de1816f622912
 
   - name: webvfx
     buildsystem: qmake
@@ -245,16 +244,11 @@ modules:
     config-opts:
       - CONFIG+=release
       - CONFIG+=force_debug_info
-      - SHOTCUT_VERSION=20.04.12
+      - SHOTCUT_VERSION=20.06.28
     post-install:
       - install -d /app/extensions/LadspaPlugins
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
-        commit: 8f16ee6d6f6c14ff7b7e42da22164c49996916f5
-        tag: v20.04.12
-      - type: file
-        path: shotcut_128.png
-      - type: shell
-        commands:
-          - install -Dm644 shotcut_128.png /app/share/icons/hicolor/128x128/apps/org.shotcut.Shotcut.png
+        commit: b335659d9512a99f901d6213c4dc5ec53d3a371d
+        tag: v20.06.28
