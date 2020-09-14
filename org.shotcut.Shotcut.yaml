@@ -224,7 +224,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: 6eb12c3ac97b2d8f4c5d466f1e81e35a8df64751
+        commit: 8b778aaee121c6b381bd570c2b6f526989866f8e
 
   - name: webvfx
     buildsystem: qmake
@@ -252,12 +252,12 @@ modules:
     config-opts:
       - CONFIG+=release
       - CONFIG+=force_debug_info
-      - SHOTCUT_VERSION=20.07.11
+      - SHOTCUT_VERSION=20.09.13
     post-install:
       - install -d /app/extensions/Plugins
       - install -d /app/extensions/LadspaPlugins
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
-        commit: 671f434bc4b4a67e1cbb498e9b390044dfb16215
-        tag: v20.07.11
+        commit: 0898bdf3fc0f9f3fbf78336bad21d5506e19c118
+        tag: v20.09.13
