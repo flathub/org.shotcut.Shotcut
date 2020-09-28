@@ -188,8 +188,8 @@ modules:
     sources:
       - type: git
         url: https://git.videolan.org/git/ffmpeg/nv-codec-headers.git
-        commit: 4a0bbfd58724d6d19851cd8a6f7a9098dde9ab77
-        tag: n9.1.23.1
+        commit: 5ee2ae591f74f53bd6028344f8690f1558a1f17a
+        tag: n10.0.26.0
 
   - name: ffmpeg
     config-opts:
@@ -214,8 +214,8 @@ modules:
       - /share/ffmpeg/examples
     sources:
       - type: archive
-        url: https://www.ffmpeg.org/releases/ffmpeg-4.2.3.tar.xz
-        sha256: 9df6c90aed1337634c1fb026fb01c154c29c82a64ea71291ff2da9aacb9aad31
+        url: https://www.ffmpeg.org/releases/ffmpeg-4.3.1.tar.xz
+        sha256: ad009240d46e307b4e03a213a0f49c11b650e445b1f8be0dda2a9212b34d2ffb
 
   - name: mlt
     config-opts:
@@ -224,7 +224,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: 8b778aaee121c6b381bd570c2b6f526989866f8e
+        commit: 4d270705e0a4b04ce034a2f6466c8766222b8e6b
 
   - name: webvfx
     buildsystem: qmake
@@ -252,12 +252,12 @@ modules:
     config-opts:
       - CONFIG+=release
       - CONFIG+=force_debug_info
-      - SHOTCUT_VERSION=20.09.13
+      - SHOTCUT_VERSION=20.09.27
     post-install:
       - install -d /app/extensions/Plugins
       - install -d /app/extensions/LadspaPlugins
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
-        commit: 0898bdf3fc0f9f3fbf78336bad21d5506e19c118
-        tag: v20.09.13
+        commit: b87ecb6c608d2d5f98fdf7bd102051b0e7e9df30
+        tag: v20.09.27
