@@ -17,7 +17,7 @@ finish-args:
   - --socket=pulseaudio
   - --device=shm # JACK
   - --env=FREI0R_PATH=/app/lib/frei0r-1
-  - --env=LADSPA_PATH=/app/extensions/Plugins/ladspa:/app/extensions/LadspaPlugins/ladspa:/app/lib/ladspa
+  - --env=LADSPA_PATH=/app/extensions/Plugins/ladspa:/app/lib/ladspa
 add-extensions:
   org.freedesktop.LinuxAudio.Plugins:
     directory: extensions/Plugins
@@ -26,15 +26,8 @@ add-extensions:
     merge-dirs: ladspa
     subdirectories: true
     no-autodownload: true
-  org.freedesktop.LinuxAudio.LadspaPlugins:
-    directory: extensions/LadspaPlugins
-    version: '19.08'
-    add-ld-path: lib
-    merge-dirs: ladspa
-    subdirectories: true
-    no-autodownload: true
-  org.freedesktop.LinuxAudio.LadspaPlugins.swh:
-    directory: extensions/LadspaPlugins/swh
+  org.freedesktop.LinuxAudio.Plugins.swh:
+    directory: extensions/Plugins/swh
     version: '19.08'
     add-ld-path: lib
     merge-dirs: ladspa
@@ -255,7 +248,6 @@ modules:
       - SHOTCUT_VERSION=20.09.27
     post-install:
       - install -d /app/extensions/Plugins
-      - install -d /app/extensions/LadspaPlugins
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
