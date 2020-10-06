@@ -1,9 +1,9 @@
 app-id: org.shotcut.Shotcut
 default-branch: stable
 base: io.qt.qtwebkit.BaseApp
-base-version: '5.14'
+base-version: '5.15'
 runtime: org.kde.Platform
-runtime-version: '5.14'
+runtime-version: '5.15'
 sdk: org.kde.Sdk
 command: shotcut
 finish-args:
@@ -21,14 +21,14 @@ finish-args:
 add-extensions:
   org.freedesktop.LinuxAudio.Plugins:
     directory: extensions/Plugins
-    version: '19.08'
+    version: '20.08'
     add-ld-path: lib
     merge-dirs: ladspa
     subdirectories: true
     no-autodownload: true
   org.freedesktop.LinuxAudio.Plugins.swh:
     directory: extensions/Plugins/swh
-    version: '19.08'
+    version: '20.08'
     add-ld-path: lib
     merge-dirs: ladspa
     autodelete: false
@@ -169,7 +169,7 @@ modules:
       - -DENABLE_CLI=OFF
     sources:
       - type: archive
-        url: https://bitbucket.org/multicoreware/x265/downloads/x265_3.4.tar.gz
+        url: https://deb.debian.org/debian/pool/main/x/x265/x265_3.4.orig.tar.gz
         sha256: c2047f23a6b729e5c70280d23223cb61b57bfe4ad4e8f1471eeee2a61d148672
 
   - name: nv-codec-headers
