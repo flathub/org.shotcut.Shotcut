@@ -1,24 +1,38 @@
 app-id: org.shotcut.Shotcut
 default-branch: beta
 desktop-file-name-suffix: ' (Beta)'
-base: io.qt.qtwebkit.BaseApp
-base-version: '5.14'
 runtime: org.kde.Platform
-runtime-version: '5.14'
+runtime-version: '5.15'
 sdk: org.kde.Sdk
 command: shotcut
 finish-args:
   - --require-version=0.11.4 # fixes file saving
   - --share=ipc
   - --socket=x11
-  - --socket=wayland
+  - --nosocket=wayland
   - --device=all
   - --share=network
   - --filesystem=host
   - --socket=pulseaudio
   - --device=shm # JACK
   - --env=FREI0R_PATH=/app/lib/frei0r-1
-  - --env=LADSPA_PATH=/app/lib/ladspa
+  - --env=LADSPA_PATH=/app/extensions/Plugins/ladspa:/app/lib/ladspa
+add-extensions:
+  org.freedesktop.LinuxAudio.Plugins:
+    directory: extensions/Plugins
+    version: '20.08'
+    add-ld-path: lib
+    merge-dirs: ladspa
+    subdirectories: true
+    no-autodownload: true
+  org.freedesktop.LinuxAudio.Plugins.swh:
+    directory: extensions/Plugins/swh
+    version: '20.08'
+    add-ld-path: lib
+    merge-dirs: ladspa
+    autodelete: false
+    subdirectories: true
+
 cleanup:
   - /include
   - /lib/cmake
@@ -26,8 +40,7 @@ cleanup:
   - /share/man
   - '*.a'
   - '*.la'
-cleanup-commands: # https://github.com/flatpak/flatpak-builder/issues/233
-  - rm -rf /app/{include,lib/{cmake,mkspecs,pkgconfig}}
+
 modules:
 
   - name: eigen
@@ -39,7 +52,7 @@ modules:
       - type: archive
         url: https://gitlab.com/libeigen/eigen/-/archive/3.3.7/eigen-3.3.7.tar.bz2
         sha256: 685adf14bd8e9c015b78097c1dc22f2f01343756f196acdc76a678e1ae352e11
-  
+
   - name: fftw-float
     config-opts:
       - --disable-doc
@@ -65,7 +78,7 @@ modules:
       - type: archive
         url: http://www.fftw.org/fftw-3.3.8.tar.gz
         sha256: 6113262f6e92c5bd474f2875fa1b01054c4ad5040f6b0da7c03c98821d9ae303
-  
+
   - name: movit
     make-args:
       - libmovit.la
@@ -105,16 +118,7 @@ modules:
       - type: archive
         url: https://files.dyne.org/frei0r/releases/frei0r-plugins-1.7.0.tar.gz
         sha256: 1b1ff8f0f9bc23eed724e94e9a7c1d8f0244bfe33424bb4fe68e6460c088523a
-  
-  - name: swh-plugins
-    build-options:
-      cflags: -fPIC
-      ldflags: -fpic
-    sources:
-      - type: archive
-        url: https://github.com/swh/ladspa/archive/v0.4.17.tar.gz
-        sha256: d1b090feec4c5e8f9605334b47faaad72db7cc18fe91d792b9161a9e3b821ce7
-  
+
   - name: ladspa-sdk
     no-autogen: true
     subdir: src
@@ -128,7 +132,7 @@ modules:
       - type: archive
         url: https://www.ladspa.org/download/ladspa_sdk_1.15.tgz
         sha256: 4229959b09d20c88c8c86f4aa76427843011705df22d9c28b38359fd1829fded
-    
+
   - name: jack2
     buildsystem: simple
     build-commands:
@@ -151,8 +155,8 @@ modules:
       - --enable-shared
     sources:
       - type: archive
-        url: https://download.videolan.org/x264/snapshots/x264-snapshot-20190305-2245-stable.tar.bz2
-        sha256: be52c96ef8bd930fbc1ecff03abac9b94976b444ea7641345e08e20d9e594d16
+        url: https://code.videolan.org/videolan/x264/-/archive/1771b556ee45207f8711744ccbd5d42a3949b14c/x264-1771b556ee45207f8711744ccbd5d42a3949b14c.tar.bz2
+        sha256: b31c5db5337873b9ee42b8cbc60b56d60ce368fa7e4c4eff90a729b36eeb8326
 
   - name: 'x265'
     buildsystem: cmake-ninja
@@ -163,8 +167,8 @@ modules:
       - -DENABLE_CLI=OFF
     sources:
       - type: archive
-        url: https://bitbucket.org/multicoreware/x265/downloads/x265_3.3.tar.gz
-        sha256: f26e148ed1f4dfb33fd1eb3ff5e60e08078d1b2017e88bcbb045b3fb58300b9c
+        url: https://deb.debian.org/debian/pool/main/x/x265/x265_3.4.orig.tar.gz
+        sha256: c2047f23a6b729e5c70280d23223cb61b57bfe4ad4e8f1471eeee2a61d148672
 
   - name: nv-codec-headers
     no-autogen: true
@@ -175,8 +179,8 @@ modules:
     sources:
       - type: git
         url: https://git.videolan.org/git/ffmpeg/nv-codec-headers.git
-        commit: 4a0bbfd58724d6d19851cd8a6f7a9098dde9ab77
-        tag: n9.1.23.1
+        commit: a99740a84b49fd609e04b03279e66c5a8b767440
+        tag: n10.0.26.1
 
   - name: ffmpeg
     config-opts:
@@ -192,42 +196,27 @@ modules:
       - --enable-libpulse
       - --enable-librsvg
       - --enable-libvpx
+      - --enable-libdav1d
       - --enable-libxml2
       - --enable-libx264
       - --enable-libx265
+      - --enable-nvenc
+      - --enable-vaapi
     cleanup:
       - /share/ffmpeg/examples
     sources:
       - type: archive
-        url: https://www.ffmpeg.org/releases/ffmpeg-4.2.2.tar.xz
-        sha256: cb754255ab0ee2ea5f66f8850e1bd6ad5cac1cd855d0a2f4990fb8c668b0d29c
+        url: https://www.ffmpeg.org/releases/ffmpeg-4.3.1.tar.xz
+        sha256: ad009240d46e307b4e03a213a0f49c11b650e445b1f8be0dda2a9212b34d2ffb
 
   - name: mlt
     config-opts:
       - --enable-gpl
       - --enable-gpl3
-      - --disable-gtk2
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: f38d63a46c39d57aafb81b18711de1816f622912
-
-  - name: webvfx
-    buildsystem: qmake
-    builddir: true
-    build-options:
-      env:
-        QMAKEPATH: /app/lib
-    config-opts:
-      - CONFIG+=release
-      - CONFIG+=force_debug_info
-    cleanup:
-      - /bin/webvfx*
-    sources:
-      - type: git
-        url: https://github.com/mltframework/webvfx.git
-        commit: c331b0f20147fd977f0f82e1c344c238a6ccb823
-        tag: '1.2.0'
+        commit: fcfc0f1d3b7630987e20a4d7f1b839b21cce9c51
 
   - name: shotcut
     buildsystem: qmake
@@ -238,9 +227,11 @@ modules:
     config-opts:
       - CONFIG+=release
       - CONFIG+=force_debug_info
-      - SHOTCUT_VERSION=20.06.14
+      - SHOTCUT_VERSION=20.10.18
+    post-install:
+      - install -d /app/extensions/Plugins
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
-        commit: 91472fcbbc9f058de7b709f8c728d11f89f61057
-        tag: v20.06.14
+        commit: 2aa075db37ab5a33fc2edffba72a223d79864ed7
+        tag: v20.10.18
