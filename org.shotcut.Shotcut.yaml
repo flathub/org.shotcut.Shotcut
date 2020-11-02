@@ -193,6 +193,7 @@ modules:
       - --enable-libpulse
       - --enable-librsvg
       - --enable-libvpx
+      - --enable-libdav1d
       - --enable-libxml2
       - --enable-libx264
       - --enable-libx265
