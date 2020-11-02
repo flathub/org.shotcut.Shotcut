@@ -1,7 +1,5 @@
 app-id: org.shotcut.Shotcut
 default-branch: stable
-base: io.qt.qtwebkit.BaseApp
-base-version: '5.15'
 runtime: org.kde.Platform
 runtime-version: '5.15'
 sdk: org.kde.Sdk
@@ -33,7 +31,6 @@ add-extensions:
     merge-dirs: ladspa
     autodelete: false
     subdirectories: true
-
 cleanup:
   - /include
   - /lib/cmake
@@ -41,8 +38,6 @@ cleanup:
   - /share/man
   - '*.a'
   - '*.la'
-cleanup-commands: # https://github.com/flatpak/flatpak-builder/issues/233
-  - rm -rf /app/{include,lib/{cmake,mkspecs,pkgconfig}}
 modules:
 
   - name: eigen
@@ -156,9 +151,9 @@ modules:
       - --disable-cli
       - --enable-shared
     sources:
-      - type: archive
-        url: https://code.videolan.org/videolan/x264/-/archive/1771b556ee45207f8711744ccbd5d42a3949b14c/x264-1771b556ee45207f8711744ccbd5d42a3949b14c.tar.bz2
-        sha256: b31c5db5337873b9ee42b8cbc60b56d60ce368fa7e4c4eff90a729b36eeb8326
+      - type: git
+        url: https://code.videolan.org/videolan/x264.git
+        commit: cde9a93319bea766a92e306d69059c76de970190
 
   - name: 'x265'
     buildsystem: cmake-ninja
@@ -181,8 +176,8 @@ modules:
     sources:
       - type: git
         url: https://git.videolan.org/git/ffmpeg/nv-codec-headers.git
-        commit: 5ee2ae591f74f53bd6028344f8690f1558a1f17a
-        tag: n10.0.26.0
+        commit: a99740a84b49fd609e04b03279e66c5a8b767440
+        tag: n10.0.26.1
 
   - name: ffmpeg
     config-opts:
@@ -217,24 +212,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: 4d270705e0a4b04ce034a2f6466c8766222b8e6b
-
-  - name: webvfx
-    buildsystem: qmake
-    builddir: true
-    build-options:
-      env:
-        QMAKEPATH: /app/lib
-    config-opts:
-      - CONFIG+=release
-      - CONFIG+=force_debug_info
-    cleanup:
-      - /bin/webvfx*
-    sources:
-      - type: git
-        url: https://github.com/mltframework/webvfx.git
-        commit: c331b0f20147fd977f0f82e1c344c238a6ccb823
-        tag: '1.2.0'
+        commit: fcf6c4b2c8e7eb1737f5cb578d59db8ed0917c39
 
   - name: shotcut
     buildsystem: qmake
@@ -245,11 +223,11 @@ modules:
     config-opts:
       - CONFIG+=release
       - CONFIG+=force_debug_info
-      - SHOTCUT_VERSION=20.09.27
+      - SHOTCUT_VERSION=20.10.31
     post-install:
       - install -d /app/extensions/Plugins
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
-        commit: b87ecb6c608d2d5f98fdf7bd102051b0e7e9df30
-        tag: v20.09.27
+        commit: 0021a6e7476908c8ecc7b33f9452b5b927ff5626
+        tag: v20.10.31
