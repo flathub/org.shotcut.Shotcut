@@ -62,11 +62,6 @@ modules:
       - --enable-float
     build-options:
       arch:
-        i386:
-          config-opts:
-            - --enable-avx
-            - --enable-openmp
-            - --enable-sse
         x86_64:
           config-opts:
             - --enable-avx
@@ -154,9 +149,9 @@ modules:
       - --disable-cli
       - --enable-shared
     sources:
-      - type: archive
-        url: https://code.videolan.org/videolan/x264/-/archive/1771b556ee45207f8711744ccbd5d42a3949b14c/x264-1771b556ee45207f8711744ccbd5d42a3949b14c.tar.bz2
-        sha256: b31c5db5337873b9ee42b8cbc60b56d60ce368fa7e4c4eff90a729b36eeb8326
+      - type: git
+        url: https://code.videolan.org/videolan/x264.git
+        commit: cde9a93319bea766a92e306d69059c76de970190
 
   - name: 'x265'
     buildsystem: cmake-ninja
@@ -250,9 +245,6 @@ modules:
   - name: shotcut
     buildsystem: qmake
     builddir: true
-    build-options:
-      env:
-        QMAKEPATH: /app/lib
     config-opts:
       - CONFIG+=release
       - CONFIG+=force_debug_info
