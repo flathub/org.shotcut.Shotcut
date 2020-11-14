@@ -209,6 +209,35 @@ modules:
         url: https://www.ffmpeg.org/releases/ffmpeg-4.3.1.tar.xz
         sha256: ad009240d46e307b4e03a213a0f49c11b650e445b1f8be0dda2a9212b34d2ffb
 
+  - name: rubberband
+    config-opts: 
+      - --disable-program
+      - --enable-shared
+      - --disable-static
+      - --without-ladspa
+      - --disable-vamp
+      - --without-jni
+    cleanup:
+      - /bin
+    sources: 
+      - type: archive
+        url: https://breakfastquay.com/files/releases/rubberband-1.9.0.tar.bz2
+        sha256: 4f5b9509364ea876b4052fc390c079a3ad4ab63a2683aad09662fb905c2dc026
+
+  - name: bigsh0t
+    buildsystem: cmake-ninja
+    builddir: true
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=RelWithDebInfo
+    no-make-install: true
+    post-install:
+      - cp -v bigsh0t-*-linux/lib/frei0r-1/*.so /app/lib/frei0r-1
+    sources:
+      - type: git
+        url: https://bitbucket.org/leo_sutic/bigsh0t.git
+        commit: 2163318c6aa89f60cbf46ad92ec0b5abd4814284
+        tag: '2.1.1'
+
   - name: mlt
     config-opts:
       - --enable-gpl
@@ -216,7 +245,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: 6a856fdcd77834bb5c5358b840d3aa540b98c51f
+        branch: master
 
   - name: shotcut
     buildsystem: qmake
@@ -227,11 +256,10 @@ modules:
     config-opts:
       - CONFIG+=release
       - CONFIG+=force_debug_info
-      - SHOTCUT_VERSION=20.10.24
+      - SHOTCUT_VERSION=20.11.14
     post-install:
       - install -d /app/extensions/Plugins
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
-        commit: 96a492f0162954a91c3517f0dbe5ecea96485f69
-        tag: v20.10.24
+        tag: v20.11.14
