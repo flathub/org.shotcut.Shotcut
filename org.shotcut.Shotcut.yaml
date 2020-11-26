@@ -59,11 +59,6 @@ modules:
       - --enable-float
     build-options:
       arch:
-        i386:
-          config-opts:
-            - --enable-avx
-            - --enable-openmp
-            - --enable-sse
         x86_64:
           config-opts:
             - --enable-avx
@@ -153,7 +148,7 @@ modules:
     sources:
       - type: git
         url: https://code.videolan.org/videolan/x264.git
-        commit: cde9a93319bea766a92e306d69059c76de970190
+        commit: d198931a63049db1f2c92d96c34904c69fde8117
 
   - name: 'x265'
     buildsystem: cmake-ninja
@@ -232,8 +227,8 @@ modules:
     sources:
       - type: git
         url: https://bitbucket.org/leo_sutic/bigsh0t.git
-        commit: 2163318c6aa89f60cbf46ad92ec0b5abd4814284
-        tag: '2.1.1'
+        commit: f3cc21e83eb1ec179e8a833834891e42f1cde15a
+        tag: '2.3'
 
   - name: mlt
     config-opts:
@@ -242,7 +237,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: fcf6c4b2c8e7eb1737f5cb578d59db8ed0917c39
+        commit: 0e756b692b4b1248d27254d124cd41f580878372
 
   - name: shotcut
     buildsystem: qmake
@@ -253,11 +248,11 @@ modules:
     config-opts:
       - CONFIG+=release
       - CONFIG+=force_debug_info
-      - SHOTCUT_VERSION=20.10.31
+      - SHOTCUT_VERSION=20.11.25
     post-install:
       - install -d /app/extensions/Plugins
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
-        commit: 0021a6e7476908c8ecc7b33f9452b5b927ff5626
-        tag: v20.10.31
+        commit: 18eceaed7d869a479dc06295d4ab90638046d080
+        tag: v20.11.25
