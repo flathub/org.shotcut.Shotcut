@@ -248,11 +248,11 @@ modules:
     config-opts:
       - CONFIG+=release
       - CONFIG+=force_debug_info
-      - SHOTCUT_VERSION=20.11.25
+      - SHOTCUT_VERSION=20.11.28
     post-install:
       - install -d /app/extensions/Plugins
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
-        commit: 18eceaed7d869a479dc06295d4ab90638046d080
-        tag: v20.11.25
+        commit: a219506576ae13474ba1233ce40c3de77ea94f9c
+        tag: v20.11.28
