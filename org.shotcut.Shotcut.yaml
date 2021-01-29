@@ -192,6 +192,7 @@ modules:
       - --enable-libxml2
       - --enable-libx264
       - --enable-libx265
+      - --enable-libmp3lame
       - --enable-nvenc
       - --enable-vaapi
     cleanup:
