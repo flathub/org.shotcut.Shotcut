@@ -148,7 +148,7 @@ modules:
     sources:
       - type: git
         url: https://code.videolan.org/videolan/x264.git
-        commit: d198931a63049db1f2c92d96c34904c69fde8117
+        commit: 544c61f082194728d0391fb280a6e138ba320a96
 
   - name: 'x265'
     buildsystem: cmake-ninja
@@ -199,8 +199,8 @@ modules:
       - /share/ffmpeg/examples
     sources:
       - type: archive
-        url: https://www.ffmpeg.org/releases/ffmpeg-4.3.1.tar.xz
-        sha256: ad009240d46e307b4e03a213a0f49c11b650e445b1f8be0dda2a9212b34d2ffb
+        url: https://www.ffmpeg.org/releases/ffmpeg-4.3.2.tar.xz
+        sha256: 46e4e64f1dd0233cbc0934b9f1c0da676008cad34725113fb7f802cfa84ccddb
 
   - name: rubberband
     config-opts: 
@@ -238,7 +238,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: 7b0c9f96a699ac6b6375c2d5160155fd0eefeec8
+        commit: 701a153e22f6bb434c2382efd7d87b7feba7a0d1
 
   - name: shotcut
     buildsystem: qmake
@@ -246,11 +246,11 @@ modules:
     config-opts:
       - CONFIG+=release
       - CONFIG+=force_debug_info
-      - SHOTCUT_VERSION=21.01.29
+      - SHOTCUT_VERSION=21.02.27
     post-install:
       - install -d /app/extensions/Plugins
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
-        commit: 5f677c6c9ac1efab54d9427905118127c92d9f4e
-        tag: v21.01.29
+        commit: 4fe3f62697e3d45709532c3cc8b59a943bcb1175
+        tag: v21.02.27
