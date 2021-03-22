@@ -238,7 +238,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: 701a153e22f6bb434c2382efd7d87b7feba7a0d1
+        commit: 4fe7899cbcf62748138bc4a1e19ab6aa29797a0c
 
   - name: shotcut
     buildsystem: qmake
@@ -246,11 +246,11 @@ modules:
     config-opts:
       - CONFIG+=release
       - CONFIG+=force_debug_info
-      - SHOTCUT_VERSION=21.02.27
+      - SHOTCUT_VERSION=21.03.21
     post-install:
       - install -d /app/extensions/Plugins
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
-        commit: 4fe3f62697e3d45709532c3cc8b59a943bcb1175
-        tag: v21.02.27
+        commit: 435a89acaff8dd0e51d8476a25e1392b79619081
+        tag: v21.03.21
