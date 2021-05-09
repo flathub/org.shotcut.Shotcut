@@ -256,3 +256,5 @@ modules:
         url: https://github.com/mltframework/shotcut.git
         commit: 56aef40901d19a5a516e893d52edec5e2c37b947
         tag: v21.05.01
+      - type: patch
+        path: shotcut-1089-jack.patch
