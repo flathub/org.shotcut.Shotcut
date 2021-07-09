@@ -79,7 +79,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/ddennedy/movit.git
-        commit: 3e8b4ebb796bcbe7e9727a2d7f2d0ba8f0170dfa
+        branch: shotcut
 
   - name: sox
     config-opts:
@@ -109,9 +109,9 @@ modules:
     config-opts:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
     sources:
-      - type: archive
-        url: https://files.dyne.org/frei0r/releases/frei0r-plugins-1.7.0.tar.gz
-        sha256: 1b1ff8f0f9bc23eed724e94e9a7c1d8f0244bfe33424bb4fe68e6460c088523a
+      - type: git
+        url: https://github.com/dyne/frei0r.git
+        commit: 86475d3e11e1061bf161e6ed3830fe2cf3d172ac
 
   - name: ladspa-sdk
     no-autogen: true
@@ -147,7 +147,7 @@ modules:
     sources:
       - type: git
         url: https://code.videolan.org/videolan/x264.git
-        commit: 544c61f082194728d0391fb280a6e138ba320a96
+        branch: stable
 
   - name: 'x265'
     buildsystem: cmake-ninja
@@ -192,6 +192,10 @@ modules:
       - --enable-libx264
       - --enable-libx265
       - --enable-libmp3lame
+      - --enable-libtheora
+      - --enable-libvorbis
+      - --enable-libaom
+      - --disable-decoder=libaom_av1
       - --enable-nvenc
       - --enable-vaapi
     cleanup:
@@ -233,7 +237,6 @@ modules:
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
-        #tag: v7.0.0
         commit: d8b955a50a99612cb42d489ba14454ce53e333fd
 
   - name: shotcut
