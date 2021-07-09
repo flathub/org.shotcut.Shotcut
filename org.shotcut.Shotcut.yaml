@@ -202,13 +202,7 @@ modules:
         sha256: 46e4e64f1dd0233cbc0934b9f1c0da676008cad34725113fb7f802cfa84ccddb
 
   - name: rubberband
-    config-opts: 
-      - --disable-program
-      - --enable-shared
-      - --disable-static
-      - --without-ladspa
-      - --disable-vamp
-      - --without-jni
+    buildsystem: meson
     cleanup:
       - /bin
     sources: 
