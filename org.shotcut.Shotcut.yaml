@@ -158,8 +158,8 @@ modules:
       - -DENABLE_CLI=OFF
     sources:
       - type: archive
-        url: https://deb.debian.org/debian/pool/main/x/x265/x265_3.4.orig.tar.gz
-        sha256: c2047f23a6b729e5c70280d23223cb61b57bfe4ad4e8f1471eeee2a61d148672
+        url: https://deb.debian.org/debian/pool/main/x/x265/x265_3.5.orig.tar.gz
+        sha256: e70a3335cacacbba0b3a20ec6fecd6783932288ebc8163ad74bcc9606477cae8
 
   - name: nv-codec-headers
     no-autogen: true
@@ -237,7 +237,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: d8b955a50a99612cb42d489ba14454ce53e333fd
+        commit: a1ac032f8dd0c62e84ee2eb2f6c29290504c518d
 
   - name: shotcut
     buildsystem: qmake
@@ -245,11 +245,11 @@ modules:
     config-opts:
       - CONFIG+=release
       - CONFIG+=force_debug_info
-      - SHOTCUT_VERSION=21.06.29
+      - SHOTCUT_VERSION=21.08.29
     post-install:
       - install -d /app/extensions/Plugins
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
-        commit: 7e14036a363da60775cff18ccd6030fc2577a029
-        tag: v21.06.29
+        commit: 7efc92cd0ea78f4ec5076ed0d6f2ea1b9985b83d
+        tag: v21.08.29
