@@ -44,6 +44,8 @@ modules:
   - name: eigen
     buildsystem: cmake-ninja
     builddir: true
+    config-opts:
+      -DCMAKE_BUILD_TYPE=Release
     cleanup:
       - '*'
     sources:
