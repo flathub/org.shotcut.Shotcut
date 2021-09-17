@@ -173,10 +173,33 @@ modules:
         commit: a99740a84b49fd609e04b03279e66c5a8b767440
         tag: n10.0.26.1
 
+  - name: vmaf
+    buildsystem: meson
+    subdir: libvmaf
+    cleanup:
+      - /bin
+    sources:
+      - type: git
+        url: https://github.com/Netflix/vmaf.git
+        commmit: 0511e05320d67238cf514104566b9d3f969963b7
+        tag: v2.2.0
+
+  - name: vmaf-models
+    buildsystem: simple
+    build-commands:
+      - install -v -d /app/share
+      - install -v -p -c model/*.json /app/share
+    sources:
+      - type: git
+        url: https://github.com/Netflix/vmaf.git
+        commmit: 0511e05320d67238cf514104566b9d3f969963b7
+        tag: v2.2.0
+
   - name: ffmpeg
     config-opts:
       - --enable-rpath
       - --enable-gpl
+      - --enable-version3
       - --disable-static
       - --enable-shared
       - --disable-doc
@@ -193,6 +216,7 @@ modules:
       - --enable-libx265
       - --enable-libmp3lame
       - --enable-libtheora
+      - --enable-libvmaf
       - --enable-libvorbis
       - --enable-libwebp
       - --enable-libaom
