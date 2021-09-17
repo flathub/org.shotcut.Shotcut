@@ -178,7 +178,7 @@ modules:
     subdir: libvmaf
     post-install:
       - install -v -d /app/share/vmaf
-      - install -v -p -c model/*.json /app/share/vmaf
+      - install -v -p -c ../model/*.json /app/share/vmaf
     cleanup:
       - /bin
     sources:
