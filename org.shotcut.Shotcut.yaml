@@ -210,6 +210,7 @@ modules:
       - --enable-libtheora
       - --enable-libvmaf
       - --enable-libvorbis
+      - --enable-libwebp
       - --enable-libaom
       - --disable-decoder=libaom_av1
       - --enable-nvenc
@@ -241,7 +242,7 @@ modules:
     sources:
       - type: git
         url: https://bitbucket.org/leo_sutic/bigsh0t.git
-        commit: 5fad6d3b5963ce69141e9debcc3b733b84a0842d
+        commit: 7ca56cbbe8801b846accde442e917ae5e154b6a5
         # tag: '2.3'
 
   - name: mlt
@@ -253,7 +254,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: a1ac032f8dd0c62e84ee2eb2f6c29290504c518d
+        commit: 11e2b0b366c68cec23ac74438279db42f526dc6c
 
   - name: shotcut
     buildsystem: qmake
@@ -261,11 +262,11 @@ modules:
     config-opts:
       - CONFIG+=release
       - CONFIG+=force_debug_info
-      - SHOTCUT_VERSION=21.08.29
+      - SHOTCUT_VERSION=21.09.13
     post-install:
       - install -d /app/extensions/Plugins
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
-        commit: 7efc92cd0ea78f4ec5076ed0d6f2ea1b9985b83d
-        tag: v21.08.29
+        commit: 2ebc3428c1984436b3e07aa223841aa2beeb4813
+        tag: v21.09.13
