@@ -177,10 +177,10 @@ modules:
     buildsystem: meson
     cleanup:
       - /bin
-    sources: 
     sources:
       - type: git
         url: https://github.com/Netflix/vmaf.git
+        commmit: 0511e05320d67238cf514104566b9d3f969963b7
         tag: v2.2.0
 
   - name: ffmpeg
