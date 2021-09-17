@@ -175,6 +175,9 @@ modules:
 
   - name: vmaf
     buildsystem: meson
+    subdir: libvmaf
+    post-install:
+      - install -d /app/share/vmaf
     cleanup:
       - /bin
     sources:
