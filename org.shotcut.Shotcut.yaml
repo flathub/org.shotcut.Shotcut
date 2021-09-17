@@ -177,7 +177,8 @@ modules:
     buildsystem: meson
     subdir: libvmaf
     post-install:
-      - install -d /app/share/vmaf
+      - install -v -d /app/share/vmaf
+      - install -v -p -c model/*.json /app/share/vmaf
     cleanup:
       - /bin
     sources:
@@ -190,6 +191,7 @@ modules:
     config-opts:
       - --enable-rpath
       - --enable-gpl
+      - --enable-version3
       - --disable-static
       - --enable-shared
       - --disable-doc
