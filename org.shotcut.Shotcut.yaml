@@ -250,8 +250,8 @@ modules:
     sources:
       - type: git
         url: https://bitbucket.org/leo_sutic/bigsh0t.git
-        commit: 7ca56cbbe8801b846accde442e917ae5e154b6a5
-        # tag: '2.3'
+        commit: 8fe56f6d4e0deb93ac0eb0bc73fdbe35bd7614cb
+        # tag: '2.5'
 
   - name: mlt
     buildsystem: cmake-ninja
@@ -262,7 +262,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: 11e2b0b366c68cec23ac74438279db42f526dc6c
+        commit: ed778bb7cfa101052bbf741482d3f8fd1ce18a85
 
   - name: shotcut
     buildsystem: qmake
@@ -270,11 +270,11 @@ modules:
     config-opts:
       - CONFIG+=release
       - CONFIG+=force_debug_info
-      - SHOTCUT_VERSION=21.09.13
+      - SHOTCUT_VERSION=21.09.20
     post-install:
       - install -d /app/extensions/Plugins
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
-        commit: 2ebc3428c1984436b3e07aa223841aa2beeb4813
-        tag: v21.09.13
+        commit: 77521f4c9e28b34cf52aa200295595b9c1d3b298
+        tag: v21.09.20
