@@ -111,7 +111,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/dyne/frei0r.git
-        commit: 86475d3e11e1061bf161e6ed3830fe2cf3d172ac
+        commit: 700564265acdb94497c22d5c703dc38ed9d1b649
 
   - name: ladspa-sdk
     no-autogen: true
@@ -227,8 +227,8 @@ modules:
       - /share/ffmpeg/examples
     sources:
       - type: archive
-        url: https://www.ffmpeg.org/releases/ffmpeg-4.3.2.tar.xz
-        sha256: 46e4e64f1dd0233cbc0934b9f1c0da676008cad34725113fb7f802cfa84ccddb
+        url: https://www.ffmpeg.org/releases/ffmpeg-4.4.1.tar.xz
+        sha256: eadbad9e9ab30b25f5520fbfde99fae4a92a1ae3c0257a8d68569a4651e30e02
 
   - name: rubberband
     buildsystem: meson
@@ -262,7 +262,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: ed778bb7cfa101052bbf741482d3f8fd1ce18a85
+        commit: 816cbdb72460ea280d549a763160b5c94a48193d
 
   - name: shotcut
     buildsystem: qmake
@@ -270,11 +270,11 @@ modules:
     config-opts:
       - CONFIG+=release
       - CONFIG+=force_debug_info
-      - SHOTCUT_VERSION=21.09.20
+      - SHOTCUT_VERSION=21.10.31
     post-install:
       - install -d /app/extensions/Plugins
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
-        commit: 77521f4c9e28b34cf52aa200295595b9c1d3b298
-        tag: v21.09.20
+        commit: 278cd02e56fad753cfa774c7d4083fde82f853b1
+        tag: v21.10.31
