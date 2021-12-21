@@ -49,8 +49,8 @@ modules:
       - '*'
     sources:
       - type: archive
-        url: https://gitlab.com/libeigen/eigen/-/archive/3.3.7/eigen-3.3.7.tar.bz2
-        sha256: 685adf14bd8e9c015b78097c1dc22f2f01343756f196acdc76a678e1ae352e11
+        url: https://gitlab.com/libeigen/eigen/-/archive/3.3.9/eigen-3.3.9.tar.bz2
+        sha256: 0fa5cafe78f66d2b501b43016858070d52ba47bd9b1016b0165a7b8e04675677
 
   - name: fftw-float
     config-opts:
@@ -70,8 +70,8 @@ modules:
       - /bin
     sources:
       - type: archive
-        url: http://www.fftw.org/fftw-3.3.8.tar.gz
-        sha256: 6113262f6e92c5bd474f2875fa1b01054c4ad5040f6b0da7c03c98821d9ae303
+        url: http://www.fftw.org/fftw-3.3.10.tar.gz
+        sha256: 56c932549852cddcfafdab3820b0200c7742675be92179e59e6215b340e26467
 
   - name: movit
     make-args:
@@ -93,15 +93,15 @@ modules:
         mirror-urls:
           - http://http.debian.net/debian/pool/main/s/sox/sox_14.4.2.orig.tar.bz2
 
-  - name: vidstab
+  - name: vid.stab
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
     sources:
-      - type: archive
-        url: https://github.com/georgmartius/vid.stab/archive/v1.1.0.tar.gz
-        sha256: 14d2a053e56edad4f397be0cb3ef8eb1ec3150404ce99a426c4eb641861dc0bb
+      - type: git
+        url: https://github.com/georgmartius/vid.stab.git
+        commit: f9166e9b082242b622b5b456ef80cbdbd4042826
   
   - name: frei0r-plugins
     buildsystem: cmake-ninja
@@ -124,8 +124,8 @@ modules:
       - /bin
     sources:
       - type: archive
-        url: https://www.ladspa.org/download/ladspa_sdk_1.15.tgz
-        sha256: 4229959b09d20c88c8c86f4aa76427843011705df22d9c28b38359fd1829fded
+        url: https://www.ladspa.org/download/ladspa_sdk_1.17.tgz
+        sha256: d9d596171d93f9c226fcdb7e27c6f917422ac487efe2c05e0a18094df4268061
 
   - name: jack2
     buildsystem: simple
@@ -137,8 +137,8 @@ modules:
       - '*'
     sources:
       - type: archive
-        url: https://github.com/jackaudio/jack2/releases/download/v1.9.14/v1.9.14.tar.gz
-        sha256: a20a32366780c0061fd58fbb5f09e514ea9b7ce6e53b080a44b11a558a83217c
+        url: https://github.com/jackaudio/jack2/archive/refs/tags/v1.9.19.tar.gz
+        sha256: 9030f4dc11773351b6ac96affd9c89803a5587ebc1b091e5ff866f433327e4b0
 
   - name: 'x264'
     config-opts:
@@ -170,8 +170,8 @@ modules:
     sources:
       - type: git
         url: https://git.videolan.org/git/ffmpeg/nv-codec-headers.git
-        commit: a99740a84b49fd609e04b03279e66c5a8b767440
-        tag: n10.0.26.1
+        commit: 43adb856807855d7742da53181b181e4ef25344a
+        tag: n10.0.26.2
 
   - name: vmaf
     buildsystem: meson
