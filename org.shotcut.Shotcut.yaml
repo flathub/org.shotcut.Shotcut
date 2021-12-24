@@ -111,7 +111,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/dyne/frei0r.git
-        commit: 5e74dfa3ad08d2eb4b4cc9813c20ea856fe89228
+        commit: e48da90c4ebd285fa2399cfb71851f07bd3d919a
 
   - name: ladspa-sdk
     no-autogen: true
@@ -262,7 +262,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: 255aa2452282bee3d7ec0c8320f9153f03d7e6c3
+        commit: 3f2183059e5cadd769adedb1d858d7415e8c4515
 
   - name: shotcut
     buildsystem: qmake
@@ -270,11 +270,11 @@ modules:
     config-opts:
       - CONFIG+=release
       - CONFIG+=force_debug_info
-      - SHOTCUT_VERSION=21.12.21
+      - SHOTCUT_VERSION=21.12.24
     post-install:
       - install -d /app/extensions/Plugins
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
-        commit: 7cb7f1e06be5c344af44f693eb27036f5b804aac
-        tag: v21.12.21
+        commit: c165f984d29feab583e08ea2aac88cb3ebe26d49
+        tag: v21.12.24
