@@ -65,6 +65,10 @@ modules:
             - --enable-avx
             - --enable-openmp
             - --enable-sse
+        aarch64:
+          config-opts:
+            - --enable-neon
+            - --enable-openmp
     cleanup:
       - /bin
     sources:
@@ -292,7 +296,7 @@ modules:
         url: https://github.com/mltframework/shotcut.git
         commit: 715537a9756d87085e6ae5de3f1dd3b073a89ff9
         #tag: v22.12.21
-        branch: qt6
+        #branch: qt6
 
   - name: gopro2gpx
     buildsystem: cmake-ninja
