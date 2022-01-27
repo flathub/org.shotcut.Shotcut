@@ -278,3 +278,5 @@ modules:
         url: https://github.com/mltframework/shotcut.git
         commit: c165f984d29feab583e08ea2aac88cb3ebe26d49
         tag: v21.12.24
+      - type: patch
+        path: connection_type.patch

@@ -1,0 +1,41 @@
+diff -ruN orig/src/docks/encodedock.cpp wayland/src/docks/encodedock.cpp
+--- orig/src/docks/encodedock.cpp	2022-01-27 01:49:55.918444363 +0000
++++ wayland/src/docks/encodedock.cpp	2022-01-27 01:51:52.229466052 +0000
+@@ -808,7 +808,6 @@
+                     setIfNotSet(p, "pix_fmt", "nv12");
+                 } else if (vcodec.endsWith("_vaapi")) {
+                     setIfNotSet(p, "vprofile", "main");
+-                    setIfNotSet(p, "connection_type", "x11");
+                 }
+             }
+             if (includeProfile || ui->widthSpinner->value() != MLT.profile().width()) {
+@@ -2070,7 +2069,7 @@
+         QStringList args;
+         args << "-hide_banner" << "-f" << "lavfi" << "-i" << "color=s=640x360" << "-frames" << "1" << "-an";
+         if (codec.endsWith("_vaapi"))
+-            args << "-init_hw_device" << "vaapi=vaapi0:,connection_type=x11" << "-filter_hw_device" << "vaapi0" << "-vf" << "format=nv12,hwupload";
++            args << "-init_hw_device" << "vaapi=vaapi0:" << "-filter_hw_device" << "vaapi0" << "-vf" << "format=nv12,hwupload";
+         else if (codec == "hevc_qsv")
+             args << "-load_plugin" << "hevc_hw";
+         args << "-c:v" << codec << "-f" << "rawvideo" << "pipe:";
+diff -ruN orig/src/proxymanager.cpp wayland/src/proxymanager.cpp
+--- orig/src/proxymanager.cpp	2022-01-27 01:53:46.526470046 +0000
++++ wayland/src/proxymanager.cpp	2022-01-27 01:54:26.090817582 +0000
+@@ -176,7 +176,7 @@
+             args << "-rc" << "1";
+             args << "-qp_i" << "32" << "-qp_p" << "32";
+         } else if (hwCodecs.contains("hevc_vaapi")) {
+-            args << "-init_hw_device" << "vaapi=vaapi0:,connection_type=x11" << "-filter_hw_device" << "vaapi0";
++            args << "-init_hw_device" << "vaapi=vaapi0:" << "-filter_hw_device" << "vaapi0";
+             args << "-codec:v" << "hevc_vaapi";
+             args << "-qp" << "37";
+         } else if (hwCodecs.contains("h264_nvenc")) {
+@@ -184,7 +184,7 @@
+             args << "-rc" << "constqp";
+             args << "-vglobal_quality" << "37";
+         } else if (hwCodecs.contains("h264_vaapi")) {
+-            args << "-init_hw_device" << "vaapi=vaapi0:,connection_type=x11" << "-filter_hw_device" << "vaapi0";
++            args << "-init_hw_device" << "vaapi=vaapi0:" << "-filter_hw_device" << "vaapi0";
+             args << "-codec:v" << "h264_vaapi";
+             args << "-qp" << "30";
+         } else if (hwCodecs.contains("hevc_videotoolbox")) {
