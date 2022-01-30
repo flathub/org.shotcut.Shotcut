@@ -111,7 +111,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/dyne/frei0r.git
-        commit: e48da90c4ebd285fa2399cfb71851f07bd3d919a
+        commit: febd73874dab6be330398a3b55112451b36ee939
 
   - name: ladspa-sdk
     no-autogen: true
@@ -236,8 +236,8 @@ modules:
       - /bin
     sources: 
       - type: archive
-        url: https://breakfastquay.com/files/releases/rubberband-1.9.1.tar.bz2
-        sha256: fc474878f6823c27ef5df1f9616a8c8b6a4c01346132ea7d1498fe5245e549e3
+        url: https://breakfastquay.com/files/releases/rubberband-2.0.1.tar.bz2
+        sha256: dc1b8b775f1717b21e35a11842b00d63beaaf9255b304dee7bb0413568ad80e8
 
   - name: bigsh0t
     buildsystem: cmake-ninja
@@ -262,7 +262,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: 3f2183059e5cadd769adedb1d858d7415e8c4515
+        commit: 4b19d02975a11b99d645ed1431460a7f63b88b2e
 
   - name: shotcut
     buildsystem: qmake
@@ -270,11 +270,11 @@ modules:
     config-opts:
       - CONFIG+=release
       - CONFIG+=force_debug_info
-      - SHOTCUT_VERSION=21.12.24
+      - SHOTCUT_VERSION=22.01.30
     post-install:
       - install -d /app/extensions/Plugins
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
-        commit: c165f984d29feab583e08ea2aac88cb3ebe26d49
-        tag: v21.12.24
+        commit: 05b24fa529f1d6c0a7193f1e0411f6be38b617ee
+        tag: v22.01.30
