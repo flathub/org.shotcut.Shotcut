@@ -1,14 +1,13 @@
 app-id: org.shotcut.Shotcut
 default-branch: stable
 runtime: org.kde.Platform
-runtime-version: '5.15-21.08'
+runtime-version: '5.15'
 sdk: org.kde.Sdk
 command: shotcut
 finish-args:
   - --require-version=0.11.4 # fixes file saving
   - --share=ipc
   - --socket=x11
-  - --socket=wayland
   - --device=all
   - --share=network
   - --filesystem=host
