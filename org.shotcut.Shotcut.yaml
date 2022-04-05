@@ -20,14 +20,14 @@ finish-args:
 add-extensions:
   org.freedesktop.LinuxAudio.Plugins:
     directory: extensions/Plugins
-    version: '21.08'
+    version: '20.08'
     add-ld-path: lib
     merge-dirs: ladspa
     subdirectories: true
     no-autodownload: true
   org.freedesktop.LinuxAudio.Plugins.swh:
     directory: extensions/Plugins/swh
-    version: '21.08'
+    version: '20.08'
     add-ld-path: lib
     merge-dirs: ladspa
     autodelete: false
