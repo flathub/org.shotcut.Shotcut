@@ -8,7 +8,6 @@ finish-args:
   - --require-version=0.11.4 # fixes file saving
   - --share=ipc
   - --socket=x11
-  - --socket=wayland
   - --device=all
   - --share=network
   - --filesystem=host
@@ -111,7 +110,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/dyne/frei0r.git
-        commit: febd73874dab6be330398a3b55112451b36ee939
+        commit: ee21d097b3cab27202aa15ecec785462dbde25ff
 
   - name: ladspa-sdk
     no-autogen: true
@@ -124,7 +123,7 @@ modules:
       - /bin
     sources:
       - type: archive
-        url: https://www.ladspa.org/download/ladspa_sdk_1.17.tgz
+        url: https://deb.debian.org/debian/pool/main/l/ladspa-sdk/ladspa-sdk_1.17.orig.tar.gz
         sha256: d9d596171d93f9c226fcdb7e27c6f917422ac487efe2c05e0a18094df4268061
 
   - name: jack2
@@ -181,8 +180,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/Netflix/vmaf.git
-        commmit: 0511e05320d67238cf514104566b9d3f969963b7
-        tag: v2.2.0
+        commmit: 5c1c9bfaad599796921b59873e9c3ed74a29c6ff
+        tag: v2.3.0
 
   - name: vmaf-models
     buildsystem: simple
@@ -192,8 +191,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/Netflix/vmaf.git
-        commmit: 0511e05320d67238cf514104566b9d3f969963b7
-        tag: v2.2.0
+        commmit: 5c1c9bfaad599796921b59873e9c3ed74a29c6ff
+        tag: v2.3.0
 
   - name: ffmpeg
     config-opts:
@@ -227,8 +226,8 @@ modules:
       - /share/ffmpeg/examples
     sources:
       - type: archive
-        url: https://www.ffmpeg.org/releases/ffmpeg-4.4.1.tar.xz
-        sha256: eadbad9e9ab30b25f5520fbfde99fae4a92a1ae3c0257a8d68569a4651e30e02
+        url: http://ffmpeg.org/releases/ffmpeg-5.0.tar.xz
+        sha256: 51e919f7d205062c0fd4fae6243a84850391115104ccf1efc451733bc0ac7298
 
   - name: rubberband
     buildsystem: meson
@@ -236,8 +235,8 @@ modules:
       - /bin
     sources: 
       - type: archive
-        url: https://breakfastquay.com/files/releases/rubberband-2.0.1.tar.bz2
-        sha256: dc1b8b775f1717b21e35a11842b00d63beaaf9255b304dee7bb0413568ad80e8
+        url: https://breakfastquay.com/files/releases/rubberband-2.0.2.tar.bz2
+        sha256: b9eac027e797789ae99611c9eaeaf1c3a44cc804f9c8a0441a0d1d26f3d6bdf9
 
   - name: bigsh0t
     buildsystem: cmake-ninja
@@ -262,7 +261,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: 4b19d02975a11b99d645ed1431460a7f63b88b2e
+        commit: 576b4c7ab210c8edd1cbe04ad5b4d5f0b6c88cb6
 
   - name: shotcut
     buildsystem: qmake
@@ -270,11 +269,11 @@ modules:
     config-opts:
       - CONFIG+=release
       - CONFIG+=force_debug_info
-      - SHOTCUT_VERSION=22.01.30
+      - SHOTCUT_VERSION=22.03.30
     post-install:
       - install -d /app/extensions/Plugins
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
-        commit: 05b24fa529f1d6c0a7193f1e0411f6be38b617ee
-        tag: v22.01.30
+        commit: 6799986a03ae5f988de0d6970cc31bc7769f2454
+        tag: v22.03.30
