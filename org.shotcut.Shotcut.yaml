@@ -110,7 +110,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/dyne/frei0r.git
-        commit: 114a72f438fa04c5d12593e38dac148dbb9ce10c
+        commit: 6a576f4538992bbbe88eba1e773d6144d22eb3ca
 
   - name: ladspa-sdk
     no-autogen: true
@@ -229,6 +229,29 @@ modules:
         url: http://ffmpeg.org/releases/ffmpeg-5.0.tar.xz
         sha256: 51e919f7d205062c0fd4fae6243a84850391115104ccf1efc451733bc0ac7298
 
+  - name: potrace
+    config-opts:
+      - --with-libpotrace
+      - --disable-static
+    sources:
+      - type: archive
+        url: https://downloads.sourceforge.net/project/potrace/1.16/potrace-1.16.tar.gz
+        sha1: 256b4fb858c66bc38117afde7c722016d2e265f3
+
+  - name: glaxnimate
+    buildsystem: cmake-ninja
+    builddir: true
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=RelWithDebInfo
+      - -DPotrace_PREFIX=/app
+      - -DLibav_PREFIX=/app
+    build-commands:
+      - ninja translations
+    sources:
+      - type: git
+        url: https://gitlab.com/mattbas/glaxnimate
+        commit: 36d6269d3193e77193b50e482ec1378a6045ff34
+
   - name: rubberband
     buildsystem: meson
     cleanup:
@@ -257,23 +280,23 @@ modules:
     config-opts:
       - -DGPL=ON
       - -DGPL3=ON
+      - -DMOD_GLAXNIMATE=ON
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: 00d5704deafef599d27022f8126f778f7172150e
+        commit: 3c9cda6ef74da7a4c19d893265bdc5b7d3f25ee7
 
   - name: shotcut
-    buildsystem: qmake
+    buildsystem: cmake-ninja
     builddir: true
     config-opts:
-      - CONFIG+=release
-      - CONFIG+=force_debug_info
-      - SHOTCUT_VERSION=22.04.25
+      - -DCMAKE_BUILD_TYPE=RelWithDebInfo
+      - -DSHOTCUT_VERSION=22.06.23
     post-install:
       - install -d /app/extensions/Plugins
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
-        commit: 92a6e46e85f3753ce9d9f192b35a77bcea05e57a
-        tag: v22.04.25
+        commit: b11055c641678097437522f73228c2e9b70ab2d6
+        tag: v22.06.23
