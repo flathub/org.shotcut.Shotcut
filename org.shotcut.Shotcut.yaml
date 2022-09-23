@@ -100,7 +100,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/georgmartius/vid.stab.git
-        commit: f9166e9b082242b622b5b456ef80cbdbd4042826
+        commit: 90c76aca2cb06c3ff6f7476a7cd6851b39436656
   
   - name: frei0r-plugins
     buildsystem: cmake-ninja
@@ -110,7 +110,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/dyne/frei0r.git
-        commit: 6a576f4538992bbbe88eba1e773d6144d22eb3ca
+        commit: a9d15ff07e130baf3408da6e1f1b22f82e7c62b6
 
   - name: ladspa-sdk
     no-autogen: true
@@ -180,8 +180,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/Netflix/vmaf.git
-        commmit: 5c1c9bfaad599796921b59873e9c3ed74a29c6ff
-        tag: v2.3.0
+        commmit: f2661673a078718ddfc1ddb6042048c1b1284946
+        tag: v2.3.1
 
   - name: vmaf-models
     buildsystem: simple
@@ -191,8 +191,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/Netflix/vmaf.git
-        commmit: 5c1c9bfaad599796921b59873e9c3ed74a29c6ff
-        tag: v2.3.0
+        commmit: f2661673a078718ddfc1ddb6042048c1b1284946
+        tag: v2.3.1
 
   - name: ffmpeg
     config-opts:
@@ -226,8 +226,8 @@ modules:
       - /share/ffmpeg/examples
     sources:
       - type: archive
-        url: http://ffmpeg.org/releases/ffmpeg-5.0.tar.xz
-        sha256: 51e919f7d205062c0fd4fae6243a84850391115104ccf1efc451733bc0ac7298
+        url: https://ffmpeg.org/releases/ffmpeg-5.1.1.tar.xz
+        sha256: 95bf3ff8c496511e71e958fb249e663c8c9c3de583c5bebc0f5a9745abbc0435
 
   - name: potrace
     config-opts:
@@ -249,8 +249,9 @@ modules:
       - ninja translations
     sources:
       - type: git
-        url: https://gitlab.com/mattbas/glaxnimate
-        commit: 36d6269d3193e77193b50e482ec1378a6045ff34
+        url: https://gitlab.com/ddennedy/glaxnimate
+        commit: 62b3057e8d933e57d4ee329a4f8e02f050b25500
+        branch: v0.5.1
 
   - name: rubberband
     buildsystem: meson
@@ -285,18 +286,18 @@ modules:
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: 3c9cda6ef74da7a4c19d893265bdc5b7d3f25ee7
+        commit: fe31f1c2c32e01f6a4eb2e1644c62dca4522d008
 
   - name: shotcut
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
-      - -DSHOTCUT_VERSION=22.06.23
+      - -DSHOTCUT_VERSION=22.09.23
     post-install:
       - install -d /app/extensions/Plugins
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
-        commit: b11055c641678097437522f73228c2e9b70ab2d6
-        tag: v22.06.23
+        commit: f8316cb54f559ab19333890c4f912cefc27b4a71
+        tag: v22.09.23
