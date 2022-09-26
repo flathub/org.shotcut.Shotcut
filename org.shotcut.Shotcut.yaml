@@ -301,3 +301,14 @@ modules:
         url: https://github.com/mltframework/shotcut.git
         commit: f8316cb54f559ab19333890c4f912cefc27b4a71
         tag: v22.09.23
+
+  - name: gopro2gpx
+    buildsystem: cmake-ninja
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=RelWithDebInfo
+    no-make-install: true
+    post-install:
+      - install -p -c gopro2gpx /app/bin
+    sources:
+      - type: git
+        url: https://github.com/ddennedy/gopro2gpx.git
