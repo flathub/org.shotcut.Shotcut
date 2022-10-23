@@ -79,6 +79,7 @@ modules:
       - type: git
         url: https://github.com/ddennedy/movit.git
         branch: shotcut
+        commit: dccf5339b33ec0608a36c468cb42d38fd4fca9dd
 
   - name: sox
     config-opts:
@@ -147,6 +148,7 @@ modules:
       - type: git
         url: https://code.videolan.org/videolan/x264.git
         branch: stable
+        commit: baee400fa9ced6f5481a728138fed6e867b0ff7f
 
   - name: 'x265'
     buildsystem: cmake-ninja
@@ -236,7 +238,7 @@ modules:
     sources:
       - type: archive
         url: https://downloads.sourceforge.net/project/potrace/1.16/potrace-1.16.tar.gz
-        sha1: 256b4fb858c66bc38117afde7c722016d2e265f3
+        sha256: be8248a17dedd6ccbaab2fcc45835bb0502d062e40fbded3bc56028ce5eb7acc
 
   - name: glaxnimate
     buildsystem: cmake-ninja
