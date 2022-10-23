@@ -286,7 +286,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: fe31f1c2c32e01f6a4eb2e1644c62dca4522d008
+        commit: b5083d9f0ac9e9e802dbecc081f057a29e80fd37
 
   - name: shotcut
     buildsystem: cmake-ninja
@@ -299,8 +299,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
-        commit: f8316cb54f559ab19333890c4f912cefc27b4a71
-        tag: v22.09.23
+        commit: f804ef2fdfd9288a5dd486cbd2b62d0dfb358b89
+        tag: v22.10.22
 
   - name: gopro2gpx
     buildsystem: cmake-ninja
