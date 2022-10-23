@@ -79,6 +79,7 @@ modules:
       - type: git
         url: https://github.com/ddennedy/movit.git
         branch: shotcut
+        commit: dccf5339b33ec0608a36c468cb42d38fd4fca9dd
 
   - name: sox
     config-opts:
@@ -147,6 +148,7 @@ modules:
       - type: git
         url: https://code.videolan.org/videolan/x264.git
         branch: stable
+        commit: baee400fa9ced6f5481a728138fed6e867b0ff7f
 
   - name: 'x265'
     buildsystem: cmake-ninja
@@ -236,7 +238,7 @@ modules:
     sources:
       - type: archive
         url: https://downloads.sourceforge.net/project/potrace/1.16/potrace-1.16.tar.gz
-        sha1: 256b4fb858c66bc38117afde7c722016d2e265f3
+        sha256: be8248a17dedd6ccbaab2fcc45835bb0502d062e40fbded3bc56028ce5eb7acc
 
   - name: glaxnimate
     buildsystem: cmake-ninja
@@ -286,21 +288,21 @@ modules:
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: fe31f1c2c32e01f6a4eb2e1644c62dca4522d008
+        commit: b5083d9f0ac9e9e802dbecc081f057a29e80fd37
 
   - name: shotcut
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
-      - -DSHOTCUT_VERSION=22.09.23
+      - -DSHOTCUT_VERSION=22.10.22
     post-install:
       - install -d /app/extensions/Plugins
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
-        commit: f8316cb54f559ab19333890c4f912cefc27b4a71
-        tag: v22.09.23
+        commit: f804ef2fdfd9288a5dd486cbd2b62d0dfb358b89
+        tag: v22.10.22
 
   - name: gopro2gpx
     buildsystem: cmake-ninja
