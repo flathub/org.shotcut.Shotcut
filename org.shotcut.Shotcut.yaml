@@ -228,8 +228,8 @@ modules:
       - /share/ffmpeg/examples
     sources:
       - type: archive
-        url: https://ffmpeg.org/releases/ffmpeg-5.1.1.tar.xz
-        sha256: 95bf3ff8c496511e71e958fb249e663c8c9c3de583c5bebc0f5a9745abbc0435
+        url: https://ffmpeg.org/releases/ffmpeg-5.1.2.tar.xz
+        sha256: 619e706d662c8420859832ddc259cd4d4096a48a2ce1eefd052db9e440eef3dc
 
   - name: potrace
     config-opts:
@@ -261,8 +261,8 @@ modules:
       - /bin
     sources: 
       - type: archive
-        url: https://breakfastquay.com/files/releases/rubberband-2.0.2.tar.bz2
-        sha256: b9eac027e797789ae99611c9eaeaf1c3a44cc804f9c8a0441a0d1d26f3d6bdf9
+        url: https://breakfastquay.com/files/releases/rubberband-3.1.1.tar.bz2
+        sha256: a442551fe7d26fb4a54dd1c34178733dc9c76ac9ce051a02325f5cb35d154381
 
   - name: bigsh0t
     buildsystem: cmake-ninja
@@ -288,21 +288,21 @@ modules:
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: 813fa681798c11a32229f5fbcc8127fca31aad73
+        commit: 40d86245e61a01b9018984e597a832e51d057ee7
 
   - name: shotcut
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
-      - -DSHOTCUT_VERSION=22.10.25
+      - -DSHOTCUT_VERSION=22.11.25
     post-install:
       - install -d /app/extensions/Plugins
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
-        commit: f804ef2fdfd9288a5dd486cbd2b62d0dfb358b89
-        tag: v22.10.25
+        commit: 86f3e3c628a090585fcbb1abe3a6be96731a0c57
+        tag: v22.11.25
 
   - name: gopro2gpx
     buildsystem: cmake-ninja
