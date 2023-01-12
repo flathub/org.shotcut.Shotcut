@@ -169,7 +169,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/Netflix/vmaf.git
-        commmit: f2661673a078718ddfc1ddb6042048c1b1284946
+        commit: f2661673a078718ddfc1ddb6042048c1b1284946
         tag: v2.3.1
 
   - name: vmaf-models
@@ -180,7 +180,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/Netflix/vmaf.git
-        commmit: f2661673a078718ddfc1ddb6042048c1b1284946
+        commit: f2661673a078718ddfc1ddb6042048c1b1284946
         tag: v2.3.1
 
   - name: ffmpeg
