@@ -1,7 +1,7 @@
 app-id: org.shotcut.Shotcut
 default-branch: stable
 runtime: org.kde.Platform
-runtime-version: '5.15-21.08'
+runtime-version: 'qt6.4'
 sdk: org.kde.Sdk
 command: shotcut
 finish-args:
@@ -283,26 +283,29 @@ modules:
     config-opts:
       - -DGPL=ON
       - -DGPL3=ON
-      - -DMOD_GLAXNIMATE=ON
+      - -DMOD_QT=OFF
+      - -DMOD_QT6=ON
+      - -DMOD_GLAXNIMATE_QT6=ON
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: 516077863f79784f892b20ff864d55952bb76b61
+        commit: 0b1d574c52568de94745a1cdaa8f0b12e063cbac
 
   - name: shotcut
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
-      - -DSHOTCUT_VERSION=22.12.21
+      - -DSHOTCUT_VERSION=23.01.12
     post-install:
       - install -d /app/extensions/Plugins
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
-        commit: bc48b344fb05d5d3c6a88d9f047c972f449f950f
-        tag: v22.12.21
+        #commit: bc48b344fb05d5d3c6a88d9f047c972f449f950f
+        #tag: v22.12.21
+        branch: qt6
 
   - name: gopro2gpx
     buildsystem: cmake-ninja
