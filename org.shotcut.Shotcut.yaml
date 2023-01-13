@@ -290,7 +290,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
-        commit: 89e60634a49a2d7860c9332373683119ca2b1d5e
+        #commit: 89e60634a49a2d7860c9332373683119ca2b1d5e
         #tag: v22.12.21
         branch: qt6
 
