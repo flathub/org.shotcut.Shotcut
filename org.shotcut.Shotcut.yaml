@@ -115,7 +115,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/dyne/frei0r.git
-        commit: a9d15ff07e130baf3408da6e1f1b22f82e7c62b6
+        commit: 3e1234b9f2ba86b1deebdd1034735e12d706c095
 
   - name: ladspa-sdk
     no-autogen: true
@@ -243,8 +243,8 @@ modules:
     sources:
       - type: git
         url: https://gitlab.com/ddennedy/glaxnimate
-        commit: 62b3057e8d933e57d4ee329a4f8e02f050b25500
-        branch: v0.5.1
+        commit: 3b5b563654add437ffffc7c7f5b2a42bfafe4b93
+        branch: v0.5.2
 
   - name: rubberband
     buildsystem: meson
@@ -281,22 +281,21 @@ modules:
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: 51e0563ec4af199be12f68d3b32700912df8dac7
+        commit: 8f42b52349e8c2dbaadf75a6be2cbfe482523bd4
 
   - name: shotcut
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
-      - -DSHOTCUT_VERSION=23.02.16
+      - -DSHOTCUT_VERSION=23.02.28
     post-install:
       - install -d /app/extensions/Plugins
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
-        commit: ce794291655c602f57548bec38c8b4739275be14
-        #tag: v22.12.21
-        #branch: qt6
+        commit: 66b8b3e4f4143af8ab20417a47a2124b3cbc5204
+        tag: v23.02.28
 
   - name: gopro2gpx
     buildsystem: cmake-ninja
