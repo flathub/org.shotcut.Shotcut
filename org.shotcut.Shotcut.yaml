@@ -243,6 +243,7 @@ modules:
     sources:
       - type: git
         url: https://gitlab.com/ddennedy/glaxnimate
+        disable-shallow-clone: true
         commit: 3b5b563654add437ffffc7c7f5b2a42bfafe4b93
         branch: v0.5.2
 
