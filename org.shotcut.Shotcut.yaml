@@ -1,7 +1,7 @@
 app-id: org.shotcut.Shotcut
 default-branch: stable
 runtime: org.kde.Platform
-runtime-version: '5.15-21.08'
+runtime-version: '5.15-22.08'
 sdk: org.kde.Sdk
 command: shotcut
 finish-args:
@@ -20,14 +20,14 @@ finish-args:
 add-extensions:
   org.freedesktop.LinuxAudio.Plugins:
     directory: extensions/Plugins
-    version: '21.08'
+    version: '22.08'
     add-ld-path: lib
     merge-dirs: ladspa
     subdirectories: true
     no-autodownload: true
   org.freedesktop.LinuxAudio.Plugins.swh:
     directory: extensions/Plugins/swh
-    version: '21.08'
+    version: '22.08'
     add-ld-path: lib
     merge-dirs: ladspa
     autodelete: false
