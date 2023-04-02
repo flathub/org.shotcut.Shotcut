@@ -44,6 +44,8 @@ modules:
   - name: eigen
     buildsystem: cmake-ninja
     builddir: true
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=Release
     cleanup:
       - '*'
     sources:
@@ -162,8 +164,8 @@ modules:
     sources:
       - type: git
         url: https://git.videolan.org/git/ffmpeg/nv-codec-headers.git
-        commit: 43adb856807855d7742da53181b181e4ef25344a
-        tag: n10.0.26.2
+        commit: c5e4af74850a616c42d39ed45b9b8568b71bf8bf
+        tag: n12.0.16.0
 
   - name: vmaf
     buildsystem: meson
@@ -219,8 +221,8 @@ modules:
       - /share/ffmpeg/examples
     sources:
       - type: archive
-        url: https://ffmpeg.org/releases/ffmpeg-5.1.2.tar.xz
-        sha256: 619e706d662c8420859832ddc259cd4d4096a48a2ce1eefd052db9e440eef3dc
+        url: https://ffmpeg.org/releases/ffmpeg-6.0.tar.xz
+        sha256: 57be87c22d9b49c112b6d24bc67d42508660e6b718b3db89c44e47e289137082
 
   - name: potrace
     config-opts:
@@ -282,21 +284,21 @@ modules:
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: dd8dbea04ab40a15e8881426a8a1926ddb31182c
+        commit: 417bf4769da19178ddfae48108daaf82cbeb25e6
 
   - name: shotcut
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
-      - -DSHOTCUT_VERSION=23.03.10
+      - -DSHOTCUT_VERSION=23.04.02
     post-install:
       - install -d /app/extensions/Plugins
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
-        commit: a49ec098dcc60ac67208fe3a369490e88473e8bd
-        #tag: v23.03.03
+        commit: 80e448791c9203fb8a11e42520d1e73fe01085a8
+        #tag: v23.04.02
 
   - name: gopro2gpx
     buildsystem: cmake-ninja
