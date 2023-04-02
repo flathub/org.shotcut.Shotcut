@@ -284,7 +284,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: 417bf4769da19178ddfae48108daaf82cbeb25e6
+        commit: 945b6fca62f3da283b61d0e01486e0f3b1d9675f
 
   - name: shotcut
     buildsystem: cmake-ninja
