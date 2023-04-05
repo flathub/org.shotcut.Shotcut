@@ -312,6 +312,7 @@ modules:
       - -DMOD_QT=OFF
       - -DMOD_QT6=ON
       - -DMOD_GLAXNIMATE_QT6=ON
+      - -DMOD_OPENCV=ON
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
     sources:
       - type: git
