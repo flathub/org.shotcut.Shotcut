@@ -272,6 +272,38 @@ modules:
         commit: 8fe56f6d4e0deb93ac0eb0bc73fdbe35bd7614cb
         # tag: '2.5'
 
+  - name: opencv
+    buildsystem: cmake-ninja
+    builddir: true
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=RelWithDebInfo
+      - -DBUILD_LIST=core,imgproc,plot,video,tracking
+      - -DOPENCV_GENERATE_PKGCONFIG=YES
+      - -DWITH_OPENMP=ON
+      - -DBUILD_WITH_DEBUG_INFO=OFF
+      - -DBUILD_TESTS=OFF
+      - -DBUILD_PERF_TESTS=OFF
+      - -DBUILD_EXAMPLES=OFF
+      - -DINSTALL_C_EXAMPLES=OFF
+      - -DINSTALL_PYTHON_EXAMPLES=OFF
+      - -DWITH_1394=OFF
+      - -DWITH_V4L=OFF
+      - -DWITH_PROTOBUF=OFF
+      - -DWITH_GTK=OFF
+      - -DWITH_CAROTENE=OFF # for ARM
+    cleanup:
+      - /lib/cmake
+      - /bin/*
+    sources:
+      - type: git
+        url: https://github.com/opencv/opencv.git
+        commit: 725e440d278aca07d35a5e8963ef990572b07316
+        tag: '4.7.0'
+      - type: git
+        url: https://github.com/opencv/opencv_contrib.git
+        commit: e247b680a6bd396f110274b6c214406a93171350
+        tag: '4.7.0'
+
   - name: mlt
     buildsystem: cmake-ninja
     config-opts:
