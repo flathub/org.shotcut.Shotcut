@@ -323,13 +323,13 @@ modules:
     builddir: true
     config-opts:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
-      - -DSHOTCUT_VERSION=23.04.03
+      - -DSHOTCUT_VERSION=23.04.05
     post-install:
       - install -d /app/extensions/Plugins
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
-        commit: 5571baa69b1564e4ea6c88ec62e62bdadba43608
+        commit: a79c29e853a94a6bb22c5f7f7d5396471b8cabed
         #tag: v23.04.02
 
   - name: gopro2gpx
