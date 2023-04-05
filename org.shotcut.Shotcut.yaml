@@ -277,7 +277,7 @@ modules:
     builddir: true
     config-opts:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
-      - -DOPENCV_EXTRA_MODULES_PATH=$(find .. -type d -name 'https_github.com_opencv_opencv_contrib.git-*')/modules
+      - -DOPENCV_EXTRA_MODULES_PATH=../opencv_contrib/modules
       - -DBUILD_LIST=core,imgproc,plot,video,tracking
       - -DOPENCV_GENERATE_PKGCONFIG=YES
       - -DWITH_OPENMP=ON
@@ -297,13 +297,9 @@ modules:
       - /bin/*
     sources:
       - type: git
-        url: https://github.com/opencv/opencv.git
-        commit: 725e440d278aca07d35a5e8963ef990572b07316
-        tag: '4.7.0'
-      - type: git
-        url: https://github.com/opencv/opencv_contrib.git
-        commit: e247b680a6bd396f110274b6c214406a93171350
-        tag: '4.7.0'
+        url: https://github.com/ddennedy/opencv.git
+        commit: 477337622860beda9220c15277af921cffb0c86d
+        branch: '4.x'
 
   - name: mlt
     buildsystem: cmake-ninja
