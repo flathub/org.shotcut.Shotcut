@@ -277,6 +277,7 @@ modules:
     builddir: true
     config-opts:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
+      - -DOPENCV_EXTRA_MODULES_PATH=../opencv_contrib/modules
       - -DBUILD_LIST=core,imgproc,plot,video,tracking
       - -DOPENCV_GENERATE_PKGCONFIG=YES
       - -DWITH_OPENMP=ON
