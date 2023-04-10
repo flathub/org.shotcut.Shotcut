@@ -1,7 +1,7 @@
 app-id: org.shotcut.Shotcut
 default-branch: stable
 runtime: org.kde.Platform
-runtime-version: '5.15-21.08'
+runtime-version: '5.15-22.08'
 sdk: org.kde.Sdk
 command: shotcut
 finish-args:
@@ -20,14 +20,14 @@ finish-args:
 add-extensions:
   org.freedesktop.LinuxAudio.Plugins:
     directory: extensions/Plugins
-    version: '21.08'
+    version: '22.08'
     add-ld-path: lib
     merge-dirs: ladspa
     subdirectories: true
     no-autodownload: true
   org.freedesktop.LinuxAudio.Plugins.swh:
     directory: extensions/Plugins/swh
-    version: '21.08'
+    version: '22.08'
     add-ld-path: lib
     merge-dirs: ladspa
     autodelete: false
@@ -44,6 +44,8 @@ modules:
   - name: eigen
     buildsystem: cmake-ninja
     builddir: true
+    config-opts:
+      -DCMAKE_BUILD_TYPE=Release
     cleanup:
       - '*'
     sources:
@@ -71,6 +73,14 @@ modules:
       - type: archive
         url: http://www.fftw.org/fftw-3.3.10.tar.gz
         sha256: 56c932549852cddcfafdab3820b0200c7742675be92179e59e6215b340e26467
+
+  - name: zimg
+    cleanup:
+      - /share
+    sources:
+      - type: git
+        url: https://github.com/sekrit-twc/zimg.git
+        commit: 51c3c7f750c2af61955377faad56e3ba1b03589f
 
   - name: movit
     make-args:
@@ -221,6 +231,7 @@ modules:
       - --enable-libvorbis
       - --enable-libwebp
       - --enable-libaom
+      - --enable-libzimg
       - --disable-decoder=libaom_av1
       - --enable-nvenc
       - --enable-vaapi
