@@ -72,6 +72,14 @@ modules:
         url: http://www.fftw.org/fftw-3.3.10.tar.gz
         sha256: 56c932549852cddcfafdab3820b0200c7742675be92179e59e6215b340e26467
 
+  - name: zimg
+    cleanup:
+      - /share
+    sources:
+      - type: git
+        url: https://github.com/sekrit-twc/zimg.git
+        commit: 51c3c7f750c2af61955377faad56e3ba1b03589f
+
   - name: movit
     make-args:
       - libmovit.la
@@ -221,6 +229,7 @@ modules:
       - --enable-libvorbis
       - --enable-libwebp
       - --enable-libaom
+      - --enable-libzimg
       - --disable-decoder=libaom_av1
       - --enable-nvenc
       - --enable-vaapi
