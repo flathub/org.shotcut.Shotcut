@@ -256,8 +256,8 @@ modules:
       - type: git
         url: https://gitlab.com/ddennedy/glaxnimate
         disable-shallow-clone: true
-        commit: 3090870e9172dfd587e89753c2d4d19e9c083f70
-        tag: 0.5.3
+        commit: 3ace341df0fd40aa343411eec60fbe2810642733
+        branch: v0.5.3
 
   - name: rubberband
     buildsystem: meson
@@ -314,8 +314,6 @@ modules:
   - name: mlt
     buildsystem: cmake-ninja
     config-opts:
-      - -DGPL=ON
-      - -DGPL3=ON
       - -DMOD_QT=OFF
       - -DMOD_QT6=ON
       - -DMOD_GLAXNIMATE_QT6=ON
@@ -324,21 +322,21 @@ modules:
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: 01ab0f45b34cf8c171e42213404c05018916e8c1
+        commit: f1be13c2d5e83440d8ef2d6752e924d74cbe09e9
 
   - name: shotcut
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
-      - -DSHOTCUT_VERSION=23.04.07
+      - -DSHOTCUT_VERSION=23.04.20
     post-install:
       - install -d /app/extensions/Plugins
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
-        commit: a5b5665a234989df1d2098decafa9f0ce16464c2
-        #tag: v23.04.02
+        commit: fdcebd8be015252d499f8c9c5dedd30e4f4ae5a9
+        tag: v23.04.20
 
   - name: gopro2gpx
     buildsystem: cmake-ninja
