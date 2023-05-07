@@ -116,6 +116,7 @@ modules:
       - type: git
         url: https://github.com/georgmartius/vid.stab.git
         commit: 90c76aca2cb06c3ff6f7476a7cd6851b39436656
+        tag: v1.1.1
   
   - name: frei0r-plugins
     buildsystem: cmake-ninja
@@ -125,7 +126,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/dyne/frei0r.git
-        commit: 3e1234b9f2ba86b1deebdd1034735e12d706c095
+        commit: bcad9ad6a75d251764084de68d2add4349722e06
 
   - name: ladspa-sdk
     no-autogen: true
@@ -321,21 +322,21 @@ modules:
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: f1be13c2d5e83440d8ef2d6752e924d74cbe09e9
+        commit: e456cb34b29ada6e9d34a9832c9631c1108e8c2e
 
   - name: shotcut
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
-      - -DSHOTCUT_VERSION=23.04.20
+      - -DSHOTCUT_VERSION=23.05.07
     post-install:
       - install -d /app/extensions/Plugins
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
-        commit: fdcebd8be015252d499f8c9c5dedd30e4f4ae5a9
-        tag: v23.04.20
+        commit: 3bc6ab4724992caaf28c1802a8805601c927a616
+        tag: v23.05.07
 
   - name: gopro2gpx
     buildsystem: cmake-ninja
