@@ -1,7 +1,7 @@
 app-id: org.shotcut.Shotcut
 default-branch: stable
 runtime: org.kde.Platform
-runtime-version: '5.15-22.08'
+runtime-version: '6.4'
 sdk: org.kde.Sdk
 command: shotcut
 finish-args:
@@ -45,7 +45,7 @@ modules:
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
-      -DCMAKE_BUILD_TYPE=Release
+      - -DCMAKE_BUILD_TYPE=Release
     cleanup:
       - '*'
     sources:
@@ -67,6 +67,10 @@ modules:
             - --enable-avx
             - --enable-openmp
             - --enable-sse
+        aarch64:
+          config-opts:
+            - --enable-neon
+            - --enable-openmp
     cleanup:
       - /bin
     sources:
@@ -88,8 +92,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ddennedy/movit.git
-        branch: shotcut
-        commit: dccf5339b33ec0608a36c468cb42d38fd4fca9dd
+        branch: shotcut-opengl3
+        commit: 77b8797e13086659bca51fb29e3d40bbc2795426
 
   - name: sox
     config-opts:
@@ -112,6 +116,7 @@ modules:
       - type: git
         url: https://github.com/georgmartius/vid.stab.git
         commit: 90c76aca2cb06c3ff6f7476a7cd6851b39436656
+        tag: v1.1.1
   
   - name: frei0r-plugins
     buildsystem: cmake-ninja
@@ -121,7 +126,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/dyne/frei0r.git
-        commit: a9d15ff07e130baf3408da6e1f1b22f82e7c62b6
+        commit: bcad9ad6a75d251764084de68d2add4349722e06
 
   - name: ladspa-sdk
     no-autogen: true
@@ -137,20 +142,7 @@ modules:
         url: https://deb.debian.org/debian/pool/main/l/ladspa-sdk/ladspa-sdk_1.17.orig.tar.gz
         sha256: d9d596171d93f9c226fcdb7e27c6f917422ac487efe2c05e0a18094df4268061
 
-  - name: jack2
-    buildsystem: simple
-    build-commands:
-      - ./waf configure --prefix=/app --htmldir=/app/share/doc/jack/ --classic
-      - ./waf build -j $FLATPAK_BUILDER_N_JOBS
-      - ./waf install
-    cleanup:
-      - '*'
-    sources:
-      - type: archive
-        url: https://github.com/jackaudio/jack2/archive/refs/tags/v1.9.19.tar.gz
-        sha256: 9030f4dc11773351b6ac96affd9c89803a5587ebc1b091e5ff866f433327e4b0
-
-  - name: 'x264'
+  - name: x264
     config-opts:
       - --disable-cli
       - --enable-shared
@@ -160,7 +152,7 @@ modules:
         branch: stable
         commit: baee400fa9ced6f5481a728138fed6e867b0ff7f
 
-  - name: 'x265'
+  - name: x265
     buildsystem: cmake-ninja
     builddir: true
     subdir: source
@@ -181,8 +173,8 @@ modules:
     sources:
       - type: git
         url: https://git.videolan.org/git/ffmpeg/nv-codec-headers.git
-        commit: 43adb856807855d7742da53181b181e4ef25344a
-        tag: n10.0.26.2
+        commit: c5e4af74850a616c42d39ed45b9b8568b71bf8bf
+        tag: n12.0.16.0
 
   - name: vmaf
     buildsystem: meson
@@ -192,7 +184,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/Netflix/vmaf.git
-        commmit: f2661673a078718ddfc1ddb6042048c1b1284946
+        commit: f2661673a078718ddfc1ddb6042048c1b1284946
         tag: v2.3.1
 
   - name: vmaf-models
@@ -203,7 +195,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/Netflix/vmaf.git
-        commmit: f2661673a078718ddfc1ddb6042048c1b1284946
+        commit: f2661673a078718ddfc1ddb6042048c1b1284946
         tag: v2.3.1
 
   - name: ffmpeg
@@ -239,8 +231,8 @@ modules:
       - /share/ffmpeg/examples
     sources:
       - type: archive
-        url: https://ffmpeg.org/releases/ffmpeg-5.1.2.tar.xz
-        sha256: 619e706d662c8420859832ddc259cd4d4096a48a2ce1eefd052db9e440eef3dc
+        url: https://ffmpeg.org/releases/ffmpeg-6.0.tar.xz
+        sha256: 57be87c22d9b49c112b6d24bc67d42508660e6b718b3db89c44e47e289137082
 
   - name: potrace
     config-opts:
@@ -263,8 +255,9 @@ modules:
     sources:
       - type: git
         url: https://gitlab.com/ddennedy/glaxnimate
-        commit: 62b3057e8d933e57d4ee329a4f8e02f050b25500
-        branch: v0.5.1
+        disable-shallow-clone: true
+        commit: 3ace341df0fd40aa343411eec60fbe2810642733
+        branch: v0.5.3
 
   - name: rubberband
     buildsystem: meson
@@ -272,8 +265,8 @@ modules:
       - /bin
     sources: 
       - type: archive
-        url: https://breakfastquay.com/files/releases/rubberband-3.1.1.tar.bz2
-        sha256: a442551fe7d26fb4a54dd1c34178733dc9c76ac9ce051a02325f5cb35d154381
+        url: https://breakfastquay.com/files/releases/rubberband-3.1.3.tar.bz2
+        sha256: 3621c2c346cc3336fddd3fc34e5a7a1c106d24b182307c581f8fd40eda4f4e2b
 
   - name: bigsh0t
     buildsystem: cmake-ninja
@@ -289,31 +282,61 @@ modules:
         commit: 8fe56f6d4e0deb93ac0eb0bc73fdbe35bd7614cb
         # tag: '2.5'
 
+  - name: opencv
+    buildsystem: cmake-ninja
+    builddir: true
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=RelWithDebInfo
+      - -DOPENCV_EXTRA_MODULES_PATH=../opencv_contrib/modules
+      - -DBUILD_LIST=core,imgproc,plot,video,tracking
+      - -DOPENCV_GENERATE_PKGCONFIG=YES
+      - -DWITH_OPENMP=ON
+      - -DBUILD_WITH_DEBUG_INFO=OFF
+      - -DBUILD_TESTS=OFF
+      - -DBUILD_PERF_TESTS=OFF
+      - -DBUILD_EXAMPLES=OFF
+      - -DINSTALL_C_EXAMPLES=OFF
+      - -DINSTALL_PYTHON_EXAMPLES=OFF
+      - -DWITH_1394=OFF
+      - -DWITH_V4L=OFF
+      - -DWITH_PROTOBUF=OFF
+      - -DWITH_GTK=OFF
+      - -DWITH_CAROTENE=OFF # for ARM
+    cleanup:
+      - /lib/cmake
+      - /bin/*
+    sources:
+      - type: git
+        url: https://github.com/ddennedy/opencv.git
+        commit: 477337622860beda9220c15277af921cffb0c86d
+        branch: '4.x'
+
   - name: mlt
     buildsystem: cmake-ninja
     config-opts:
-      - -DGPL=ON
-      - -DGPL3=ON
-      - -DMOD_GLAXNIMATE=ON
+      - -DMOD_QT=OFF
+      - -DMOD_QT6=ON
+      - -DMOD_GLAXNIMATE_QT6=ON
+      - -DMOD_OPENCV=ON
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: 516077863f79784f892b20ff864d55952bb76b61
+        commit: e456cb34b29ada6e9d34a9832c9631c1108e8c2e
 
   - name: shotcut
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
-      - -DSHOTCUT_VERSION=22.12.21
+      - -DSHOTCUT_VERSION=23.05.07
     post-install:
       - install -d /app/extensions/Plugins
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
-        commit: bc48b344fb05d5d3c6a88d9f047c972f449f950f
-        tag: v22.12.21
+        commit: 3bc6ab4724992caaf28c1802a8805601c927a616
+        tag: v23.05.07
 
   - name: gopro2gpx
     buildsystem: cmake-ninja
