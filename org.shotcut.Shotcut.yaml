@@ -126,7 +126,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/dyne/frei0r.git
-        commit: bcad9ad6a75d251764084de68d2add4349722e06
+        commit: c0bbc2fe105c0ce1270d89863eeb804e58601bd9
 
   - name: ladspa-sdk
     no-autogen: true
@@ -279,7 +279,7 @@ modules:
     sources:
       - type: git
         url: https://bitbucket.org/leo_sutic/bigsh0t.git
-        commit: c0bbc2fe105c0ce1270d89863eeb804e58601bd9
+        commit: 8fe56f6d4e0deb93ac0eb0bc73fdbe35bd7614cb
         # tag: '2.5'
 
   - name: opencv
