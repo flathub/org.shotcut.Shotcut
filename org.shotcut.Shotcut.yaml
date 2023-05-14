@@ -17,6 +17,7 @@ finish-args:
   - --system-talk-name=org.freedesktop.RealtimeKit1
   - --env=FREI0R_PATH=/app/lib/frei0r-1
   - --env=LADSPA_PATH=/app/extensions/Plugins/ladspa:/app/lib/ladspa
+  - --env=QT_QUICK_CONTROLS_CONF=:/resources/qtquickcontrols2-dark.conf
 add-extensions:
   org.freedesktop.LinuxAudio.Plugins:
     directory: extensions/Plugins
@@ -126,7 +127,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/dyne/frei0r.git
-        commit: bcad9ad6a75d251764084de68d2add4349722e06
+        commit: c0bbc2fe105c0ce1270d89863eeb804e58601bd9
 
   - name: ladspa-sdk
     no-autogen: true
@@ -322,21 +323,21 @@ modules:
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: e456cb34b29ada6e9d34a9832c9631c1108e8c2e
+        commit: 67b901f90d0dd54bc3f59dd70af311e356dd6b79
 
   - name: shotcut
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
-      - -DSHOTCUT_VERSION=23.05.07
+      - -DSHOTCUT_VERSION=23.05.14
     post-install:
       - install -d /app/extensions/Plugins
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
-        commit: 3bc6ab4724992caaf28c1802a8805601c927a616
-        tag: v23.05.07
+        commit: 66c318cd3b998462cc916dfa66dd8ff431598c5b
+        tag: v23.05.14
 
   - name: gopro2gpx
     buildsystem: cmake-ninja
