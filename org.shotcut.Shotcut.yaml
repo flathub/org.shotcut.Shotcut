@@ -17,6 +17,7 @@ finish-args:
   - --system-talk-name=org.freedesktop.RealtimeKit1
   - --env=FREI0R_PATH=/app/lib/frei0r-1
   - --env=LADSPA_PATH=/app/extensions/Plugins/ladspa:/app/lib/ladspa
+  - --env=QT_QUICK_CONTROLS_CONF=:/resources/qtquickcontrols2-dark.conf
 add-extensions:
   org.freedesktop.LinuxAudio.Plugins:
     directory: extensions/Plugins
