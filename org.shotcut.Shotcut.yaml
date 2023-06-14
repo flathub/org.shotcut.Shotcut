@@ -127,7 +127,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/dyne/frei0r.git
-        commit: c0bbc2fe105c0ce1270d89863eeb804e58601bd9
+        commit: 2c45f1f09398d6242f166eb05b156021594bc3e5
+        tag: v2.3.0
 
   - name: ladspa-sdk
     no-autogen: true
@@ -323,21 +324,21 @@ modules:
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: 67b901f90d0dd54bc3f59dd70af311e356dd6b79
+        commit: b871ad3580753de1047e89aa2a69127138f1e942
 
   - name: shotcut
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
-      - -DSHOTCUT_VERSION=23.05.14
+      - -DSHOTCUT_VERSION=23.06.14
     post-install:
       - install -d /app/extensions/Plugins
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
-        commit: 66c318cd3b998462cc916dfa66dd8ff431598c5b
-        tag: v23.05.14
+        commit: d76ebe0228a22cdbc173834e7818ff23db8ad8ff
+        tag: v23.06.14
 
   - name: gopro2gpx
     buildsystem: cmake-ninja
