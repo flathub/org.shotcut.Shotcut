@@ -2,7 +2,7 @@ app-id: org.shotcut.Shotcut
 default-branch: beta
 desktop-file-name-suffix: ' (Beta)'
 runtime: org.kde.Platform
-runtime-version: '6.4'
+runtime-version: '6.5'
 sdk: org.kde.Sdk
 command: shotcut
 finish-args:
@@ -259,8 +259,8 @@ modules:
       - type: git
         url: https://gitlab.com/ddennedy/glaxnimate
         disable-shallow-clone: true
-        commit: 3ace341df0fd40aa343411eec60fbe2810642733
-        branch: v0.5.3
+        commit: 65f7406393e0b3868654fd71b3a335a86ffd2c47
+        tag: 0.5.4
 
   - name: rubberband
     buildsystem: meson
@@ -325,21 +325,21 @@ modules:
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: 714a7da1d0dd8e92e00f276ffaf44b27dd83198c
+        commit: 8a821cc5864c848bb55c251a87fdf0dae66e6c81
 
   - name: shotcut
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
-      - -DSHOTCUT_VERSION=23.09.02
+      - -DSHOTCUT_VERSION=23.09.12
     post-install:
       - install -d /app/extensions/Plugins
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
-        commit: 732dbc73b926420cbe86408723ae33ba76a8f5c4
-        tag: v23.09.02
+        commit: 6254b794f15d89b19a31b356a9d7ee302a7830da
+        tag: v23.09.12
 
   - name: gopro2gpx
     buildsystem: cmake-ninja
