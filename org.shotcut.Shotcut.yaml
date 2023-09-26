@@ -208,6 +208,7 @@ modules:
       - --enable-version3
       - --disable-static
       - --enable-shared
+      - --enable-runtime-cpudetect
       - --disable-doc
       - --disable-alsa
       - --enable-libfontconfig
