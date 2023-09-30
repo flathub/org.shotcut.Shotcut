@@ -259,7 +259,7 @@ modules:
         url: https://gitlab.com/ddennedy/glaxnimate
         disable-shallow-clone: true
         commit: 65f7406393e0b3868654fd71b3a335a86ffd2c47
-        branch: 0.5.4
+        tag: 0.5.4
 
   - name: rubberband
     buildsystem: meson
@@ -331,7 +331,7 @@ modules:
     builddir: true
     config-opts:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
-      - -DSHOTCUT_VERSION=23.07.29
+      - -DSHOTCUT_VERSION=23.09.29
     post-install:
       - install -d /app/extensions/Plugins
     sources:
