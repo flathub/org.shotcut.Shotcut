@@ -1,5 +1,6 @@
 app-id: org.shotcut.Shotcut
-default-branch: stable
+default-branch: beta
+desktop-file-name-suffix: ' (Beta)'
 runtime: org.kde.Platform
 runtime-version: '6.5'
 sdk: org.kde.Sdk
@@ -126,9 +127,9 @@ modules:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
     sources:
       - type: git
-        url: https://github.com/dyne/frei0r.git
-        commit: 2c45f1f09398d6242f166eb05b156021594bc3e5
-        tag: v2.3.0
+        url: https://github.com/ddennedy/frei0r.git
+        commit: 7b94b2426e4dbd7a1766c5f530876f027228d406
+        branch: shotcut
 
   - name: ladspa-sdk
     no-autogen: true
@@ -324,21 +325,22 @@ modules:
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: c170481aef3f524d1cb17a38e218dfc10a3f75f7
+        commit: 4b427bfa708db50eb0a3d840c6f83b71269f7e41
+        tag: v7.22.0
 
   - name: shotcut
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
-      - -DSHOTCUT_VERSION=23.09.29
+      - -DSHOTCUT_VERSION=23.11.29
     post-install:
       - install -d /app/extensions/Plugins
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
-        commit: c784cfa4d7a1ae436debcdc9cae1615c77754e0a
-        tag: v23.09.29
+        commit: f0fa10cd828663666c9c8fe1742b63b6f51f5bfc
+        tag: v23.11.29
 
   - name: gopro2gpx
     buildsystem: cmake-ninja
