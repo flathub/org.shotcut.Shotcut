@@ -1,6 +1,5 @@
 app-id: org.shotcut.Shotcut
-default-branch: beta
-desktop-file-name-suffix: ' (Beta)'
+default-branch: stable
 runtime: org.kde.Platform
 runtime-version: '6.5'
 sdk: org.kde.Sdk
