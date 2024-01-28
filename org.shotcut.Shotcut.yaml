@@ -233,8 +233,8 @@ modules:
       - /share/ffmpeg/examples
     sources:
       - type: archive
-        url: https://ffmpeg.org/releases/ffmpeg-6.1.tar.xz
-        sha256: 488c76e57dd9b3bee901f71d5c95eaf1db4a5a31fe46a28654e837144207c270
+        url: https://ffmpeg.org/releases/ffmpeg-6.1.1.tar.xz
+        sha256: 8684f4b00f94b85461884c3719382f1261f0d9eb3d59640a1f4ac0873616f968
 
   - name: potrace
     config-opts:
@@ -324,21 +324,21 @@ modules:
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: 3ffb57b99a62a6cd356e6548f233d4f683a4b21c
+        commit: 3056580c2d02248622d191e42c1de6b7bd0b454e
 
   - name: shotcut
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
-      - -DSHOTCUT_VERSION=23.12.15
+      - -DSHOTCUT_VERSION=24.01.28
     post-install:
       - install -d /app/extensions/Plugins
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
-        commit: d9ad005e693220cb27ce504d75cf9bd2a5684d56
-        tag: v23.12.15
+        commit: 118d4338a6462e0673eff36d92f3e87cc5b78696
+        tag: v24.01.28
 
   - name: gopro2gpx
     buildsystem: cmake-ninja
