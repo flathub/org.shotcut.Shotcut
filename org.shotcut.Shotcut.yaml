@@ -237,6 +237,16 @@ modules:
         url: https://ffmpeg.org/releases/ffmpeg-6.1.1.tar.xz
         sha256: 8684f4b00f94b85461884c3719382f1261f0d9eb3d59640a1f4ac0873616f968
 
+  - name: libspatialaudio
+    buildsystem: cmake-ninja
+    builddir: true
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=RelWithDebInfo
+    sources:
+      - type: git
+        url: https://github.com/videolabs/libspatialaudio.git
+        commit: 1390b918ae7f1a3e5029544cfd5f5c44f8916158
+
   - name: potrace
     config-opts:
       - --with-libpotrace
