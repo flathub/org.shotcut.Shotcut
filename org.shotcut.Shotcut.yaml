@@ -335,21 +335,21 @@ modules:
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: 299bf23705539bd002e444387ee3586e26984734
+        commit: a089fcc3d5af11fd6d1c8c20341853ef67a2323e
 
   - name: shotcut
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
-      - -DSHOTCUT_VERSION=24.02.19
+      - -DSHOTCUT_VERSION=24.04.13
     post-install:
       - install -d /app/extensions/Plugins
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
-        commit: 642df6f69e305921d31c149dda2f2fa5e6e49430
-        tag: v24.02.19
+        commit: 139a251b9f06fffc15a2df653272828883c72a14
+        tag: v24.04.13
 
   - name: gopro2gpx
     buildsystem: cmake-ninja
