@@ -15,7 +15,6 @@ finish-args:
   - --socket=pulseaudio
   # JACK
   - --filesystem=xdg-run/pipewire-0
-  - --system-talk-name=org.freedesktop.RealtimeKit1
   - --env=FREI0R_PATH=/app/lib/frei0r-1
   - --env=LADSPA_PATH=/app/extensions/Plugins/ladspa:/app/lib/ladspa
   - --env=QT_QUICK_CONTROLS_CONF=:/resources/qtquickcontrols2-dark.conf
@@ -94,7 +93,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/ddennedy/movit.git
-        branch: shotcut-opengl3
+        # branch: shotcut-opengl3
         commit: 77b8797e13086659bca51fb29e3d40bbc2795426
 
   - name: sox
@@ -152,7 +151,7 @@ modules:
     sources:
       - type: git
         url: https://code.videolan.org/videolan/x264.git
-        branch: stable
+        # branch: stable
         commit: 31e19f92f00c7003fa115047ce50978bc98c3a0d
 
   - name: x265
@@ -322,7 +321,7 @@ modules:
       - type: git
         url: https://github.com/ddennedy/opencv.git
         commit: 477337622860beda9220c15277af921cffb0c86d
-        branch: '4.x'
+        # branch: '4.x'
 
   - name: mlt
     buildsystem: cmake-ninja
