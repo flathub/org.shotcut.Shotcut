@@ -262,6 +262,7 @@ modules:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
       - -DPotrace_PREFIX=/app
       - -DLibav_PREFIX=/app
+      - -DCMAKE_PREFIX_PATH=/app
     build-commands:
       - ninja translations
     sources:
