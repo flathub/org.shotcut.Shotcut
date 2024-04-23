@@ -1,7 +1,7 @@
 app-id: org.shotcut.Shotcut
 default-branch: stable
 runtime: org.kde.Platform
-runtime-version: '6.5'
+runtime-version: '6.6'
 sdk: org.kde.Sdk
 command: shotcut
 finish-args:
@@ -261,6 +261,7 @@ modules:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
       - -DPotrace_PREFIX=/app
       - -DLibav_PREFIX=/app
+      - -DCMAKE_PREFIX_PATH=/app
     build-commands:
       - ninja translations
     sources:
@@ -333,21 +334,21 @@ modules:
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: 30115615b3a4487724c6878ee70c3ec0fd890426
+        commit: fd4d9add9d4ff5eefb72b7d820bec860f8e4de17
 
   - name: shotcut
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
-      - -DSHOTCUT_VERSION=24.02.29
+      - -DSHOTCUT_VERSION=24.04.29
     post-install:
       - install -d /app/extensions/Plugins
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
-        commit: 61c7e9999d41855952450b556f54a760ca808826
-        tag: v24.02.29
+        commit: b0556987e0f5776bf4c911a85d2ffb515f1f9d28
+        tag: v24.04.28
 
   - name: gopro2gpx
     buildsystem: cmake-ninja
