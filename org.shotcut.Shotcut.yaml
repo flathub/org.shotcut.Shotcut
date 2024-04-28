@@ -341,7 +341,7 @@ modules:
     builddir: true
     config-opts:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
-      - -DSHOTCUT_VERSION=24.04.29
+      - -DSHOTCUT_VERSION=24.04.28
     post-install:
       - install -d /app/extensions/Plugins
     sources:
