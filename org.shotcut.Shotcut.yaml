@@ -284,8 +284,8 @@ modules:
       - type: git
         url: https://gitlab.com/ddennedy/glaxnimate
         disable-shallow-clone: true
-        commit: 65f7406393e0b3868654fd71b3a335a86ffd2c47
-        tag: 0.5.4
+        commit: 1a443558b326cc627a6b8d5434b8ba9ad566566c
+        # branch: v0.5.4
 
   - name: rubberband
     buildsystem: meson
