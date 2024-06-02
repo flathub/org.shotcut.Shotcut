@@ -2,7 +2,7 @@ app-id: org.shotcut.Shotcut
 default-branch: beta
 desktop-file-name-suffix: ' (Beta)'
 runtime: org.kde.Platform
-runtime-version: '6.6'
+runtime-version: '6.7'
 sdk: org.kde.Sdk
 command: shotcut
 finish-args:
@@ -186,8 +186,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/Netflix/vmaf.git
-        commit: f2661673a078718ddfc1ddb6042048c1b1284946
-        tag: v2.3.1
+        commit: 17a67b238ce0539bdeafdc95961abac64fa16ea8
+        tag: v3.0.0
 
   - name: vmaf-models
     buildsystem: simple
@@ -197,8 +197,18 @@ modules:
     sources:
       - type: git
         url: https://github.com/Netflix/vmaf.git
-        commit: f2661673a078718ddfc1ddb6042048c1b1284946
-        tag: v2.3.1
+        commit: 17a67b238ce0539bdeafdc95961abac64fa16ea8
+        tag: v3.0.0
+
+  - name: SVT-AV1
+    buildsystem: cmake-ninja
+    builddir: true
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=RelWithDebInfo
+    sources:
+      - type: git
+        url: https://gitlab.com/AOMediaCodec/SVT-AV1.git
+        commit: bbcff785881b320f7e1b1f77a2f5ed025f8bfd75
 
   - name: ffmpeg
     config-opts:
@@ -216,6 +226,7 @@ modules:
       - --enable-librsvg
       - --enable-libvpx
       - --enable-libdav1d
+      - --enable-libavtav1
       - --enable-libxml2
       - --enable-libx264
       - --enable-libx265
@@ -233,8 +244,8 @@ modules:
       - /share/ffmpeg/examples
     sources:
       - type: archive
-        url: https://ffmpeg.org/releases/ffmpeg-6.1.1.tar.xz
-        sha256: 8684f4b00f94b85461884c3719382f1261f0d9eb3d59640a1f4ac0873616f968
+        url: https://ffmpeg.org/releases/ffmpeg-7.0.1.tar.xz
+        sha256: bce9eeb0f17ef8982390b1f37711a61b4290dc8c2a0c1a37b5857e85bfb0e4ff
 
   - name: libspatialaudio
     buildsystem: cmake-ninja
@@ -244,7 +255,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/videolabs/libspatialaudio.git
-        commit: 1390b918ae7f1a3e5029544cfd5f5c44f8916158
+        commit: 0b6b25eba39fe1d2f4a981867957b9dcf62016db
 
   - name: potrace
     config-opts:
@@ -321,7 +332,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/ddennedy/opencv.git
-        commit: 477337622860beda9220c15277af921cffb0c86d
+        commit: d1201b2ec2245823b16a930841af6ae3661f930d
         # branch: '4.x'
 
   - name: mlt
@@ -335,21 +346,21 @@ modules:
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: a089fcc3d5af11fd6d1c8c20341853ef67a2323e
+        commit: d4bdbccd2054dcc0e2a71be24e95ca1ad651a33d
 
   - name: shotcut
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
-      - -DSHOTCUT_VERSION=24.04.13
+      - -DSHOTCUT_VERSION=24.06.02
     post-install:
       - install -d /app/extensions/Plugins
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
-        commit: 139a251b9f06fffc15a2df653272828883c72a14
-        tag: v24.04.13
+        commit: 40f9afab5b2f02d199bf3d7246c990d8aa91ea7d
+        tag: v24.06.02
 
   - name: gopro2gpx
     buildsystem: cmake-ninja
