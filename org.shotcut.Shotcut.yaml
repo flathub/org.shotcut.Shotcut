@@ -50,8 +50,8 @@ modules:
       - '*'
     sources:
       - type: archive
-        url: https://gitlab.com/libeigen/eigen/-/archive/3.3.9/eigen-3.3.9.tar.bz2
-        sha256: 0fa5cafe78f66d2b501b43016858070d52ba47bd9b1016b0165a7b8e04675677
+        url: https://gitlab.com/libeigen/eigen/-/archive/3.4.0/eigen-3.4.0.tar.bz2
+        sha256: b4c198460eba6f28d34894e3a5710998818515104d6e74e5cc331ce31e46e626
 
   - name: fftw-float
     config-opts:
@@ -162,8 +162,8 @@ modules:
       - -DENABLE_CLI=OFF
     sources:
       - type: archive
-        url: https://deb.debian.org/debian/pool/main/x/x265/x265_3.5.orig.tar.gz
-        sha256: e70a3335cacacbba0b3a20ec6fecd6783932288ebc8163ad74bcc9606477cae8
+        url: https://deb.debian.org/debian/pool/main/x/x265/x265_3.6.orig.tar.xz
+        sha256: 964e49d5e5bf4323252cf9e2ffd6a00dd2c1b3eaf49d6f175dfb2d960bfbdb43
 
   - name: nv-codec-headers
     no-autogen: true
@@ -211,7 +211,7 @@ modules:
     sources:
       - type: git
         url: https://gitlab.com/AOMediaCodec/SVT-AV1.git
-        commit: bbcff785881b320f7e1b1f77a2f5ed025f8bfd75
+        commit: c949fe4f14fe288a9b2b47aa3e61335422a83645
 
   - name: ffmpeg
     config-opts:
@@ -247,8 +247,8 @@ modules:
       - /share/ffmpeg/examples
     sources:
       - type: archive
-        url: https://ffmpeg.org/releases/ffmpeg-7.0.1.tar.xz
-        sha256: bce9eeb0f17ef8982390b1f37711a61b4290dc8c2a0c1a37b5857e85bfb0e4ff
+        url: https://ffmpeg.org/releases/ffmpeg-7.0.2.tar.xz
+        sha256: 8646515b638a3ad303e23af6a3587734447cb8fc0a0c064ecdb8e95c4fd8b389
 
   - name: libspatialaudio
     buildsystem: cmake-ninja
@@ -345,25 +345,26 @@ modules:
       - -DMOD_QT6=ON
       - -DMOD_GLAXNIMATE_QT6=ON
       - -DMOD_OPENCV=ON
+      - -DUSE_VST2=OFF
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: 15a46c9ff4e289e3a313b8c1236ef6cdbf09be98
+        commit: f104d17bc9fafa4fc44ec62a763c0d9fe8ce2b49
 
   - name: shotcut
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
-      - -DSHOTCUT_VERSION=24.06.26
+      - -DSHOTCUT_VERSION=24.08.29
     post-install:
       - install -d /app/extensions/Plugins
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
-        commit: b2785faa478b3d80091729a7df61a0e3fb31e120
-        tag: v24.06.26
+        commit: aa5504643ae1445f919bb4c210e7c2a27e1910a5
+        # tag: v24.08.29
 
   - name: gopro2gpx
     buildsystem: cmake-ninja
