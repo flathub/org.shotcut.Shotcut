@@ -54,7 +54,7 @@ modules:
     cleanup:
       - '*'
     post-install:
-      - install -p -c bin/main app/bin/whisper.cpp-main
+      - install -p -c bin/main /app/bin/whisper.cpp-main
       - ../models/download-ggml-model.sh base-q5_1
       - install -d /app/share/shotcut/whisper_models
       - install -p -c models/ggml-base-q5_1.bin /app/share/shotcut/whisper_models
