@@ -52,11 +52,11 @@ modules:
       - -DBUILD_APPS=OFF
       - -DENABLE_AVX512=ON
     cleanup:
-      - '*'
+      - '/include/whisper.h'
+      - '/lib/cmake/whisper'
     post-install:
       - install -d /app/bin
       - install -p -c bin/main /app/bin/whisper.cpp-main
-      - ../models/download-ggml-model.sh base-q5_1
       - install -d /app/share/shotcut/whisper_models
       - wget2 https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-base-q5_1.bin -O /app/share/shotcut/whisper_models/ggml-base-q5_1.bin
     sources:
