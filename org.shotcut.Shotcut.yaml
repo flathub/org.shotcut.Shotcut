@@ -42,6 +42,37 @@ cleanup:
   - '*.la'
 modules:
 
+  - name: whisper.cpp
+    buildsystem: cmake-ninja
+    builddir: true
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DBUILD_SHARED_LIBS=ON
+      - -DBUILD_TESTING=OFF
+      - -DBUILD_APPS=OFF
+      - -DENABLE_AVX512=ON
+    cleanup:
+      - '/include'
+      - '/lib/cmake'
+      - '/lib/pkgconfig'
+    post-install:
+      - install -d /app/bin
+      - install -p -c bin/main /app/bin/whisper.cpp-main
+    sources:
+      - type: archive
+        url: https://github.com/ggerganov/whisper.cpp/archive/refs/tags/v1.7.1.tar.gz
+        sha256: 97f19a32212f2f215e538ee37a16ff547aaebc54817bd8072034e02466ce6d55
+
+  - name: whisper-model
+    buildsystem: simple
+    build-commands:
+      - install -v -d /app/share/shotcut/whisper_models
+      - install -v -p -c ggml-base-q5_1.bin /app/share/shotcut/whisper_models
+    sources:
+      - type: file
+        url: https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-base-q5_1.bin
+        sha256: 422f1ae452ade6f30a004d7e5c6a43195e4433bc370bf23fac9cc591f01a8898
+
   - name: eigen
     buildsystem: cmake-ninja
     builddir: true
@@ -212,7 +243,8 @@ modules:
     sources:
       - type: git
         url: https://gitlab.com/AOMediaCodec/SVT-AV1.git
-        commit: c949fe4f14fe288a9b2b47aa3e61335422a83645
+        commit: 55a01def732bb9e7016d23cc512384f7a88d6e86
+        tag: v2.2.1
 
   - name: ffmpeg
     config-opts:
@@ -248,8 +280,8 @@ modules:
       - /share/ffmpeg/examples
     sources:
       - type: archive
-        url: https://ffmpeg.org/releases/ffmpeg-7.0.2.tar.xz
-        sha256: 8646515b638a3ad303e23af6a3587734447cb8fc0a0c064ecdb8e95c4fd8b389
+        url: https://ffmpeg.org/releases/ffmpeg-7.1.tar.xz
+        sha256: 40973d44970dbc83ef302b0609f2e74982be2d85916dd2ee7472d30678a7abe6
 
   - name: libspatialaudio
     buildsystem: cmake-ninja
@@ -350,21 +382,21 @@ modules:
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: 460fde21febe16c1b4162360f352e1e3df853894
+        commit: a1785493b20b4bd95cebe0364502a543a8a0d835
 
   - name: shotcut
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
-      - -DSHOTCUT_VERSION=24.08.17
+      - -DSHOTCUT_VERSION=24.10.13
     post-install:
       - install -d /app/extensions/Plugins
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
-        commit: bd30bd304c15619faa2217c9e115bdd9b3e413c4
-        # tag: v24.08.17
+        commit: 2075cedc8659b0882c03e7a3e0bc75a613addaa3
+        # tag: v24.10.13
 
   - name: gopro2gpx
     buildsystem: cmake-ninja
