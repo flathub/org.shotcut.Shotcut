@@ -52,17 +52,26 @@ modules:
       - -DBUILD_APPS=OFF
       - -DENABLE_AVX512=ON
     cleanup:
-      - '/include/whisper.h'
-      - '/lib/cmake/whisper'
+      - '/include'
+      - '/lib/cmake'
+      - '/lib/pkgconfig'
     post-install:
       - install -d /app/bin
       - install -p -c bin/main /app/bin/whisper.cpp-main
-      - install -d /app/share/shotcut/whisper_models
-      - wget2 https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-base-q5_1.bin -O /app/share/shotcut/whisper_models/ggml-base-q5_1.bin
     sources:
       - type: archive
         url: https://github.com/ggerganov/whisper.cpp/archive/refs/tags/v1.7.1.tar.gz
         sha256: 97f19a32212f2f215e538ee37a16ff547aaebc54817bd8072034e02466ce6d55
+
+  - name: whisper-model
+    buildsystem: simple
+    build-commands:
+      - install -v -d /app/share/shotcut/whisper_models
+      - install -v -p -c ggml-base-q5_1.bin /app/share/shotcut/whisper_models
+    sources:
+      - type: file
+        url: https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-base-q5_1.bin
+        sha256: 422f1ae452ade6f30a004d7e5c6a43195e4433bc370bf23fac9cc591f01a8898
 
   - name: eigen
     buildsystem: cmake-ninja
