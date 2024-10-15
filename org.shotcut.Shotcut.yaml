@@ -58,7 +58,7 @@ modules:
       - install -p -c bin/main /app/bin/whisper.cpp-main
       - ../models/download-ggml-model.sh base-q5_1
       - install -d /app/share/shotcut/whisper_models
-      - install -p -c ../models/ggml-base-q5_1.bin /app/share/shotcut/whisper_models
+      - wget2 https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-base-q5_1.bin -O /app/share/shotcut/whisper_models/ggml-base-q5_1.bin
     sources:
       - type: archive
         url: https://github.com/ggerganov/whisper.cpp/archive/refs/tags/v1.7.1.tar.gz
