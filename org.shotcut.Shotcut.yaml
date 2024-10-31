@@ -2,7 +2,7 @@ app-id: org.shotcut.Shotcut
 default-branch: beta
 desktop-file-name-suffix: ' (Beta)'
 runtime: org.kde.Platform
-runtime-version: '6.7'
+runtime-version: '6.8'
 sdk: org.kde.Sdk
 command: shotcut
 finish-args:
@@ -21,14 +21,14 @@ finish-args:
 add-extensions:
   org.freedesktop.LinuxAudio.Plugins:
     directory: extensions/Plugins
-    version: '23.08'
+    version: '24.08'
     add-ld-path: lib
     merge-dirs: ladspa
     subdirectories: true
     no-autodownload: true
   org.freedesktop.LinuxAudio.Plugins.swh:
     directory: extensions/Plugins/swh
-    version: '23.08'
+    version: '24.08'
     add-ld-path: lib
     merge-dirs: ladspa
     autodelete: false
@@ -138,6 +138,8 @@ modules:
         sha256: 81a6956d4330e75b5827316e44ae381e6f1e8928003c6aa45896da9041ea149c
         mirror-urls:
           - http://http.debian.net/debian/pool/main/s/sox/sox_14.4.2.orig.tar.bz2
+      - type: patch
+        path: patches/sox-build.patch
 
   - name: vid.stab
     buildsystem: cmake-ninja
