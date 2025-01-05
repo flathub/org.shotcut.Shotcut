@@ -391,14 +391,14 @@ modules:
     builddir: true
     config-opts:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
-      - -DSHOTCUT_VERSION=25.01.03
+      - -DSHOTCUT_VERSION=25.01.05
     post-install:
       - install -d /app/extensions/Plugins
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
-        commit: e2ac7c0014f1a3d9df8f8127701a4d05615db1d0
-        # tag: v24.10.13
+        commit: 705299879561061ff5a15f05bad495e9ce4c059a
+        # tag: v25.01.05
 
   - name: gopro2gpx
     buildsystem: cmake-ninja
