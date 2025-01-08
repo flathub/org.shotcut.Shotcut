@@ -7,8 +7,8 @@ command: shotcut
 finish-args:
   - --require-version=0.11.4 # fixes file saving
   - --share=ipc
-  - --socket=fallback-x11
   - --socket=wayland
+  - --socket=fallback-x11
   - --device=all
   - --share=network
   - --filesystem=host
