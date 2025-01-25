@@ -56,7 +56,7 @@ modules:
       - '/lib/pkgconfig'
     post-install:
       - install -d /app/bin
-      - install -p -c bin/main /app/bin/whisper.cpp-main
+      - install -p -c bin/main /app/bin/whisper-cli
     sources:
       - type: archive
         url: https://github.com/ggerganov/whisper.cpp/archive/refs/tags/v1.7.3.tar.gz
