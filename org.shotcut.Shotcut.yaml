@@ -59,8 +59,8 @@ modules:
       - install -p -c bin/main /app/bin/whisper.cpp-main
     sources:
       - type: archive
-        url: https://github.com/ggerganov/whisper.cpp/archive/refs/tags/v1.7.1.tar.gz
-        sha256: 97f19a32212f2f215e538ee37a16ff547aaebc54817bd8072034e02466ce6d55
+        url: https://github.com/ggerganov/whisper.cpp/archive/refs/tags/v1.7.3.tar.gz
+        sha256: a36faa04885b45e4dd27751a37cb54300617717dbd3b7e5ec336f830e051a28c
 
   - name: whisper-model
     buildsystem: simple
@@ -159,8 +159,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/dyne/frei0r.git
-        commit: a303b82f34feb39aa400bd1b67fd8158a179368e
-        tag: v2.3.2
+        commit: cdeddc7553bbfdc446c61d1bfa6a51bcc029b4a8
+        tag: v2.3.3
 
   - name: ladspa-sdk
     no-autogen: true
@@ -244,8 +244,8 @@ modules:
     sources:
       - type: git
         url: https://gitlab.com/AOMediaCodec/SVT-AV1.git
-        commit: 55a01def732bb9e7016d23cc512384f7a88d6e86
-        tag: v2.2.1
+        commit: 6e69def4ec283fe0b71195671245c3b768bebdef
+        tag: v2.3.0
 
   - name: ffmpeg
     config-opts:
@@ -384,21 +384,21 @@ modules:
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: 70b3ce104bfe63840a5d3b7afc6fbdf6dd39bc26
+        commit: 2b650c65cb5e265864cda8c3eff91945d406c56e
 
   - name: shotcut
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
-      - -DSHOTCUT_VERSION=24.11.17
+      - -DSHOTCUT_VERSION=25.01.25
     post-install:
       - install -d /app/extensions/Plugins
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
-        commit: 7e2b13eafe68dfe3ff62f9d35ef2d9135dae808a
-        tag: v24.11.17
+        commit: 5a91ff9c33e07b9b29f3f0d5de25abc2aef4d70f
+        tag: v25.01.25
 
   - name: gopro2gpx
     buildsystem: cmake-ninja
@@ -410,4 +410,4 @@ modules:
     sources:
       - type: git
         url: https://github.com/ddennedy/gopro2gpx.git
-        commit: d78b354cfa27a2dfdcb7bb12e8f6ffd25fb55316
+        commit: eed1661edb1f0f22d882d3b0352b6197c5e93495
