@@ -197,8 +197,8 @@ modules:
       - -DENABLE_CLI=OFF
     sources:
       - type: archive
-        url: https://deb.debian.org/debian/pool/main/x/x265/x265_3.6.orig.tar.xz
-        sha256: 964e49d5e5bf4323252cf9e2ffd6a00dd2c1b3eaf49d6f175dfb2d960bfbdb43
+        url: https://bitbucket.org/multicoreware/x265_git/downloads/x265_3.6.tar.gz
+        sha256: 663531f341c5389f460d730e62e10a4fcca3428ca2ca109693867bc5fe2e2807
 
   - name: nv-codec-headers
     no-autogen: true
