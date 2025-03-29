@@ -60,8 +60,8 @@ modules:
       - install -p -c bin/main /app/bin/whisper-cli
     sources:
       - type: archive
-        url: https://github.com/ggerganov/whisper.cpp/archive/refs/tags/v1.7.3.tar.gz
-        sha256: a36faa04885b45e4dd27751a37cb54300617717dbd3b7e5ec336f830e051a28c
+        url: https://github.com/ggerganov/whisper.cpp/archive/refs/tags/v1.7.4.tar.gz
+        sha256: 9ce7b33028793fcbf62f81f1fd087af7778dace8772eaba8c43c66bf0c8a3eed
 
   - name: whisper-model
     buildsystem: simple
@@ -196,8 +196,8 @@ modules:
       - -DENABLE_CLI=OFF
     sources:
       - type: archive
-        url: https://deb.debian.org/debian/pool/main/x/x265/x265_3.6.orig.tar.xz
-        sha256: 964e49d5e5bf4323252cf9e2ffd6a00dd2c1b3eaf49d6f175dfb2d960bfbdb43
+        url: https://bitbucket.org/multicoreware/x265_git/downloads/x265_3.6.tar.gz
+        sha256: 663531f341c5389f460d730e62e10a4fcca3428ca2ca109693867bc5fe2e2807
 
   - name: nv-codec-headers
     no-autogen: true
@@ -341,8 +341,8 @@ modules:
     sources:
       - type: git
         url: https://bitbucket.org/leo_sutic/bigsh0t.git
-        commit: 8fe56f6d4e0deb93ac0eb0bc73fdbe35bd7614cb
-        # tag: '2.5'
+        commit: ec8c0c6eb2192c33d15918202c7b0575ed2c67a3
+        tag: '2.7'
 
   - name: opencv
     buildsystem: cmake-ninja
@@ -385,21 +385,21 @@ modules:
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: 2b650c65cb5e265864cda8c3eff91945d406c56e
+        commit: 11023db52a8a4d80095e13212aabb1d13bdcafe4
 
   - name: shotcut
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
-      - -DSHOTCUT_VERSION=25.01.25
+      - -DSHOTCUT_VERSION=25.03.29
     post-install:
       - install -d /app/extensions/Plugins
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
-        commit: 5a91ff9c33e07b9b29f3f0d5de25abc2aef4d70f
-        tag: v25.01.25
+        commit: 37db65d9470d82e5f8f179497ba9a4a3aebc8af3
+        tag: v25.03.29
 
   - name: gopro2gpx
     buildsystem: cmake-ninja
