@@ -56,8 +56,7 @@ modules:
       - '/lib/cmake'
       - '/lib/pkgconfig'
     post-install:
-      - install -d /app/bin
-      - install -p -c bin/main /app/bin/whisper-cli
+      - install -Dm755 bin/whisper-cli -t /app/bin
     sources:
       - type: archive
         url: https://github.com/ggerganov/whisper.cpp/archive/refs/tags/v1.7.4.tar.gz
@@ -66,8 +65,7 @@ modules:
   - name: whisper-model
     buildsystem: simple
     build-commands:
-      - install -v -d /app/share/shotcut/whisper_models
-      - install -v -p -c ggml-base-q5_1.bin /app/share/shotcut/whisper_models
+      - install -Dm644 ggml-base-q5_1.bin -t /app/share/shotcut/whisper_models
     sources:
       - type: file
         url: https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-base-q5_1.bin
@@ -183,7 +181,7 @@ modules:
       - --enable-shared
     sources:
       - type: git
-        url: https://code.videolan.org/videolan/x264.git
+        url: https://github.com/mirror/x264.git
         # branch: stable
         commit: 31e19f92f00c7003fa115047ce50978bc98c3a0d
 
@@ -207,7 +205,7 @@ modules:
       - '*'
     sources:
       - type: git
-        url: https://git.videolan.org/git/ffmpeg/nv-codec-headers.git
+        url: https://github.com/FFmpeg/nv-codec-headers.git
         commit: 451da99614412a7f9526ef301a5ee0c7a6f9ad76
         tag: n12.0.16.1
 
