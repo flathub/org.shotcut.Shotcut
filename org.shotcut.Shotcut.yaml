@@ -181,7 +181,7 @@ modules:
       - --enable-shared
     sources:
       - type: git
-        url: https://code.videolan.org/videolan/x264.git
+        url: https://github.com/mirror/x264.git
         # branch: stable
         commit: 31e19f92f00c7003fa115047ce50978bc98c3a0d
 
@@ -205,7 +205,7 @@ modules:
       - '*'
     sources:
       - type: git
-        url: https://git.videolan.org/git/ffmpeg/nv-codec-headers.git
+        url: https://github.com/FFmpeg/nv-codec-headers.git
         commit: 451da99614412a7f9526ef301a5ee0c7a6f9ad76
         tag: n12.0.16.1
 
