@@ -124,7 +124,7 @@ modules:
       - type: git
         url: https://github.com/ddennedy/movit.git
         # branch: shotcut-opengl3
-        commit: 77b8797e13086659bca51fb29e3d40bbc2795426
+        commit: b24f99a4c2265874a3c61d894651d82bd94f58a6
 
   - name: sox
     config-opts:
@@ -159,8 +159,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/dyne/frei0r.git
-        commit: cdeddc7553bbfdc446c61d1bfa6a51bcc029b4a8
-        tag: v2.3.3
+        commit: 3d288d95a7f4cc0347e4daf8bc65d2336732754f
+        # tag: v2.3.3
 
   - name: ladspa-sdk
     no-autogen: true
@@ -182,7 +182,7 @@ modules:
       - --enable-shared
     sources:
       - type: git
-        url: https://code.videolan.org/videolan/x264.git
+        url: https://github.com/mirror/x264.git
         # branch: stable
         commit: 31e19f92f00c7003fa115047ce50978bc98c3a0d
 
@@ -195,8 +195,8 @@ modules:
       - -DENABLE_CLI=OFF
     sources:
       - type: archive
-        url: https://bitbucket.org/multicoreware/x265_git/downloads/x265_3.6.tar.gz
-        sha256: 663531f341c5389f460d730e62e10a4fcca3428ca2ca109693867bc5fe2e2807
+        url: https://bitbucket.org/multicoreware/x265_git/downloads/x265_4.1.tar.gz
+        sha256: a31699c6a89806b74b0151e5e6a7df65de4b49050482fe5ebf8a4379d7af8f29
 
   - name: nv-codec-headers
     no-autogen: true
@@ -206,7 +206,7 @@ modules:
       - '*'
     sources:
       - type: git
-        url: https://git.videolan.org/git/ffmpeg/nv-codec-headers.git
+        url: https://github.com/FFmpeg/nv-codec-headers.git
         commit: 451da99614412a7f9526ef301a5ee0c7a6f9ad76
         tag: n12.0.16.1
 
@@ -281,8 +281,8 @@ modules:
       - /share/ffmpeg/examples
     sources:
       - type: archive
-        url: https://ffmpeg.org/releases/ffmpeg-7.1.tar.xz
-        sha256: 40973d44970dbc83ef302b0609f2e74982be2d85916dd2ee7472d30678a7abe6
+        url: https://ffmpeg.org/releases/ffmpeg-7.1.1.tar.xz
+        sha256: 733984395e0dbbe5c046abda2dc49a5544e7e0e1e2366bba849222ae9e3a03b1
 
   - name: libspatialaudio
     buildsystem: cmake-ninja
@@ -317,7 +317,7 @@ modules:
       - type: git
         url: https://gitlab.com/ddennedy/glaxnimate
         disable-shallow-clone: true
-        commit: 1a443558b326cc627a6b8d5434b8ba9ad566566c
+        commit: a6404e71ecfd06cc1cae24acee9646a0d722c5f3
         # branch: v0.5.4
 
   - name: rubberband
@@ -326,8 +326,8 @@ modules:
       - /bin
     sources: 
       - type: archive
-        url: https://breakfastquay.com/files/releases/rubberband-3.3.0.tar.bz2
-        sha256: d9ef89e2b8ef9f85b13ac3c2faec30e20acf2c9f3a9c8c45ce637f2bc95e576c
+        url: https://breakfastquay.com/files/releases/rubberband-4.0.0.tar.bz2
+        sha256: af050313ee63bc18b35b2e064e5dce05b276aaf6d1aa2b8a82ced1fe2f8028e9
 
   - name: bigsh0t
     buildsystem: cmake-ninja
@@ -383,21 +383,21 @@ modules:
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: cd93d17eb6a6bb3c6f76d611772d798edf5c89cd
+        commit: e645e9348d322a9bf4c91c1f369850bbafea3e93
 
   - name: shotcut
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
-      - -DSHOTCUT_VERSION=25.03.13
+      - -DSHOTCUT_VERSION=25.04.25
     post-install:
       - install -d /app/extensions/Plugins
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
-        commit: 0e18ba3f4e87f5910a21be9a5620e8f98b40d0a5
-        # tag: v25.03.13
+        commit: ed644034c9d564ab03ddafb1d3587f20160de96f
+        # tag: v25.04.25
 
   - name: gopro2gpx
     buildsystem: cmake-ninja
