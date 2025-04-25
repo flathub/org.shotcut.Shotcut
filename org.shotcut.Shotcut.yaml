@@ -368,8 +368,8 @@ modules:
       - /bin/*
     sources:
       - type: git
-        url: https://github.com/opencv/opencv.git
-        commit: 829495355d7da3f073828dd584f1cdba9e07dc65
+        url: https://github.com/ddennedy/opencv.git
+        commit: d1201b2ec2245823b16a930841af6ae3661f930d
         # branch: '4.x'
 
   - name: mlt
