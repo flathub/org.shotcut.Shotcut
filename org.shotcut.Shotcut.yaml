@@ -374,8 +374,6 @@ modules:
   - name: mlt
     buildsystem: cmake-ninja
     config-opts:
-      - -DMOD_QT=OFF
-      - -DMOD_QT6=ON
       - -DMOD_GLAXNIMATE_QT6=ON
       - -DMOD_OPENCV=ON
       - -DUSE_VST2=OFF
