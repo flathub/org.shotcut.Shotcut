@@ -2,7 +2,7 @@ app-id: org.shotcut.Shotcut
 default-branch: beta
 desktop-file-name-suffix: ' (Beta)'
 runtime: org.kde.Platform
-runtime-version: '6.8'
+runtime-version: '6.9'
 sdk: org.kde.Sdk
 command: shotcut
 finish-args:
@@ -62,15 +62,6 @@ modules:
       - type: archive
         url: https://github.com/ggerganov/whisper.cpp/archive/refs/tags/v1.7.4.tar.gz
         sha256: 9ce7b33028793fcbf62f81f1fd087af7778dace8772eaba8c43c66bf0c8a3eed
-
-  - name: whisper-model
-    buildsystem: simple
-    build-commands:
-      - install -Dm644 ggml-base-q5_1.bin -t /app/share/shotcut/whisper_models
-    sources:
-      - type: file
-        url: https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-base-q5_1.bin
-        sha256: 422f1ae452ade6f30a004d7e5c6a43195e4433bc370bf23fac9cc591f01a8898
 
   - name: eigen
     buildsystem: cmake-ninja
@@ -159,7 +150,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/dyne/frei0r.git
-        commit: 3d288d95a7f4cc0347e4daf8bc65d2336732754f
+        commit: b47c180376dc0ebfb9f57ca9373070eb8afcf9e9
         # tag: v2.3.3
 
   - name: ladspa-sdk
@@ -244,6 +235,7 @@ modules:
     sources:
       - type: git
         url: https://gitlab.com/AOMediaCodec/SVT-AV1.git
+        # Newer versions fail to build because they try to download during build.
         commit: 6e69def4ec283fe0b71195671245c3b768bebdef
         tag: v2.3.0
 
@@ -383,21 +375,21 @@ modules:
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: e645e9348d322a9bf4c91c1f369850bbafea3e93
+        commit: a6c53ba1ac0b54c7950f904cce03e45d47ae5baf
 
   - name: shotcut
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
-      - -DSHOTCUT_VERSION=25.04.25
+      - -DSHOTCUT_VERSION=25.07.07
     post-install:
       - install -d /app/extensions/Plugins
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
-        commit: ed644034c9d564ab03ddafb1d3587f20160de96f
-        # tag: v25.04.25
+        commit: 82640f1e04d3b9b1328a5afefcf1ee3a8ba422a3
+        # tag: v25.07.07
 
   - name: gopro2gpx
     buildsystem: cmake-ninja
