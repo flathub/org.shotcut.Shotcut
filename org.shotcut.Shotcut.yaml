@@ -370,6 +370,7 @@ modules:
       - -DMOD_OPENCV=ON
       - -DMOD_SPATIALAUDIO=ON
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
+      - -DCMAKE_PREFIX_PATH=/app
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
