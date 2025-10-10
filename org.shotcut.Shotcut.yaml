@@ -60,8 +60,8 @@ modules:
       - install -Dm755 bin/whisper-cli -t /app/bin
     sources:
       - type: archive
-        url: https://github.com/ggerganov/whisper.cpp/archive/refs/tags/v1.7.6.tar.gz
-        sha256: 166140e9a6d8a36f787a2bd77f8f44dd64874f12dd8359ff7c1f4f9acb86202e
+        url: https://github.com/ggerganov/whisper.cpp/archive/refs/tags/v1.8.0.tar.gz
+        sha256: c006a5e472ee41e7a733d0bf7326e339c8b281d3a91a1c8a35468fa0a051940f
 
   - name: eigen
     buildsystem: cmake-ninja
@@ -72,8 +72,8 @@ modules:
       - '*'
     sources:
       - type: archive
-        url: https://gitlab.com/libeigen/eigen/-/archive/3.4.0/eigen-3.4.0.tar.bz2
-        sha256: b4c198460eba6f28d34894e3a5710998818515104d6e74e5cc331ce31e46e626
+        url: https://gitlab.com/libeigen/eigen/-/archive/5.0.0/eigen-5.0.0.tar.bz2
+        sha256: bdca0ec740fb83be21fe038699923f4c589ead9ab904f4058a9c97752e60d50b
 
   - name: fftw-float
     config-opts:
@@ -115,7 +115,7 @@ modules:
       - type: git
         url: https://github.com/ddennedy/movit.git
         # branch: shotcut-opengl3
-        commit: b24f99a4c2265874a3c61d894651d82bd94f58a6
+        commit: c647b2a0edc1e3a2c2d8600c3f822f5d48268793
 
   - name: sox
     config-opts:
@@ -139,8 +139,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/georgmartius/vid.stab.git
-        commit: 90c76aca2cb06c3ff6f7476a7cd6851b39436656
-        tag: v1.1.1
+        commit: 4bd81e3cdd778e2e0edc591f14bba158ec40cfa1
   
   - name: frei0r-plugins
     buildsystem: cmake-ninja
@@ -150,8 +149,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/dyne/frei0r.git
-        commit: b47c180376dc0ebfb9f57ca9373070eb8afcf9e9
-        # tag: v2.3.3
+        commit: 0dbbac5258c518e596a64fedcbb1198403dcc981
+        tag: v2.5.0
 
   - name: ladspa-sdk
     no-autogen: true
@@ -235,8 +234,8 @@ modules:
     sources:
       - type: git
         url: https://gitlab.com/AOMediaCodec/SVT-AV1.git
-        commit: cc569c1eb16832b7f1a649cac0b3bd1a8e4a814d
-        tag: v3.1.0
+        commit: b33dcc56cc64fcb3b3569094af8ab1d0d81ab4c1
+        tag: v3.1.2
 
   - name: ffmpeg
     config-opts:
@@ -273,8 +272,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/FFmpeg/FFmpeg.git
-        # branch: 7.1 (with svtav1 fix)
-        commit: 68b5db246407f0b0e398ce3b10ee57f738f0c524
+        # branch: release/8.0
+        commit: dd00a614e16a15db0b230dfe45790e913e593695
 
   - name: libspatialaudio
     buildsystem: cmake-ninja
@@ -367,29 +366,29 @@ modules:
   - name: mlt
     buildsystem: cmake-ninja
     config-opts:
-      - -DMOD_QT=OFF
-      - -DMOD_QT6=ON
       - -DMOD_GLAXNIMATE_QT6=ON
       - -DMOD_OPENCV=ON
+      - -DMOD_SPATIALAUDIO=ON
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
+      - -DCMAKE_PREFIX_PATH=/app
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: 8988ffd6677a89445e6307ba7035241abbce3a70
+        commit: cc9b54a23a0170ae96f8f51eada9a5f6bc5f0641
 
   - name: shotcut
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
-      - -DSHOTCUT_VERSION=25.08.16
+      - -DSHOTCUT_VERSION=25.10.9
     post-install:
       - install -d /app/extensions/Plugins
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
-        commit: 9e8530664706177650d536e725964dddbd2716c0
-        tag: v25.08.16
+        commit: 28045a5bff785c4a52504ede8b1f902df2b29225
+        tag: v25.10.9
 
   - name: gopro2gpx
     buildsystem: cmake-ninja
