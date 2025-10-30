@@ -273,7 +273,7 @@ modules:
       - type: git
         url: https://github.com/FFmpeg/FFmpeg.git
         # branch: release/8.0
-        commit: dd00a614e16a15db0b230dfe45790e913e593695
+        commit: 71007e6c1255432d8e23f629efa2b6fd37214bc7
 
   - name: libspatialaudio
     buildsystem: cmake-ninja
@@ -374,7 +374,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: cc9b54a23a0170ae96f8f51eada9a5f6bc5f0641
+        commit: 708caef19bee18d08965e78752a62d6ae7a470fa
 
   - name: shotcut
     buildsystem: cmake-ninja
@@ -382,14 +382,14 @@ modules:
     config-opts:
       - -DEXTERNAL_LAUNCHERS=OFF
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
-      - -DSHOTCUT_VERSION=25.10.11
+      - -DSHOTCUT_VERSION=25.10.29
     post-install:
       - install -d /app/extensions/Plugins
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
-        commit: 98bca34b93d21b4d3ff05e033bea041631a48587
-        # tag: v25.10.9
+        commit: e8f28ba7faea42a2e29fd06f5f58a285b8c0c5ba
+        # tag: v25.10.29
 
   - name: gopro2gpx
     buildsystem: cmake-ninja
