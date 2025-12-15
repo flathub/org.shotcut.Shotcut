@@ -138,8 +138,8 @@ modules:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
     sources:
       - type: git
-        url: https://github.com/ddennedy/vid.stab.git
-        commit: 7cef79c495caac7d87cd284f9b38b91eb412a57e
+        url: https://github.com/georgmartius/vid.stab.git
+        commit: 6686ba880a3506f9c701b640f67f5cad48f07959
   
   - name: frei0r-plugins
     buildsystem: cmake-ninja
@@ -362,7 +362,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/ddennedy/opencv.git
-        commit: d1201b2ec2245823b16a930841af6ae3661f930d
+        commit: b611857e971810998d4f43b893eb201b7c998af9
         # branch: '4.x'
 
   - name: mlt
