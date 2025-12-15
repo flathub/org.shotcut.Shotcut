@@ -138,8 +138,8 @@ modules:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
     sources:
       - type: git
-        url: https://github.com/georgmartius/vid.stab.git
-        commit: 4bd81e3cdd778e2e0edc591f14bba158ec40cfa1
+        url: https://github.com/ddennedy/vid.stab.git
+        commit: 7cef79c495caac7d87cd284f9b38b91eb412a57e
   
   - name: frei0r-plugins
     buildsystem: cmake-ninja
