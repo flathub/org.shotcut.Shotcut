@@ -283,8 +283,9 @@ modules:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
     sources:
       - type: git
-        url: https://github.com/videolabs/libspatialaudio.git
-        commit: 0b6b25eba39fe1d2f4a981867957b9dcf62016db
+        url: https://github.com/ddennedy/libspatialaudio.git
+        # branch: patch-1
+        commit: 3affdb8b50bfb4cb0437324dcee933c53cb1b4c0
 
   - name: potrace
     config-opts:
