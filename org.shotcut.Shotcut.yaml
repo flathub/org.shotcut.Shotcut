@@ -1,7 +1,7 @@
 app-id: org.shotcut.Shotcut
 default-branch: stable
 runtime: org.kde.Platform
-runtime-version: '6.8'
+runtime-version: '6.10'
 sdk: org.kde.Sdk
 command: shotcut
 finish-args:
@@ -138,7 +138,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/georgmartius/vid.stab.git
-        commit: 4bd81e3cdd778e2e0edc591f14bba158ec40cfa1
+        commit: 6686ba880a3506f9c701b640f67f5cad48f07959
   
   - name: frei0r-plugins
     buildsystem: cmake-ninja
@@ -148,8 +148,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/dyne/frei0r.git
-        commit: 0dbbac5258c518e596a64fedcbb1198403dcc981
-        tag: v2.5.0
+        commit: f081aa64d4fb99fb1f16dce7dff8d6a989794afa
+        tag: v2.5.1
 
   - name: ladspa-sdk
     no-autogen: true
@@ -183,9 +183,10 @@ modules:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
       - -DENABLE_CLI=OFF
     sources:
-      - type: archive
-        url: https://bitbucket.org/multicoreware/x265_git/downloads/x265_4.1.tar.gz
-        sha256: a31699c6a89806b74b0151e5e6a7df65de4b49050482fe5ebf8a4379d7af8f29
+      - type: git
+        url: https://bitbucket.org/multicoreware/x265_git.git
+        disable-shallow-clone: true
+        commit: 9e551a994f970a24f0e49bcebe3d43ef08448b01
 
   - name: nv-codec-headers
     no-autogen: true
@@ -272,7 +273,7 @@ modules:
       - type: git
         url: https://github.com/FFmpeg/FFmpeg.git
         # branch: release/8.0
-        commit: 71007e6c1255432d8e23f629efa2b6fd37214bc7
+        commit: dc8af5879d98f922281ced1a7067caa35267e8f5
 
   - name: libspatialaudio
     buildsystem: cmake-ninja
@@ -281,8 +282,9 @@ modules:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
     sources:
       - type: git
-        url: https://github.com/videolabs/libspatialaudio.git
-        commit: 0b6b25eba39fe1d2f4a981867957b9dcf62016db
+        url: https://github.com/ddennedy/libspatialaudio.git
+        # branch: patch-1
+        commit: 3affdb8b50bfb4cb0437324dcee933c53cb1b4c0
 
   - name: potrace
     config-opts:
@@ -359,7 +361,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/ddennedy/opencv.git
-        commit: d1201b2ec2245823b16a930841af6ae3661f930d
+        commit: b611857e971810998d4f43b893eb201b7c998af9
         # branch: '4.x'
 
   - name: mlt
@@ -374,7 +376,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: a3018f9b4953522fe3f1178fe3c173d8eb8857da
+        commit: 678193bda13a1ce0e100056157ade41db3384e2a
+        tag: v7.36.0
 
   - name: shotcut
     buildsystem: cmake-ninja
@@ -382,14 +385,14 @@ modules:
     config-opts:
       - -DEXTERNAL_LAUNCHERS=OFF
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
-      - -DSHOTCUT_VERSION=25.10.31
+      - -DSHOTCUT_VERSION=25.12.15
     post-install:
       - install -d /app/extensions/Plugins
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
-        commit: 31bcef40ed9bc677435c47e91e83a2bf9d2dcb89
-        tag: v25.10.31
+        commit: d7f4f96ed45d47bbddccf97631a64e825d829499
+        tag: v25.12.30
 
   - name: gopro2gpx
     buildsystem: cmake-ninja
