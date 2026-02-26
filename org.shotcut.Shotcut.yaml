@@ -148,7 +148,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/dyne/frei0r.git
-        commit: 74edaeb1b69081017f0c80dd4cebac15cf375e62
+        commit: ced05b4fcb94481d9b8fb81b4af3e63bd8026491
         # tag: v2.5.1
 
   - name: ladspa-sdk
@@ -273,7 +273,7 @@ modules:
       - type: git
         url: https://github.com/FFmpeg/FFmpeg.git
         # branch: release/8.0
-        commit: 50bcc96a75e40ee6978941d9e0dbb8819e905eca
+        commit: 15504610b0dc12c56e5e9f94ff06c873382368f5
 
   - name: libspatialaudio
     buildsystem: cmake-ninja
@@ -376,7 +376,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: c34d2b9ae28ec8bd183423259c01c7b466aae63c
+        commit: 139460b43c1cd410f76533e7362b563d91c73df1
         # tag: v7.36.1
 
   - name: shotcut
@@ -385,14 +385,14 @@ modules:
     config-opts:
       - -DEXTERNAL_LAUNCHERS=OFF
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
-      - -DSHOTCUT_VERSION=26.1.30
+      - -DSHOTCUT_VERSION=26.2.26
     post-install:
       - install -d /app/extensions/Plugins
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
-        commit: f90563e063c6e02bf6e36bb031f358ad6bdcabc3
-        tag: v26.1.30
+        commit: 9a033bb052952bce9d632d292e841157f806d3d7
+        tag: v26.2.26
 
   - name: gopro2gpx
     buildsystem: cmake-ninja
