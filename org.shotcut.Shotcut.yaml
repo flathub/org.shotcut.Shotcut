@@ -147,6 +147,8 @@ modules:
     builddir: true
     config-opts:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
+      - -DWITHOUT_GAVL=ON
+      - -DWITHOUT_OPENCV=ON
     sources:
       - type: git
         url: https://github.com/dyne/frei0r.git
