@@ -307,8 +307,7 @@ modules:
       - -DPotrace_PREFIX=/app
       - -DLibav_PREFIX=/app
       - -DCMAKE_PREFIX_PATH=/app
-    build-commands:
-      - ninja translations
+      - -DQT_MAJOR_VERSION=6
     sources:
       - type: git
         url: https://invent.kde.org/graphics/glaxnimate.git
