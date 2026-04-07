@@ -153,7 +153,7 @@ modules:
       - type: git
         url: https://github.com/dyne/frei0r.git
         commit: 530f7e6388c6931f20aa2ca9e4ea33a60df7aca7
-        # tag: v2.5.6
+        tag: v2.5.6
 
   - name: ladspa-sdk
     no-autogen: true
