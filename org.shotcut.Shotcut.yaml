@@ -22,14 +22,14 @@ finish-args:
 add-extensions:
   org.freedesktop.LinuxAudio.Plugins:
     directory: extensions/Plugins
-    version: '24.08'
+    version: '25.08'
     add-ld-path: lib
     merge-dirs: ladspa
     subdirectories: true
     no-autodownload: true
   org.freedesktop.LinuxAudio.Plugins.swh:
     directory: extensions/Plugins/swh
-    version: '24.08'
+    version: '25.08'
     add-ld-path: lib
     merge-dirs: ladspa
     autodelete: false
@@ -52,6 +52,7 @@ modules:
       - -DBUILD_TESTING=OFF
       - -DBUILD_APPS=OFF
       - -DENABLE_AVX512=ON
+      - -DGGML_VULKAN=1
     cleanup:
       - '/include'
       - '/lib/cmake'
@@ -60,8 +61,8 @@ modules:
       - install -Dm755 bin/whisper-cli -t /app/bin
     sources:
       - type: archive
-        url: https://github.com/ggerganov/whisper.cpp/archive/refs/tags/v1.8.0.tar.gz
-        sha256: c006a5e472ee41e7a733d0bf7326e339c8b281d3a91a1c8a35468fa0a051940f
+        url: https://github.com/ggerganov/whisper.cpp/archive/refs/tags/v1.8.3.tar.gz
+        sha256: 870ba21409cdf66697dc4db15ebdb13bc67037d76c7cc63756c81471d8f1731a
 
   - name: eigen
     buildsystem: cmake-ninja
@@ -146,11 +147,13 @@ modules:
     builddir: true
     config-opts:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
+      - -DWITHOUT_GAVL=ON
+      - -DWITHOUT_OPENCV=ON
     sources:
       - type: git
         url: https://github.com/dyne/frei0r.git
-        commit: ced05b4fcb94481d9b8fb81b4af3e63bd8026491
-        # tag: v2.5.1
+        commit: 530f7e6388c6931f20aa2ca9e4ea33a60df7aca7
+        tag: v2.5.6
 
   - name: ladspa-sdk
     no-autogen: true
@@ -273,8 +276,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/FFmpeg/FFmpeg.git
-        # branch: release/8.0
-        commit: 15504610b0dc12c56e5e9f94ff06c873382368f5
+        # branch: release/8.1
+        commit: a3475e255464a68aee4643d45eb34b686b29bda0
 
   - name: libspatialaudio
     buildsystem: cmake-ninja
@@ -304,14 +307,13 @@ modules:
       - -DPotrace_PREFIX=/app
       - -DLibav_PREFIX=/app
       - -DCMAKE_PREFIX_PATH=/app
-    build-commands:
-      - ninja translations
+      - -DQT_MAJOR_VERSION=6
     sources:
       - type: git
-        url: https://gitlab.com/ddennedy/glaxnimate
+        url: https://invent.kde.org/graphics/glaxnimate.git
         disable-shallow-clone: true
-        commit: a6404e71ecfd06cc1cae24acee9646a0d722c5f3
-        # branch: v0.5.4
+        commit: d6d3373778954785afd8de3a78ae59ea8413704e
+        # branch: 0.6
 
   - name: rubberband
     buildsystem: meson
@@ -376,7 +378,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: 6d02cfef0a50a22206ccd6ad3cc2a8ec51e908d3
+        commit: d3463fadbb564112e8403e70568b3c2a32be1089
 
   - name: shotcut
     buildsystem: cmake-ninja
@@ -384,14 +386,14 @@ modules:
     config-opts:
       - -DEXTERNAL_LAUNCHERS=OFF
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
-      - -DSHOTCUT_VERSION=26.1.16
+      - -DSHOTCUT_VERSION=26.4.6
     post-install:
       - install -d /app/extensions/Plugins
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
-        commit: bed7c3d7e47a318aef407cb6e74908ed84928d77
-        tag: v26.2.16
+        commit: 99409f9a3cac52eb230ffd873cf45c25ccf2b200
+        tag: v26.4.6
 
   - name: gopro2gpx
     buildsystem: cmake-ninja
