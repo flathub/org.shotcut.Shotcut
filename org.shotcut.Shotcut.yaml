@@ -156,6 +156,8 @@ modules:
       - INSTALL_BINARY_DIR=/app/bin
     cleanup:
       - /bin
+    post-install:
+      - install -Dm644 ../doc/COPYING -t $FLATPAK_DEST/share/licenses/$FLATPAK_ID/ladspa-sdk/
     sources:
       - type: archive
         url: https://deb.debian.org/debian/pool/main/l/ladspa-sdk/ladspa-sdk_1.17.orig.tar.gz
