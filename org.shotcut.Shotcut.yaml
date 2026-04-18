@@ -51,10 +51,6 @@ modules:
       - -DBUILD_TESTING=OFF
       - -DBUILD_APPS=OFF
       - -DENABLE_AVX512=OFF
-    cleanup:
-      - '/include'
-      - '/lib/cmake'
-      - '/lib/pkgconfig'
     post-install:
       - install -Dm755 bin/whisper-cli -t /app/bin
     sources:
@@ -356,7 +352,6 @@ modules:
       - -DWITH_GTK=OFF
       - -DWITH_CAROTENE=OFF # for ARM
     cleanup:
-      - /lib/cmake
       - /bin/*
     sources:
       - type: git
