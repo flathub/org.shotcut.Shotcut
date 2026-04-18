@@ -303,6 +303,9 @@ modules:
       - -DCMAKE_PREFIX_PATH=/app
     build-commands:
       - ninja translations
+    post-install:
+      - mkdir -p $FLATPAK_DEST/share/licenses/$FLATPAK_ID/glaxnimate/
+      - cp ../LICENSES/* $FLATPAK_DEST/share/licenses/$FLATPAK_ID/glaxnimate/
     sources:
       - type: git
         url: https://gitlab.com/ddennedy/glaxnimate
