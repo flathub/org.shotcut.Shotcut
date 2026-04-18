@@ -97,7 +97,7 @@ modules:
 
   - name: zimg
     cleanup:
-      - /share
+      - /share/doc/
     sources:
       - type: git
         url: https://github.com/sekrit-twc/zimg.git
