@@ -330,6 +330,9 @@ modules:
     no-make-install: true
     post-install:
       - cp -v bigsh0t-*-linux/lib/frei0r-1/*.so /app/lib/frei0r-1
+      # Copy missing GPLv2 licence file form the FFMPEG
+      - mkdir -p /app/share/licenses/$FLATPAK_ID/bigsh0t/
+      - cp /app/share/licenses/org.shotcut.Shotcut/ffmpeg/COPYING.GPLv2 /app/share/licenses/$FLATPAK_ID/bigsh0t/COPYING
     sources:
       - type: git
         url: https://bitbucket.org/leo_sutic/bigsh0t.git
