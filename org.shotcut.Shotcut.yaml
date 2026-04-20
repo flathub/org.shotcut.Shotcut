@@ -51,10 +51,6 @@ modules:
       - -DBUILD_TESTING=OFF
       - -DBUILD_APPS=OFF
       - -DENABLE_AVX512=OFF
-    cleanup:
-      - '/include'
-      - '/lib/cmake'
-      - '/lib/pkgconfig'
     post-install:
       - install -Dm755 bin/whisper-cli -t /app/bin
     sources:
@@ -101,7 +97,7 @@ modules:
 
   - name: zimg
     cleanup:
-      - /share
+      - /share/doc/
     sources:
       - type: git
         url: https://github.com/sekrit-twc/zimg.git
@@ -160,6 +156,8 @@ modules:
       - INSTALL_BINARY_DIR=/app/bin
     cleanup:
       - /bin
+    post-install:
+      - install -Dm644 ../doc/COPYING -t $FLATPAK_DEST/share/licenses/$FLATPAK_ID/ladspa-sdk/
     sources:
       - type: archive
         url: https://deb.debian.org/debian/pool/main/l/ladspa-sdk/ladspa-sdk_1.17.orig.tar.gz
@@ -305,6 +303,9 @@ modules:
       - -DCMAKE_PREFIX_PATH=/app
     build-commands:
       - ninja translations
+    post-install:
+      - mkdir -p $FLATPAK_DEST/share/licenses/$FLATPAK_ID/glaxnimate/
+      - cp ../LICENSES/* $FLATPAK_DEST/share/licenses/$FLATPAK_ID/glaxnimate/
     sources:
       - type: git
         url: https://gitlab.com/ddennedy/glaxnimate
@@ -329,6 +330,9 @@ modules:
     no-make-install: true
     post-install:
       - cp -v bigsh0t-*-linux/lib/frei0r-1/*.so /app/lib/frei0r-1
+      # Copy missing GPLv2 licence file form the FFMPEG
+      - mkdir -p /app/share/licenses/$FLATPAK_ID/bigsh0t/
+      - cp /app/share/licenses/org.shotcut.Shotcut/ffmpeg/COPYING.GPLv2 /app/share/licenses/$FLATPAK_ID/bigsh0t/COPYING
     sources:
       - type: git
         url: https://bitbucket.org/leo_sutic/bigsh0t.git
@@ -356,7 +360,6 @@ modules:
       - -DWITH_GTK=OFF
       - -DWITH_CAROTENE=OFF # for ARM
     cleanup:
-      - /lib/cmake
       - /bin/*
     sources:
       - type: git
