@@ -43,6 +43,26 @@ cleanup:
   - '*.la'
 modules:
 
+  - name: rnnoise
+    config-opts:
+      - --enable-shared
+      - --disable-static
+      - --disable-examples
+      - --disable-doc
+    build-options:
+      arch:
+        x86_64:
+          config-opts:
+            - --enable-x86-rtcd
+    sources:
+      - type: git
+        url: https://github.com/xiph/rnnoise.git
+        # branch: main
+        commit: 70f1d256acd4b34a572f999a05c87bf00b67730d
+      - type: file
+        url: https://media.xiph.org/rnnoise/models/rnnoise_data-0a8755f8e2d834eff6a54714ecc7d75f9932e845df35f8b59bc52a7cfe6e8b37.tar.gz
+        sha256: 0a8755f8e2d834eff6a54714ecc7d75f9932e845df35f8b59bc52a7cfe6e8b37
+
   - name: whisper.cpp
     buildsystem: cmake-ninja
     builddir: true
@@ -152,8 +172,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/dyne/frei0r.git
-        commit: 530f7e6388c6931f20aa2ca9e4ea33a60df7aca7
-        tag: v2.5.6
+        commit: 32e91405d2ec5e222f75175b36dc4cc7bc0667ef
+        tag: v3.1.3
 
   - name: ladspa-sdk
     no-autogen: true
@@ -277,7 +297,7 @@ modules:
       - type: git
         url: https://github.com/FFmpeg/FFmpeg.git
         # branch: release/8.1
-        commit: a3475e255464a68aee4643d45eb34b686b29bda0
+        commit: 58d4114d36f22118c94f3e402c5c658d1790a5ee
 
   - name: libspatialaudio
     buildsystem: cmake-ninja
@@ -287,8 +307,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ddennedy/libspatialaudio.git
-        # branch: patch-1
-        commit: 3affdb8b50bfb4cb0437324dcee933c53cb1b4c0
+        # branch: shotcut
+        commit: 83013ef86805e94e2c5391f5b2bb1530288df7f7
 
   - name: potrace
     config-opts:
@@ -378,7 +398,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: d3463fadbb564112e8403e70568b3c2a32be1089
+        commit: 5abf38d3203eef94079ed0fcd1391f818195ec07
 
   - name: shotcut
     buildsystem: cmake-ninja
@@ -386,14 +406,14 @@ modules:
     config-opts:
       - -DEXTERNAL_LAUNCHERS=OFF
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
-      - -DSHOTCUT_VERSION=26.4.6
+      - -DSHOTCUT_VERSION=26.6.1
     post-install:
       - install -d /app/extensions/Plugins
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
-        commit: 99409f9a3cac52eb230ffd873cf45c25ccf2b200
-        tag: v26.4.6
+        commit: 723a5f8a225419a1b2e4b7e5fbd5551f4423a84b
+        tag: v26.6.1
 
   - name: gopro2gpx
     buildsystem: cmake-ninja
