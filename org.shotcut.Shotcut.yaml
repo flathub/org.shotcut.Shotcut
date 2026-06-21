@@ -19,6 +19,7 @@ finish-args:
   - --env=FREI0R_PATH=/app/lib/frei0r-1
   - --env=LADSPA_PATH=/app/extensions/Plugins/ladspa:/app/lib/ladspa
   - --env=QT_QUICK_CONTROLS_CONF=:/resources/qtquickcontrols2-dark.conf
+  - --env=QT_PLUGIN_PATH=/app/lib/qt6:/usr/lib/plugins
 add-extensions:
   org.freedesktop.LinuxAudio.Plugins:
     directory: extensions/Plugins
@@ -168,8 +169,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/dyne/frei0r.git
-        commit: 32e91405d2ec5e222f75175b36dc4cc7bc0667ef
-        tag: v3.1.3
+        commit: 35114208c2633e7d7457a9eec7315283b56eedca
+        tag: v3.2.1
 
   - name: ladspa-sdk
     no-autogen: true
@@ -401,22 +402,24 @@ modules:
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: 5abf38d3203eef94079ed0fcd1391f818195ec07
+        commit: c2180a85d816e40c97afca9393c7010e011a121e
 
   - name: shotcut
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
+      - -DBUILD_MINIMAL_MEDIA_BACKEND=ON
       - -DEXTERNAL_LAUNCHERS=OFF
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
-      - -DSHOTCUT_VERSION=26.6.1
+      - -DSHOTCUT_VERSION=26.6.20
     post-install:
       - install -d /app/extensions/Plugins
+      - install -vD MinimalMediaBackend/libminimalmediaplugin.so /app/lib/qt6/multimedia/libminimalmediaplugin.so
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
-        commit: 723a5f8a225419a1b2e4b7e5fbd5551f4423a84b
-        tag: v26.6.1
+        commit: a5020724fddb4e2fa66e9bcec69bdad5e8fb045e
+        # tag: v26.6.20
 
   - name: gopro2gpx
     buildsystem: cmake-ninja
