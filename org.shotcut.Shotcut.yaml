@@ -43,6 +43,26 @@ cleanup:
   - '*.la'
 modules:
 
+  - name: rnnoise
+    config-opts:
+      - --enable-shared
+      - --disable-static
+      - --disable-examples
+      - --disable-doc
+    build-options:
+      arch:
+        x86_64:
+          config-opts:
+            - --enable-x86-rtcd
+    sources:
+      - type: git
+        url: https://github.com/xiph/rnnoise.git
+        # branch: main
+        commit: 70f1d256acd4b34a572f999a05c87bf00b67730d
+      - type: file
+        url: https://media.xiph.org/rnnoise/models/rnnoise_data-0a8755f8e2d834eff6a54714ecc7d75f9932e845df35f8b59bc52a7cfe6e8b37.tar.gz
+        sha256: 0a8755f8e2d834eff6a54714ecc7d75f9932e845df35f8b59bc52a7cfe6e8b37
+
   - name: whisper.cpp
     buildsystem: cmake-ninja
     builddir: true
@@ -148,8 +168,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/dyne/frei0r.git
-        commit: 35114208c2633e7d7457a9eec7315283b56eedca
-        tag: v3.2.1
+        commit: 3713d779b46e04fb88d914a58287d8e717a70559
+        tag: v3.2.2
 
   - name: ladspa-sdk
     no-autogen: true
