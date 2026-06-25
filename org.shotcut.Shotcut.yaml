@@ -275,7 +275,7 @@ modules:
       - type: git
         url: https://github.com/FFmpeg/FFmpeg.git
         # branch: release/8.1
-        commit: a3475e255464a68aee4643d45eb34b686b29bda0
+        commit: 38b88335f99e76ed89ff3c93f877fdefce736c13
 
   - name: libspatialaudio
     buildsystem: cmake-ninja
@@ -286,7 +286,7 @@ modules:
       - type: git
         url: https://github.com/ddennedy/libspatialaudio.git
         # branch: patch-1
-        commit: 3affdb8b50bfb4cb0437324dcee933c53cb1b4c0
+        commit: 83013ef86805e94e2c5391f5b2bb1530288df7f7
 
   - name: potrace
     config-opts:
@@ -382,7 +382,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: c2180a85d816e40c97afca9393c7010e011a121e
+        commit: bef9d89c0c279e558d9625dac3399c2aa3d961bc
+        tag: v7.40.0
 
   - name: shotcut
     buildsystem: cmake-ninja
@@ -391,15 +392,15 @@ modules:
       - -DBUILD_MINIMAL_MEDIA_BACKEND=ON
       - -DEXTERNAL_LAUNCHERS=OFF
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
-      - -DSHOTCUT_VERSION=26.6.20
+      - -DSHOTCUT_VERSION=26.6.25
     post-install:
       - install -d /app/extensions/Plugins
       - install -vD MinimalMediaBackend/libminimalmediaplugin.so /app/lib/qt6/multimedia/libminimalmediaplugin.so
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
-        commit: a5020724fddb4e2fa66e9bcec69bdad5e8fb045e
-        # tag: v26.6.20
+        commit: 76c00554556af1194cbd53a8a816132d1f884caa
+        tag: v26.6.25
 
   - name: gopro2gpx
     buildsystem: cmake-ninja
