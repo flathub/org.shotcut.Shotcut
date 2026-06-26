@@ -18,6 +18,7 @@ finish-args:
   - --env=FREI0R_PATH=/app/lib/frei0r-1
   - --env=LADSPA_PATH=/app/extensions/Plugins/ladspa:/app/lib/ladspa
   - --env=QT_QUICK_CONTROLS_CONF=:/resources/qtquickcontrols2-dark.conf
+  - --env=QT_PLUGIN_PATH=/app/lib/qt6:/usr/lib/plugins
 add-extensions:
   org.freedesktop.LinuxAudio.Plugins:
     directory: extensions/Plugins
@@ -41,6 +42,26 @@ cleanup:
   - '*.a'
   - '*.la'
 modules:
+
+  - name: rnnoise
+    config-opts:
+      - --enable-shared
+      - --disable-static
+      - --disable-examples
+      - --disable-doc
+    build-options:
+      arch:
+        x86_64:
+          config-opts:
+            - --enable-x86-rtcd
+    sources:
+      - type: git
+        url: https://github.com/xiph/rnnoise.git
+        # branch: main
+        commit: 70f1d256acd4b34a572f999a05c87bf00b67730d
+      - type: file
+        url: https://media.xiph.org/rnnoise/models/rnnoise_data-0a8755f8e2d834eff6a54714ecc7d75f9932e845df35f8b59bc52a7cfe6e8b37.tar.gz
+        sha256: 0a8755f8e2d834eff6a54714ecc7d75f9932e845df35f8b59bc52a7cfe6e8b37
 
   - name: whisper.cpp
     buildsystem: cmake-ninja
@@ -147,8 +168,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/dyne/frei0r.git
-        commit: 069cca5ff5bed24b881cbe75fd0c8189cf21e701
-        tag: v3.1.2
+        commit: 3713d779b46e04fb88d914a58287d8e717a70559
+        tag: v3.2.2
 
   - name: ladspa-sdk
     no-autogen: true
@@ -274,7 +295,7 @@ modules:
       - type: git
         url: https://github.com/FFmpeg/FFmpeg.git
         # branch: release/8.1
-        commit: a3475e255464a68aee4643d45eb34b686b29bda0
+        commit: 38b88335f99e76ed89ff3c93f877fdefce736c13
 
   - name: libspatialaudio
     buildsystem: cmake-ninja
@@ -285,7 +306,7 @@ modules:
       - type: git
         url: https://github.com/ddennedy/libspatialaudio.git
         # branch: patch-1
-        commit: 3affdb8b50bfb4cb0437324dcee933c53cb1b4c0
+        commit: 83013ef86805e94e2c5391f5b2bb1530288df7f7
 
   - name: potrace
     config-opts:
@@ -381,23 +402,25 @@ modules:
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: 08c2b3b8bf5ace94322ea9f8a2d31f0bab39b8c2
-        # tag: v7.36.1
+        commit: bef9d89c0c279e558d9625dac3399c2aa3d961bc
+        tag: v7.40.0
 
   - name: shotcut
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
+      - -DBUILD_MINIMAL_MEDIA_BACKEND=ON
       - -DEXTERNAL_LAUNCHERS=OFF
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
-      - -DSHOTCUT_VERSION=26.4.30
+      - -DSHOTCUT_VERSION=26.6.25
     post-install:
       - install -d /app/extensions/Plugins
+      - install -vD MinimalMediaBackend/libminimalmediaplugin.so /app/lib/qt6/multimedia/libminimalmediaplugin.so
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
-        commit: 1da45a9de2ab3a6d3823aa455be315dc8b034cfe
-        tag: v26.4.30
+        commit: 76c00554556af1194cbd53a8a816132d1f884caa
+        tag: v26.6.25
 
   - name: gopro2gpx
     buildsystem: cmake-ninja
