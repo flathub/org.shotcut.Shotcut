@@ -78,8 +78,8 @@ modules:
       - install -Dm755 bin/whisper-cli -t /app/bin
     sources:
       - type: archive
-        url: https://github.com/ggerganov/whisper.cpp/archive/refs/tags/v1.8.7.tar.gz
-        sha256: 0b988ba5053cfa720f6d399f3f21885b01c4222178be435ca2272d6872717554
+        url: https://github.com/ggerganov/whisper.cpp/archive/refs/tags/v1.8.3.tar.gz
+        sha256: 870ba21409cdf66697dc4db15ebdb13bc67037d76c7cc63756c81471d8f1731a
 
   - name: eigen
     buildsystem: cmake-ninja
