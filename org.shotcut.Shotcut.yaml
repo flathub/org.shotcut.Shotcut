@@ -396,8 +396,11 @@ modules:
     config-opts:
       - -DMOD_GLAXNIMATE_QT6=ON
       - -DMOD_OPENCV=ON
+      - -DMOD_OPENFX=OFF
       - -DMOD_PLACEBO=OFF
       - -DMOD_SPATIALAUDIO=ON
+      - -DUSE_LV2=OFF
+      - -DUSE_VST2=OFF
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
       - -DCMAKE_PREFIX_PATH=/app
     sources:
