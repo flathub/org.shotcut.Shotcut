@@ -2,7 +2,7 @@ app-id: org.shotcut.Shotcut
 default-branch: beta
 desktop-file-name-suffix: ' (Beta)'
 runtime: org.kde.Platform
-runtime-version: '6.10'
+runtime-version: '6.11'
 sdk: org.kde.Sdk
 command: shotcut
 finish-args:
@@ -78,8 +78,8 @@ modules:
       - install -Dm755 bin/whisper-cli -t /app/bin
     sources:
       - type: archive
-        url: https://github.com/ggerganov/whisper.cpp/archive/refs/tags/v1.8.3.tar.gz
-        sha256: 870ba21409cdf66697dc4db15ebdb13bc67037d76c7cc63756c81471d8f1731a
+        url: https://github.com/ggerganov/whisper.cpp/archive/refs/tags/v1.9.1.tar.gz
+        sha256: 147267177eef7b22ec3d2476dd514d1b12e160e176230b740e3d1bd600118447
 
   - name: eigen
     buildsystem: cmake-ninja
@@ -124,7 +124,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/sekrit-twc/zimg.git
-        commit: 51c3c7f750c2af61955377faad56e3ba1b03589f
+        commit: b3647572a01927e2aa8d0b7aaa917207c9c1ae5d
 
   - name: movit
     make-args:
@@ -296,7 +296,7 @@ modules:
       - type: git
         url: https://github.com/FFmpeg/FFmpeg.git
         # branch: release/8.1
-        commit: 58d4114d36f22118c94f3e402c5c658d1790a5ee
+        commit: 94138f6973dd1ac6208ace92148ac0d172455d65
 
   - name: libspatialaudio
     buildsystem: cmake-ninja
@@ -396,13 +396,14 @@ modules:
     config-opts:
       - -DMOD_GLAXNIMATE_QT6=ON
       - -DMOD_OPENCV=ON
+      - -DMOD_PLACEBO=OFF
       - -DMOD_SPATIALAUDIO=ON
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
       - -DCMAKE_PREFIX_PATH=/app
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: c2180a85d816e40c97afca9393c7010e011a121e
+        commit: f88e1b94cf9a73f197df84fdcca71e7e79ef0e6c
 
   - name: shotcut
     buildsystem: cmake-ninja
@@ -411,15 +412,15 @@ modules:
       - -DBUILD_MINIMAL_MEDIA_BACKEND=ON
       - -DEXTERNAL_LAUNCHERS=OFF
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
-      - -DSHOTCUT_VERSION=26.6.22
+      - -DSHOTCUT_VERSION=26.7.15
     post-install:
       - install -d /app/extensions/Plugins
       - install -vD MinimalMediaBackend/libminimalmediaplugin.so /app/lib/qt6/multimedia/libminimalmediaplugin.so
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
-        commit: 7fc8aa25413bae2d8bc316f0cdfa4b8fc53e9717
-        # tag: v26.6.22
+        commit: ced7997c0a585829a422cfd9d8a6825847e8c833
+        # tag: v26.7.15
 
   - name: gopro2gpx
     buildsystem: cmake-ninja
