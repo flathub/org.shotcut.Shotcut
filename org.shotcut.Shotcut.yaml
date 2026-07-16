@@ -415,15 +415,15 @@ modules:
       - -DBUILD_MINIMAL_MEDIA_BACKEND=ON
       - -DEXTERNAL_LAUNCHERS=OFF
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
-      - -DSHOTCUT_VERSION=26.7.15
+      - -DSHOTCUT_VERSION=26.7.16
     post-install:
       - install -d /app/extensions/Plugins
       - install -vD MinimalMediaBackend/libminimalmediaplugin.so /app/lib/qt6/multimedia/libminimalmediaplugin.so
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
-        commit: ced7997c0a585829a422cfd9d8a6825847e8c833
-        # tag: v26.7.15
+        commit: 98c5c036692b4cf676020e158a20699517ed6b9c
+        # tag: v26.7.16
 
   - name: gopro2gpx
     buildsystem: cmake-ninja
