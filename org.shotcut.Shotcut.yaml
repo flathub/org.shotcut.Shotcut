@@ -169,8 +169,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/dyne/frei0r.git
-        commit: 35114208c2633e7d7457a9eec7315283b56eedca
-        tag: v3.2.1
+        commit: 0e664fdc1cad20800f7f1badbf001cfe580a64a8
+        tag: v3.5.0
 
   - name: ladspa-sdk
     no-autogen: true
@@ -295,8 +295,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/FFmpeg/FFmpeg.git
-        # branch: release/8.1
-        commit: 94138f6973dd1ac6208ace92148ac0d172455d65
+        # branch: release/9.0
+        commit: 5c8e7e243337fe635480f2436614169a25aacb81
 
   - name: libspatialaudio
     buildsystem: cmake-ninja
@@ -406,7 +406,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: f88e1b94cf9a73f197df84fdcca71e7e79ef0e6c
+        commit: 760fa4d18d0425d4ba855538237639747122c43e
 
   - name: shotcut
     buildsystem: cmake-ninja
@@ -422,8 +422,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
-        commit: 98c5c036692b4cf676020e158a20699517ed6b9c
-        # tag: v26.7.16
+        commit: c03e30209b7f79da6a8a48c8c5f56e382b655a01
+        # tag: v26.6.9
 
   - name: gopro2gpx
     buildsystem: cmake-ninja
