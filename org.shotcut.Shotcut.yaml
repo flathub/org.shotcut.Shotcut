@@ -422,7 +422,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
-        commit: c594b9a61e1aae798db4e94f727e1e621e3384c3
+        commit: 325c2cc6422d93567d4edb57f1fee401f73beea1
         tag: v26.9.27
 
   - name: gopro2gpx
