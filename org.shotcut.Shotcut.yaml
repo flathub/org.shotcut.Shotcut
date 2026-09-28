@@ -156,7 +156,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/georgmartius/vid.stab.git
-        commit: 6686ba880a3506f9c701b640f67f5cad48f07959
+        commit: 92bc0b0f369f2a88aaacf25eac3a10f8415308fc
+        tag: v1.1.2
   
   - name: frei0r-plugins
     buildsystem: cmake-ninja
@@ -168,8 +169,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/dyne/frei0r.git
-        commit: 3713d779b46e04fb88d914a58287d8e717a70559
-        tag: v3.2.2
+        commit: d63e2e3537ec9119d1376c3d8f021bc2bfe35470
+        tag: v3.6.0
 
   - name: ladspa-sdk
     no-autogen: true
@@ -294,8 +295,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/FFmpeg/FFmpeg.git
-        # branch: release/8.1
-        commit: 94138f6973dd1ac6208ace92148ac0d172455d65
+        # branch: release/9.0
+        commit: df8dce0eb35161ddf86f1979d1ed6af020f49b11
 
   - name: libspatialaudio
     buildsystem: cmake-ninja
@@ -405,7 +406,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: 8c092fd1603e7bc2fe4ac4752a2bff8553b735b8
+        commit: 0926a754fcb85b0a1a61a89c56e2a03ff3ea8270
 
   - name: shotcut
     buildsystem: cmake-ninja
@@ -414,15 +415,15 @@ modules:
       - -DBUILD_MINIMAL_MEDIA_BACKEND=ON
       - -DEXTERNAL_LAUNCHERS=OFF
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
-      - -DSHOTCUT_VERSION=26.8.1
+      - -DSHOTCUT_VERSION=26.9.27
     post-install:
       - install -d /app/extensions/Plugins
       - install -vD MinimalMediaBackend/libminimalmediaplugin.so /app/lib/qt6/multimedia/libminimalmediaplugin.so
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
-        commit: 0474a712131fe1a82d499a32f3d54be956d2963f
-        tag: v26.8.1
+        commit: 325c2cc6422d93567d4edb57f1fee401f73beea1
+        tag: v26.9.27
 
   - name: gopro2gpx
     buildsystem: cmake-ninja
