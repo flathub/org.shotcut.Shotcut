@@ -153,24 +153,25 @@ modules:
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
-      - -DCMAKE_BUILD_TYPE=RelWithDebInfo
+      - -DCMAKE_BUILD_TYPE=Release
     sources:
       - type: git
         url: https://github.com/georgmartius/vid.stab.git
-        commit: 6686ba880a3506f9c701b640f67f5cad48f07959
+        commit: 92bc0b0f369f2a88aaacf25eac3a10f8415308fc
+        tag: v1.1.2
   
   - name: frei0r-plugins
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
-      - -DCMAKE_BUILD_TYPE=RelWithDebInfo
+      - -DCMAKE_BUILD_TYPE=Release
       - -DWITHOUT_GAVL=ON
       - -DWITHOUT_OPENCV=ON
     sources:
       - type: git
         url: https://github.com/dyne/frei0r.git
-        commit: 0e664fdc1cad20800f7f1badbf001cfe580a64a8
-        tag: v3.5.0
+        commit: d63e2e3537ec9119d1376c3d8f021bc2bfe35470
+        tag: v3.6.0
 
   - name: ladspa-sdk
     no-autogen: true
@@ -203,7 +204,7 @@ modules:
     builddir: true
     subdir: source
     config-opts:
-      - -DCMAKE_BUILD_TYPE=RelWithDebInfo
+      - -DCMAKE_BUILD_TYPE=Release
       - -DENABLE_CLI=OFF
     sources:
       - type: git
@@ -249,7 +250,7 @@ modules:
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
-      - -DCMAKE_BUILD_TYPE=RelWithDebInfo
+      - -DCMAKE_BUILD_TYPE=Release
       - -DBUILD_SHARED_LIBS=ON
       - -DBUILD_TESTING=OFF
       - -DBUILD_APPS=OFF
@@ -296,13 +297,13 @@ modules:
       - type: git
         url: https://github.com/FFmpeg/FFmpeg.git
         # branch: release/9.0
-        commit: 5c8e7e243337fe635480f2436614169a25aacb81
+        commit: 7adfbe40dcde598f93a6963d2f7b22cd75202ccc
 
   - name: libspatialaudio
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
-      - -DCMAKE_BUILD_TYPE=RelWithDebInfo
+      - -DCMAKE_BUILD_TYPE=Release
     sources:
       - type: git
         url: https://github.com/ddennedy/libspatialaudio.git
@@ -322,7 +323,7 @@ modules:
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
-      - -DCMAKE_BUILD_TYPE=RelWithDebInfo
+      - -DCMAKE_BUILD_TYPE=Release
       - -DPotrace_PREFIX=/app
       - -DLibav_PREFIX=/app
       - -DCMAKE_PREFIX_PATH=/app
@@ -350,7 +351,7 @@ modules:
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
-      - -DCMAKE_BUILD_TYPE=RelWithDebInfo
+      - -DCMAKE_BUILD_TYPE=Release
     no-make-install: true
     post-install:
       - cp -v bigsh0t-*-linux/lib/frei0r-1/*.so /app/lib/frei0r-1
@@ -367,7 +368,7 @@ modules:
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
-      - -DCMAKE_BUILD_TYPE=RelWithDebInfo
+      - -DCMAKE_BUILD_TYPE=Release
       - -DOPENCV_EXTRA_MODULES_PATH=../opencv_contrib/modules
       - -DBUILD_LIST=core,imgproc,plot,video,tracking
       - -DOPENCV_GENERATE_PKGCONFIG=YES
@@ -401,12 +402,12 @@ modules:
       - -DMOD_SPATIALAUDIO=ON
       - -DUSE_LV2=OFF
       - -DUSE_VST2=OFF
-      - -DCMAKE_BUILD_TYPE=RelWithDebInfo
+      - -DCMAKE_BUILD_TYPE=Release
       - -DCMAKE_PREFIX_PATH=/app
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: 760fa4d18d0425d4ba855538237639747122c43e
+        commit: 7a3319fc6dbfa2fbf8fe90b5b94344a210ce4f8c
 
   - name: shotcut
     buildsystem: cmake-ninja
@@ -414,21 +415,21 @@ modules:
     config-opts:
       - -DBUILD_MINIMAL_MEDIA_BACKEND=ON
       - -DEXTERNAL_LAUNCHERS=OFF
-      - -DCMAKE_BUILD_TYPE=RelWithDebInfo
-      - -DSHOTCUT_VERSION=26.7.16
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DSHOTCUT_VERSION=26.10.30
     post-install:
       - install -d /app/extensions/Plugins
       - install -vD MinimalMediaBackend/libminimalmediaplugin.so /app/lib/qt6/multimedia/libminimalmediaplugin.so
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
-        commit: c03e30209b7f79da6a8a48c8c5f56e382b655a01
-        # tag: v26.6.9
+        commit: 2ef710ef65b6b1a38cd1899a99cf542deefcf83f
+        tag: v26.10.30
 
   - name: gopro2gpx
     buildsystem: cmake-ninja
     config-opts:
-      - -DCMAKE_BUILD_TYPE=RelWithDebInfo
+      - -DCMAKE_BUILD_TYPE=Release
     no-make-install: true
     post-install:
       - install -p -c gopro2gpx /app/bin
