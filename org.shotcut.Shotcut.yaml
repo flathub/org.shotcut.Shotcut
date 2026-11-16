@@ -152,7 +152,7 @@ modules:
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
-      - -DCMAKE_BUILD_TYPE=RelWithDebInfo
+      - -DCMAKE_BUILD_TYPE=Release
     sources:
       - type: git
         url: https://github.com/georgmartius/vid.stab.git
@@ -163,7 +163,7 @@ modules:
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
-      - -DCMAKE_BUILD_TYPE=RelWithDebInfo
+      - -DCMAKE_BUILD_TYPE=Release
       - -DWITHOUT_GAVL=ON
       - -DWITHOUT_OPENCV=ON
     sources:
@@ -203,7 +203,7 @@ modules:
     builddir: true
     subdir: source
     config-opts:
-      - -DCMAKE_BUILD_TYPE=RelWithDebInfo
+      - -DCMAKE_BUILD_TYPE=Release
       - -DENABLE_CLI=OFF
     sources:
       - type: git
@@ -249,7 +249,7 @@ modules:
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
-      - -DCMAKE_BUILD_TYPE=RelWithDebInfo
+      - -DCMAKE_BUILD_TYPE=Release
       - -DBUILD_SHARED_LIBS=ON
       - -DBUILD_TESTING=OFF
       - -DBUILD_APPS=OFF
@@ -296,13 +296,13 @@ modules:
       - type: git
         url: https://github.com/FFmpeg/FFmpeg.git
         # branch: release/9.0
-        commit: df8dce0eb35161ddf86f1979d1ed6af020f49b11
+        commit: 7adfbe40dcde598f93a6963d2f7b22cd75202ccc
 
   - name: libspatialaudio
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
-      - -DCMAKE_BUILD_TYPE=RelWithDebInfo
+      - -DCMAKE_BUILD_TYPE=Release
     sources:
       - type: git
         url: https://github.com/ddennedy/libspatialaudio.git
@@ -322,7 +322,7 @@ modules:
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
-      - -DCMAKE_BUILD_TYPE=RelWithDebInfo
+      - -DCMAKE_BUILD_TYPE=Release
       - -DPotrace_PREFIX=/app
       - -DLibav_PREFIX=/app
       - -DCMAKE_PREFIX_PATH=/app
@@ -350,7 +350,7 @@ modules:
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
-      - -DCMAKE_BUILD_TYPE=RelWithDebInfo
+      - -DCMAKE_BUILD_TYPE=Release
     no-make-install: true
     post-install:
       - cp -v bigsh0t-*-linux/lib/frei0r-1/*.so /app/lib/frei0r-1
@@ -367,7 +367,7 @@ modules:
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
-      - -DCMAKE_BUILD_TYPE=RelWithDebInfo
+      - -DCMAKE_BUILD_TYPE=Release
       - -DOPENCV_EXTRA_MODULES_PATH=../opencv_contrib/modules
       - -DBUILD_LIST=core,imgproc,plot,video,tracking
       - -DOPENCV_GENERATE_PKGCONFIG=YES
@@ -401,12 +401,12 @@ modules:
       - -DMOD_SPATIALAUDIO=ON
       - -DUSE_LV2=OFF
       - -DUSE_VST2=OFF
-      - -DCMAKE_BUILD_TYPE=RelWithDebInfo
+      - -DCMAKE_BUILD_TYPE=Release
       - -DCMAKE_PREFIX_PATH=/app
     sources:
       - type: git
         url: https://github.com/mltframework/mlt.git
-        commit: 0926a754fcb85b0a1a61a89c56e2a03ff3ea8270
+        commit: 2a51ed9cca0b7edca5f1c34749bad67b76b0051a
 
   - name: shotcut
     buildsystem: cmake-ninja
@@ -414,21 +414,21 @@ modules:
     config-opts:
       - -DBUILD_MINIMAL_MEDIA_BACKEND=ON
       - -DEXTERNAL_LAUNCHERS=OFF
-      - -DCMAKE_BUILD_TYPE=RelWithDebInfo
-      - -DSHOTCUT_VERSION=26.9.27
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DSHOTCUT_VERSION=26.11.15
     post-install:
       - install -d /app/extensions/Plugins
       - install -vD MinimalMediaBackend/libminimalmediaplugin.so /app/lib/qt6/multimedia/libminimalmediaplugin.so
     sources:
       - type: git
         url: https://github.com/mltframework/shotcut.git
-        commit: 325c2cc6422d93567d4edb57f1fee401f73beea1
-        tag: v26.9.27
+        commit: a95318e778bb1552118c0e7087012b24cae7bddc
+        tag: v26.11.15
 
   - name: gopro2gpx
     buildsystem: cmake-ninja
     config-opts:
-      - -DCMAKE_BUILD_TYPE=RelWithDebInfo
+      - -DCMAKE_BUILD_TYPE=Release
     no-make-install: true
     post-install:
       - install -p -c gopro2gpx /app/bin
